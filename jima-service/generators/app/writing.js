@@ -48,7 +48,7 @@ export default class Writing {
                 }
 
                 // Check if the folder name is 'restful' and isRestful is false
-                if (!this.generator.isRestful && file.includes( 'restful')) {
+                if (!this.generator.isRestful && file.toLowerCase() === 'restful') {
                     console.log(`[INFO] Skipping folder: ${file}`);
                     return; // Skip this iteration
                 }
