@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId><%= packagePath %>.<%= projectNameLowercase %>.common</groupId>
+        <artifactId><%= projectNameLowercase %>-common</artifactId>
+        <version><%= projectVersion %></version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <artifactId>common-jima</artifactId>
+    <name>jima</name>
+    <description>jima</description>
+    <dependencies>
+        <dependency>
+            <groupId><%= packagePath %>.<%= projectNameLowercase %>.commondto</groupId>
+            <artifactId>commondto-jima</artifactId>
+            <version>${commondto.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ir.msob.jima.crud</groupId>
+            <artifactId>crud-starter-<%= databaseTypeLowercase %></artifactId>
+        </dependency>
+
+        <%_ if (isRestful) { _%>
+        <dependency>
+            <groupId>ir.msob.jima.crud</groupId>
+            <artifactId>crud-starter-restful</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ir.msob.jima.crud</groupId>
+            <artifactId>crud-starter-restful-test</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ir.msob.jima.security</groupId>
+            <artifactId>security-starter-restful-oauth2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ir.msob.jima.security</groupId>
+            <artifactId>security-starter-restful-test</artifactId>
+        </dependency>
+        <%_ } _%>
+        <%_ if (isKafka) { _%>
+        <dependency>
+            <groupId>ir.msob.jima.crud</groupId>
+            <artifactId>crud-starter-kafka</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ir.msob.jima.crud</groupId>
+            <artifactId>crud-starter-kafka-test</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ir.msob.jima.security</groupId>
+            <artifactId>security-starter-kafka-oauth2</artifactId>
+        </dependency>
+        <%_ } _%>
+
+    </dependencies>
+
+</project>
