@@ -1,7 +1,7 @@
-package <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.relatedobject.relatedprocess;
+package <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.related.relatedobject.relatedprocess;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import ir.msob.jima.core.commons.relatedobject.relatedprocess.RelatedProcessCriteriaAbstract;
+import ir.msob.jima.core.commons.related.relatedobject.relatedprocess.RelatedProcessCriteriaAbstract;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

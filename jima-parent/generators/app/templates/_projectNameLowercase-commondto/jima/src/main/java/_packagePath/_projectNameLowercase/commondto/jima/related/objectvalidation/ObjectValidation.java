@@ -1,7 +1,7 @@
-package <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.objectvalidation;
+package <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.related.objectvalidation;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import ir.msob.jima.core.commons.objectvalidation.ObjectValidationAbstract;
+import ir.msob.jima.core.commons.related.objectvalidation.ObjectValidationAbstract;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

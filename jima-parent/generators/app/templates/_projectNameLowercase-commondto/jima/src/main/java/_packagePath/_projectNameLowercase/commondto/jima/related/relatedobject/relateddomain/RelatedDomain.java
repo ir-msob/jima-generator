@@ -1,7 +1,7 @@
-package <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.relatedobject.relateddomain;
+package <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.related.relatedobject.relateddomain;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import ir.msob.jima.core.commons.relatedobject.relateddomain.RelatedDomainAbstract;
+import ir.msob.jima.core.commons.related.relatedobject.relateddomain.RelatedDomainAbstract;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

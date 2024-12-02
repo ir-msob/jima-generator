@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.relatedobject.relatedparty.RelatedParty;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.related.relatedobject.relatedparty.RelatedParty;
 
 @Setter
 @Getter

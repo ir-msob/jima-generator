@@ -1,7 +1,7 @@
-package <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.contactmedium;
+package <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.related.contactmedium;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import ir.msob.jima.core.commons.contactmedium.ContactMediumCriteriaAbstract;
+import ir.msob.jima.core.commons.related.contactmedium.ContactMediumCriteriaAbstract;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

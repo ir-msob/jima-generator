@@ -1,7 +1,7 @@
-package <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.relatedobject.relatedintegration;
+package <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.related.relatedobject.relatedintegration;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import ir.msob.jima.core.commons.relatedobject.relatedintegration.RelatedIntegrationCriteriaAbstract;
+import ir.msob.jima.core.commons.related.relatedobject.relatedintegration.RelatedIntegrationCriteriaAbstract;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
