@@ -1,7 +1,7 @@
-package <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.shared.audit.auditdomain;
+package <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.related.auditdomain;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import ir.msob.jima.core.commons.shared.audit.auditdomain.AuditDomainAbstract;
+import ir.msob.jima.core.commons.related.auditdomain.AuditDomainAbstract;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

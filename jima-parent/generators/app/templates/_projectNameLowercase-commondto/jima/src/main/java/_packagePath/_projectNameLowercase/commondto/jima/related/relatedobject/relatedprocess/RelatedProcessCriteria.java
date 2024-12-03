@@ -16,6 +16,6 @@ import lombok.ToString;
 @ToString(callSuper = true)
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class RelatedProcessCriteria extends RelatedProcessCriteriaAbstract<<%= idClassName %>> {
+public class RelatedProcessCriteria extends RelatedProcessCriteriaAbstract<<%= idClassName %>, RelatedProcess> {
 
 }

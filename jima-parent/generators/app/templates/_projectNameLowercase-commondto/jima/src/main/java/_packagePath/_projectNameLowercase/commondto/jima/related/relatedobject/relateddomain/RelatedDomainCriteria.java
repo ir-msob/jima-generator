@@ -16,6 +16,6 @@ import lombok.ToString;
 @ToString(callSuper = true)
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class RelatedDomainCriteria extends RelatedDomainCriteriaAbstract<<%= idClassName %>> {
+public class RelatedDomainCriteria extends RelatedDomainCriteriaAbstract<<%= idClassName %>, RelatedDomain> {
 
 }

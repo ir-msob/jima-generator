@@ -1,7 +1,9 @@
-package <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.shared.audit.auditdomain;
+package <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.related.auditdomain;
 
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.related.relatedobject.relatedparty.RelatedParty;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.related.relatedobject.relatedparty.RelatedPartyCriteria;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import ir.msob.jima.core.commons.shared.audit.auditdomain.AuditDomainFiltersAbstract;
+import ir.msob.jima.core.commons.related.auditdomain.AuditDomainCriteriaAbstract;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,5 +21,5 @@ import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.related.rel
 @ToString(callSuper = true)
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class AuditDomainFilters extends AuditDomainFiltersAbstract<<%= idClassName %>,RelatedPartyCriteria> {
+public class AuditDomainCriteria extends AuditDomainCriteriaAbstract<<%= idClassName %>, RelatedParty, RelatedPartyCriteria, AuditDomain> {
 }
