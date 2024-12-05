@@ -1,4 +1,4 @@
-package <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base;
+package <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.domain;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ir.msob.jima.core.ral.<%= databaseTypeLowercase %>.commons.query.QueryBuilder;
@@ -16,16 +16,18 @@ public abstract class CrudService<
         D extends Domain,
         DTO extends Dto,
         C extends Criteria,
-        R extends CrudRepository<D, C>
-        >
+        R extends CrudRepository<D, C>>
         implements BaseCrudService<<%= idClassName %>, User, D, DTO, C, QueryBuilder, R> {
 
-    @Autowired
-    private BeforeAfterComponent beforeAfterComponent;
-    @Autowired
-    private ObjectMapper objectMapper;
-    @Autowired
-    private R repository;
+    private final BeforeAfterComponent beforeAfterComponent;
+    private final ObjectMapper objectMapper;
+    private final R repository;
+
+    protected CrudService(BeforeAfterComponent beforeAfterComponent, ObjectMapper objectMapper, R repository) {
+        this.beforeAfterComponent = beforeAfterComponent;
+        this.objectMapper = objectMapper;
+        this.repository = repository;
+    }
 
     @Override
     public BeforeAfterComponent getBeforeAfterComponent() {

@@ -2,7 +2,7 @@ package <%= packagePath %>.<%= projectNameLowercase %>.<%= serviceNameLowercase 
 
 import ir.msob.jima.core.commons.operation.BaseBeforeAfterDomainOperation;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.security.User;
-import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.CrudService;
+import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.domain.CrudService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;

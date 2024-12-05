@@ -5,8 +5,8 @@ import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.security.Us
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.domain.Domain;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.dto.Dto;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.criteria.Criteria;
-import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.CrudService;
-import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.CrudRepository;
+import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.domain.CrudService;
+import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.domain.CrudRepository;
 import ir.msob.jima.core.ral.<%= databaseTypeLowercase %>.commons.query.QueryBuilder;
 
 public interface EditCrudRestResource<

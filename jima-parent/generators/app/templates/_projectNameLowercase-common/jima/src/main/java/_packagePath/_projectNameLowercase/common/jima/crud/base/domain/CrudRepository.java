@@ -1,4 +1,4 @@
-package <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base;
+package <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.domain;
 
 
 import ir.msob.jima.core.ral.<%= databaseTypeLowercase %>.commons.Base<%= databaseType %>Repository;
@@ -16,8 +16,11 @@ public abstract class CrudRepository<D extends Domain, C extends Criteria>
         , Base<%= databaseType %>Repository<<%= idClassName %>, User, D> {
 
     <%_ if (databaseType == 'Mongo') { _%>
-        @Autowired
-        ReactiveMongoTemplate reactiveMongoTemplate;
+        private final ReactiveMongoTemplate reactiveMongoTemplate;
+
+        protected CrudRepository(ReactiveMongoTemplate reactiveMongoTemplate) {
+            this.reactiveMongoTemplate = reactiveMongoTemplate;
+        }
 
         @Override
         public ReactiveMongoTemplate getReactiveMongoTemplate() {

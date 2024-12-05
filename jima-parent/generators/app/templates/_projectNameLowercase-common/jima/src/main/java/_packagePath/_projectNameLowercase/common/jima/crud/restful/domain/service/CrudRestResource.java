@@ -6,8 +6,8 @@ import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.security.Us
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.domain.Domain;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.dto.Dto;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.criteria.Criteria;
-import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.CrudService;
-import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.CrudRepository;
+import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.domain.CrudService;
+import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.domain.CrudRepository;
 import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.security.UserService;
 import ir.msob.jima.core.ral.<%= databaseTypeLowercase %>.commons.query.QueryBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,14 +18,15 @@ public abstract class CrudRestResource<
         C extends Criteria,
         R extends CrudRepository<D, C>,
         S extends CrudService<D, DTO, C, R>
-        > implements
-        BaseCrudRestResource<<%= idClassName %>, User, D, DTO, C, QueryBuilder, R, S> {
+        > implements BaseCrudRestResource<<%= idClassName %>, User, D, DTO, C, QueryBuilder, R, S> {
 
-    @Autowired
-    UserService userService;
+    private final UserService userService;
+    private final S service;
 
-    @Autowired
-    S service;
+    protected CrudRestResource(UserService userService, S service) {
+        this.userService = userService;
+        this.service = service;
+    }
 
     @Override
     public BaseUserService getUserService() {

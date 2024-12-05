@@ -1,4 +1,4 @@
-package <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base;
+package <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.domain;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ir.msob.jima.core.commons.id.BaseIdService;
@@ -21,20 +21,21 @@ public abstract class CrudDataProvider<
         S extends CrudService<D, DTO, C, R>>
         implements BaseCrudDataProvider<<%= idClassName %>, User, D, DTO, C, QueryBuilder, R, S> {
 
-    @Autowired
-    BaseIdService idService;
+    private final ObjectMapper objectMapper;
+    private final S service;
+    private final User SAMPLE_USER;
 
-    public final User SAMPLE_USER = User.builder()
-            .id(idService.newId().toString())
-            .sessionId(idService.newId().toString())
-            .username("user")
-            .audience("web")
-            .roles(new TreeSet<>(Collections.singleton("USER"))) // TODO: Replace with real role
-            .build();
-    @Autowired
-    ObjectMapper objectMapper;
-    @Autowired
-    S service;
+    protected CrudDataProvider(BaseIdService idService, ObjectMapper objectMapper, S service) {
+        this.objectMapper = objectMapper;
+        this.service = service;
+        SAMPLE_USER = User.builder()
+                .id(idService.newId().toString())
+                .sessionId(idService.newId().toString())
+                .username("user")
+                .audience("web")
+                .roles(new TreeSet<>(Collections.singleton("USER"))) // TODO: Replace with real role
+                .build();
+    }
 
     @Override
     public User getSampleUser() {
