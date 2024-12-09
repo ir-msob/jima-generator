@@ -14,7 +14,6 @@ import org.springframework.security.oauth2.server.resource.authentication.JwtAut
 
 import java.security.Principal;
 import java.util.Map;
-
 public interface BaseSecurityUserService extends BaseUserService {
     JimaProperties getJimaProperties();
 

@@ -9,6 +9,12 @@ import <%= criteriaClassPath %>;
 
 @Repository
 public class <%= domainClassName %>Repository extends DomainCrudRepository<<%= domainClassName %>, <%= criteriaClassName %>> {
+    <%_ if (databaseType == 'Mongo') { _%>
+    protected <%= domainClassName %>Repository(ReactiveMongoTemplate reactiveMongoTemplate) {
+        super(reactiveMongoTemplate);
+    }
+    <%_ } _%>
+
     @Override
     public QueryBuilder criteria(QueryBuilder query, <%= criteriaClassName %> criteria, User user) {
         return super.criteria(query, criteria, user);

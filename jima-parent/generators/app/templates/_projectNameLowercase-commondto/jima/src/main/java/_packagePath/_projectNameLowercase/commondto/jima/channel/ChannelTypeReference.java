@@ -11,7 +11,6 @@ import ir.msob.jima.core.commons.dto.ModelType;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.criteria.Criteria;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.dto.Dto;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.security.User;
-
 public interface ChannelTypeReference<DTO extends Dto, C extends Criteria> extends BaseChannelTypeReference<<%= idClassName %>, User, DTO, C> {
     default TypeReference<ChannelMessage<User, ModelType>> getModelTypeReferenceType() {
         return new TypeReference<ChannelMessage<User, ModelType>>() {

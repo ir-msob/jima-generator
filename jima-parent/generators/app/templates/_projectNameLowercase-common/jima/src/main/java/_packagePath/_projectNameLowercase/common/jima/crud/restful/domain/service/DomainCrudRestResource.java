@@ -10,7 +10,6 @@ import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.doma
 import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.domain.DomainCrudRepository;
 import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.security.UserService;
 import ir.msob.jima.core.ral.<%= databaseTypeLowercase %>.commons.query.QueryBuilder;
-import org.springframework.beans.factory.annotation.Autowired;
 
 public abstract class DomainCrudRestResource<
         D extends Domain,

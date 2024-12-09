@@ -11,7 +11,6 @@ import ir.msob.jima.crud.test.BaseDomainCrudDataProvider;
 
 import java.util.Collections;
 import java.util.TreeSet;
-
 public abstract class DomainCrudDataProvider<
         D extends Domain,
         DTO extends Dto,

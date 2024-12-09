@@ -9,7 +9,6 @@ import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.security.Roles
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.security.User;
 
 import java.util.*;
-
 public interface BaseKeycloakUserService extends BaseUserService {
     User SYSTEM_USER = User.builder()
             .id("00000000-0000-0000-0000-000000000000")

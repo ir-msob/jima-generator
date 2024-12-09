@@ -9,7 +9,6 @@ import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.doma
 import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.domain.DomainCrudRepository;
 import ir.msob.jima.core.ral.<%= databaseTypeLowercase %>.commons.query.QueryBuilder;
 
-
 public interface DeleteByIdDomainCrudRestResource<
         D extends Domain,
         DTO extends Dto,

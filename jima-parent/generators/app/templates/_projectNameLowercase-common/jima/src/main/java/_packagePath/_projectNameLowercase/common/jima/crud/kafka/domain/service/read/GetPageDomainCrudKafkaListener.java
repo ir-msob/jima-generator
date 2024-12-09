@@ -8,7 +8,6 @@ import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.criteria.Cr
 import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.domain.DomainCrudService;
 import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.domain.DomainCrudRepository;
 import ir.msob.jima.core.ral.<%= databaseTypeLowercase %>.commons.query.QueryBuilder;
-
 public interface GetPageDomainCrudKafkaListener<
         D extends Domain,
         DTO extends Dto,
