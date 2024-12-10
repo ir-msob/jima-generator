@@ -1,13 +1,14 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.kafka.domain.service.read;
 
-import ir.msob.jima.crud.api.kafka.service.domain.read.BaseCountDomainCrudKafkaListener;
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.security.User;
+import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.domain.DomainCrudRepository;
+import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.domain.DomainCrudService;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.criteria.Criteria;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.domain.Domain;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.dto.Dto;
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.criteria.Criteria;
-import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.domain.DomainCrudService;
-import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.domain.DomainCrudRepository;
-import ir.msob.jima.core.ral.<%= databaseTypeLowercase %>.commons.query.QueryBuilder;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.security.User;
+import ir.msob.jima.core.ral.mongo.commons.query.QueryBuilder;
+import ir.msob.jima.crud.api.kafka.service.domain.read.BaseCountDomainCrudKafkaListener;
+
 public interface CountDomainCrudKafkaListener<
         D extends Domain,
         DTO extends Dto,
@@ -15,4 +16,5 @@ public interface CountDomainCrudKafkaListener<
         R extends DomainCrudRepository<D, C>,
         S extends DomainCrudService<D, DTO, C, R>
         > extends BaseCountDomainCrudKafkaListener<<%= idClassName %>, User, D, DTO, C, QueryBuilder, R, S> {
+
 }

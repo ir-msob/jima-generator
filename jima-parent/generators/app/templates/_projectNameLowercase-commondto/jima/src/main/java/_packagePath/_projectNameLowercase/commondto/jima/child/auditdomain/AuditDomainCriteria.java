@@ -8,7 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.child.relatedobject.relatedparty.RelatedPartyCriteria;
+
 /**
  * The {@code AuditDomainFiltersAbstract} class represents a set of filters for querying audit domains.
  * It includes filters for the related party ID, action date, and action type.
@@ -22,4 +22,5 @@ import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.child.relat
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AuditDomainCriteria extends AuditDomainCriteriaAbstract<<%= idClassName %>, RelatedParty, RelatedPartyCriteria, AuditDomain> {
+
 }

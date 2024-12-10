@@ -13,4 +13,5 @@ import lombok.ToString;
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ObjectValidationCriteria extends ObjectValidationCriteriaAbstract<<%= idClassName %>, ObjectValidation> {
+
 }

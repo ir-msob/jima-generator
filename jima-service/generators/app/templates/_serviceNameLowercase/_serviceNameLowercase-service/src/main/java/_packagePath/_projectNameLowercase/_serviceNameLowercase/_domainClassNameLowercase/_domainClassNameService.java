@@ -1,23 +1,28 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.<%= serviceNameLowercase %>.<%= domainClassNameLowercase %>;
 
-import ir.msob.jima.core.commons.operation.BaseBeforeAfterDomainOperation;
+import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.domain.DomainCrudService;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.security.User;
-import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.domain.CrudService;
-import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
-import org.springframework.stereotype.Service;
 import <%= domainClassPath %>;
 import <%= dtoClassPath %>;
 import <%= criteriaClassPath %>;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import ir.msob.jima.core.commons.operation.BaseBeforeAfterDomainOperation;
+import ir.msob.jima.crud.service.domain.BeforeAfterComponent;
+import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.Collections;
 
 @Service
-@RequiredArgsConstructor
-public class <%= domainClassName %>Service extends CrudService<<%= domainClassName %>, <%= dtoClassName %>, <%= criteriaClassName %>, <%= domainClassName %>Repository> {
+public class <%= domainClassName %>Service extends DomainCrudService<<%= domainClassName %>, <%= dtoClassName %>, <%= criteriaClassName %>, <%= domainClassName %>Repository> {
 
     private final ModelMapper modelMapper;
+
+    protected OrderService(BeforeAfterComponent beforeAfterComponent, ObjectMapper objectMapper, <%= domainClassName %>Repository repository, ModelMapper modelMapper) {
+        super(beforeAfterComponent, objectMapper, repository);
+        this.modelMapper = modelMapper;
+    }
 
     @Override
     public <%= dtoClassName %> toDto(<%= domainClassName %> domain, User user) {

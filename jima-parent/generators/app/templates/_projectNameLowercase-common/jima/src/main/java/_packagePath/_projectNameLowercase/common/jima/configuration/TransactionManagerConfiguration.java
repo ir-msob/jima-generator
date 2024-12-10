@@ -1,4 +1,4 @@
-package ir.msob.jima.crud.sample.restful.base.configuration;
+package <%= packagePath %>.<%= projectNameLowercase %>.common.jima.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,16 +17,16 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class TransactionManagerConfiguration {
 
     <%_ if (databaseType == 'Mongo') { _%>
-        @Bean
-        @Primary
-        public PlatformTransactionManager transactionManager(MongoDatabaseFactory mongoDatabaseFactory) {
-            return new MongoTransactionManager(mongoDatabaseFactory);
-        }
+    @Bean
+    @Primary
+    public PlatformTransactionManager transactionManager(MongoDatabaseFactory mongoDatabaseFactory) {
+        return new MongoTransactionManager(mongoDatabaseFactory);
+    }
 
-        @Bean
-        ReactiveMongoTransactionManager reactiveMongoTransactionManager(ReactiveMongoDatabaseFactory reactiveMongoDatabaseFactory) {
-            return new ReactiveMongoTransactionManager(reactiveMongoDatabaseFactory);
-        }
+    @Bean
+    ReactiveMongoTransactionManager reactiveMongoTransactionManager(ReactiveMongoDatabaseFactory reactiveMongoDatabaseFactory) {
+        return new ReactiveMongoTransactionManager(reactiveMongoDatabaseFactory);
+    }
     <%_ } _%>
 
 }

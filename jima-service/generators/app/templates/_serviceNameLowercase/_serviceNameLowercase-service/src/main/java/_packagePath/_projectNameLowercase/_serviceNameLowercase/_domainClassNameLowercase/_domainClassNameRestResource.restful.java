@@ -1,14 +1,15 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.<%= serviceNameLowercase %>.<%= domainClassNameLowercase %>;
 
-import ir.msob.jima.core.commons.resource.Resource;
-import ir.msob.jima.core.commons.shared.ResourceType;
 import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.restful.domain.service.DomainCrudRestResource;
-import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.security.UserService;
 import <%= domainClassPath %>;
 import <%= dtoClassPath %>;
 import <%= criteriaClassPath %>;
+import ir.msob.jima.core.commons.resource.Resource;
+import ir.msob.jima.core.commons.shared.ResourceType;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(<%= domainClassName %>RestResource.BASE_URI)

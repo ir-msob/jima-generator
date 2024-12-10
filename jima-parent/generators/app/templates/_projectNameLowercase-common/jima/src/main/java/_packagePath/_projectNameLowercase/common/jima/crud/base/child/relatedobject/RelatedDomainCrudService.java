@@ -2,8 +2,8 @@ package <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.chi
 
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.child.relatedobject.relateddomain.RelatedDomain;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.child.relatedobject.relateddomain.RelatedDomainCriteria;
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.security.User;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.dto.Dto;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.security.User;
 import ir.msob.jima.crud.service.child.relatedobject.relateddomain.BaseRelatedDomainCrudService;
 import org.springframework.validation.annotation.Validated;
 

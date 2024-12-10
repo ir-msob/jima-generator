@@ -1,16 +1,17 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.domain;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import ir.msob.jima.core.commons.id.BaseIdService;
-import ir.msob.jima.core.ral.<%= databaseTypeLowercase %>.commons.query.QueryBuilder;
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.security.User;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.criteria.Criteria;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.domain.Domain;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.dto.Dto;
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.criteria.Criteria;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.security.User;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import ir.msob.jima.core.commons.id.BaseIdService;
+import ir.msob.jima.core.ral.mongo.commons.query.QueryBuilder;
 import ir.msob.jima.crud.test.BaseDomainCrudDataProvider;
 
 import java.util.Collections;
 import java.util.TreeSet;
+
 public abstract class DomainCrudDataProvider<
         D extends Domain,
         DTO extends Dto,

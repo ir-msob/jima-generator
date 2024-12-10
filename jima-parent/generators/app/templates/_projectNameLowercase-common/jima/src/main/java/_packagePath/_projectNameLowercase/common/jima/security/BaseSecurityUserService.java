@@ -2,9 +2,9 @@ package <%= packagePath %>.<%= projectNameLowercase %>.common.jima.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ir.msob.jima.core.beans.properties.JimaProperties;
+import ir.msob.jima.core.commons.security.BaseClaimKey;
 import ir.msob.jima.core.commons.security.BaseUser;
 import ir.msob.jima.core.commons.security.BaseUserService;
-import ir.msob.jima.core.commons.security.BaseClaimKey;
 import ir.msob.jima.core.commons.security.UserInfoUtil;
 import lombok.SneakyThrows;
 import org.apache.logging.log4j.util.Strings;
@@ -14,11 +14,11 @@ import org.springframework.security.oauth2.server.resource.authentication.JwtAut
 
 import java.security.Principal;
 import java.util.Map;
+
 public interface BaseSecurityUserService extends BaseUserService {
     JimaProperties getJimaProperties();
 
     ObjectMapper getObjectMapper();
-
 
     @Override
     default <USER extends BaseUser, A extends Authentication> USER getUser(A authentication) {
@@ -28,7 +28,6 @@ public interface BaseSecurityUserService extends BaseUserService {
         }
         throw new IllegalArgumentException("Authentication cannot be null. Please provide a valid authentication object.");
     }
-
 
     @SneakyThrows
     @Override
@@ -46,7 +45,6 @@ public interface BaseSecurityUserService extends BaseUserService {
         }
         throw new IllegalArgumentException("Authentication cannot be null. Please provide a valid authentication object.");
     }
-
 
     @Override
     default <USER extends BaseUser> USER getUser(String userInfo, Map<String, Object> claims, Class<USER> userClass) {

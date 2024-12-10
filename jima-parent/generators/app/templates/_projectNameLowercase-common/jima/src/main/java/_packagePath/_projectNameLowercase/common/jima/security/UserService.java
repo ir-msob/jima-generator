@@ -1,11 +1,11 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.common.jima.security;
 
+import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.security.keycloak.BaseKeycloakUserService;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.child.relatedobject.relatedparty.RelatedParty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ir.msob.jima.core.beans.properties.JimaProperties;
 import ir.msob.jima.core.commons.child.relatedobject.relatedparty.RelatedPartyAbstract;
 import ir.msob.jima.core.commons.security.BaseUser;
-import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.security.<%= securityLowercase %>.Base<%= security %>UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

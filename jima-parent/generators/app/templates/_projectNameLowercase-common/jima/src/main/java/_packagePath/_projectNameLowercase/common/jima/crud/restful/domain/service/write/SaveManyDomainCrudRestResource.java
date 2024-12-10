@@ -1,13 +1,14 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.restful.domain.service.write;
 
-import ir.msob.jima.crud.api.restful.service.domain.write.BaseSaveManyDomainCrudRestResource;
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.security.User;
+import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.domain.DomainCrudRepository;
+import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.domain.DomainCrudService;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.criteria.Criteria;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.domain.Domain;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.dto.Dto;
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.criteria.Criteria;
-import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.domain.DomainCrudService;
-import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.domain.DomainCrudRepository;
-import ir.msob.jima.core.ral.<%= databaseTypeLowercase %>.commons.query.QueryBuilder;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.security.User;
+import ir.msob.jima.core.ral.mongo.commons.query.QueryBuilder;
+import ir.msob.jima.crud.api.restful.service.domain.write.BaseSaveManyDomainCrudRestResource;
+
 public interface SaveManyDomainCrudRestResource<
         D extends Domain,
         DTO extends Dto,

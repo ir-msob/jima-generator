@@ -1,11 +1,14 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.<%= serviceNameLowercase %>.<%= domainClassNameLowercase %>;
 
-import ir.msob.jima.core.ral.mongo.commons.query.QueryBuilder;
 import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.domain.DomainCrudRepository;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.security.User;
-import org.springframework.stereotype.Repository;
 import <%= domainClassPath %>;
 import <%= criteriaClassPath %>;
+import ir.msob.jima.core.ral.mongo.commons.query.QueryBuilder;
+<%_ if (databaseType == 'Mongo') { _%>
+import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
+<%_ } _%>
+import org.springframework.stereotype.Repository;
 
 @Repository
 public class <%= domainClassName %>Repository extends DomainCrudRepository<<%= domainClassName %>, <%= criteriaClassName %>> {
