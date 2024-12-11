@@ -2,6 +2,7 @@ package <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.kafka.do
 
 import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.domain.DomainCrudRepository;
 import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.domain.DomainCrudService;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.channel.ChannelTypeReference;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.criteria.Criteria;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.domain.Domain;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.dto.Dto;
@@ -15,6 +16,7 @@ public interface EditByIdDomainCrudKafkaListener<
         C extends Criteria,
         R extends DomainCrudRepository<D, C>,
         S extends DomainCrudService<D, DTO, C, R>
-        > extends BaseEditByIdDomainCrudKafkaListener<<%= idClassName %>, User, D, DTO, C, QueryBuilder, R, S> {
+        > extends BaseEditByIdDomainCrudKafkaListener<<%= idClassName %>, User, D, DTO, C, QueryBuilder, R, S>
+        , ChannelTypeReference<DTO, C> {
 
 }

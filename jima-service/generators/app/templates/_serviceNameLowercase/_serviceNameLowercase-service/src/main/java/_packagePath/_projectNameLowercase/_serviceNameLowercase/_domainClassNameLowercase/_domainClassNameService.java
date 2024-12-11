@@ -3,8 +3,8 @@ package <%= packagePath %>.<%= projectNameLowercase %>.<%= serviceNameLowercase 
 import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.domain.DomainCrudService;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.security.User;
 import <%= domainClassPath %>;
-import <%= dtoClassPath %>;
 import <%= criteriaClassPath %>;
+import <%= dtoClassPath %>;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ir.msob.jima.core.commons.operation.BaseBeforeAfterDomainOperation;
 import ir.msob.jima.crud.service.domain.BeforeAfterComponent;

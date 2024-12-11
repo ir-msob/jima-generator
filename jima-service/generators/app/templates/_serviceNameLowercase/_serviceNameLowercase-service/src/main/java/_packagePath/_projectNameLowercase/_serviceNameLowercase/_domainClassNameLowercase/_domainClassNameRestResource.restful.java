@@ -3,8 +3,8 @@ package <%= packagePath %>.<%= projectNameLowercase %>.<%= serviceNameLowercase 
 import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.restful.domain.service.DomainCrudRestResource;
 import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.security.UserService;
 import <%= domainClassPath %>;
-import <%= dtoClassPath %>;
 import <%= criteriaClassPath %>;
+import <%= dtoClassPath %>;
 import ir.msob.jima.core.commons.resource.Resource;
 import ir.msob.jima.core.commons.shared.ResourceType;
 import lombok.RequiredArgsConstructor;
