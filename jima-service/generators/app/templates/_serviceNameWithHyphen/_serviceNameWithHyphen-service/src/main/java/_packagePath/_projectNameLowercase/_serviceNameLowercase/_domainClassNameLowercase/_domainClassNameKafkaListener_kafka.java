@@ -1,10 +1,10 @@
-package <%= packagePath %>.<%= projectNameLowercase %>.order.order;
+package <%= packagePath %>.<%= projectNameLowercase %>.<%= serviceNameLowercase %>.<%= domainClassNameLowercase %>;
 
 import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.kafka.domain.service.DomainCrudKafkaListener;
 import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.security.UserService;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.security.User;
-import <%= domainClassPath %>;
 import <%= criteriaClassPath %>;
+import <%= domainClassPath %>;
 import <%= dtoClassPath %>;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -15,15 +15,17 @@ import ir.msob.jima.core.commons.operation.ConditionalOnOperation;
 import ir.msob.jima.core.commons.operation.Operations;
 import ir.msob.jima.core.commons.resource.Resource;
 import ir.msob.jima.core.commons.shared.ResourceType;
+import ir.msob.jima.crud.api.kafka.client.ChannelUtil;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.stereotype.Component;
 
 @ConditionalOnOperation(operations = {Operations.SAVE, Operations.UPDATE_BY_ID, Operations.DELETE_BY_ID})
 @Component
-@Resource(value = "<%= domainClassNameWithHyphen %>", type = ResourceType.KAFKA)
+@Resource(value = <%= domainClassName %>.DOMAIN_NAME_WITH_HYPHEN, type = ResourceType.KAFKA)
 public class <%= domainClassName %>KafkaListener extends DomainCrudKafkaListener<<%= domainClassName %>, <%= dtoClassName %>, <%= criteriaClassName %>, <%= domainClassName %>Repository, <%= domainClassName %>Service> {
+    public static final String BASE_URI = ChannelUtil.getBaseChannel(<%= dtoClassName %>.class);
 
-    protected <%= domainClassName %>Listener(UserService userService, <%= domainClassName %>Service service, ObjectMapper objectMapper, ConsumerFactory<String, String> consumerFactory, BaseAsyncClient asyncClient) {
+    protected <%= domainClassName %>KafkaListener(UserService userService, <%= domainClassName %>Service service, ObjectMapper objectMapper, ConsumerFactory<String, String> consumerFactory, BaseAsyncClient asyncClient) {
         super(userService, service, objectMapper, consumerFactory, asyncClient);
     }
 

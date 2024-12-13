@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId><%= packagePath %>.<%= projectNameLowercase %>.common</groupId>
+        <artifactId><%= projectNameLowercase %>-common</artifactId>
+        <version><%= projectVersion %></version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <artifactId>common-jima-test</artifactId>
+    <name>jima-test</name>
+    <description>jima-test</description>
+    <dependencies>
+        <dependency>
+            <groupId><%= packagePath %>.<%= projectNameLowercase %>.common</groupId>
+            <artifactId>common-jima</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- Jima Test -->
+        <%_ if (isRestful) { _%>
+        <dependency>
+            <groupId>ir.msob.jima.crud</groupId>
+            <artifactId>crud-starter-restful-test</artifactId>
+        </dependency>
+        <%_ } _%>
+        <%_ if (isKafka) { _%>
+        <dependency>
+            <groupId>ir.msob.jima.crud</groupId>
+            <artifactId>crud-starter-kafka-test</artifactId>
+        </dependency>
+        <%_ } _%>
+        <%_ if (databaseType == 'Mongo') { _%>
+        <dependency>
+            <groupId>ir.msob.jima.crud</groupId>
+            <artifactId>crud-starter-mongo-test</artifactId>
+        </dependency>
+        <%_ } _%>
+        <%_ if (security == 'Keycloak') { _%>
+        <dependency>
+            <groupId>ir.msob.jima.security</groupId>
+            <artifactId>security-starter-keycloak-test</artifactId>
+        </dependency>
+        <%_ } _%>
+
+        <!-- Test -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+</project>

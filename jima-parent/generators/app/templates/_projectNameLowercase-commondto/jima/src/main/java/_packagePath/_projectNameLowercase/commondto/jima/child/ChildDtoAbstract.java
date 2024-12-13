@@ -12,6 +12,6 @@ import lombok.ToString;
 @ToString(callSuper = true)
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ChildDtoAbstract extends BaseChildDtoAbstract<String> {
+public class ChildDtoAbstract extends BaseChildDtoAbstract<<%= idClassName %>> implements ChildDto {
 
 }

@@ -17,6 +17,13 @@
             <artifactId>commondto-jima</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
+
+        <%_ if (databaseType == 'Mongo') { _%>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-mongodb</artifactId>
+        </dependency>
+        <%_ } _%>
     </dependencies>
 
 </project>

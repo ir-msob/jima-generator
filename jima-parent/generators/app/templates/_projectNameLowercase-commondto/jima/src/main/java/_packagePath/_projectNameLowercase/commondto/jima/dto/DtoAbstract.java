@@ -9,9 +9,12 @@ import lombok.ToString;
 
 @Setter
 @Getter
-@ToString(callSuper = true)
 @NoArgsConstructor
+@ToString(callSuper = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class DtoAbstract extends BaseDtoAbstract<<%= idClassName %>> {
+public class DtoAbstract extends BaseDtoAbstract<<%= idClassName %>> implements Dto {
 
+    public DtoAbstract(<%= idClassName %> id) {
+        super(id);
+    }
 }

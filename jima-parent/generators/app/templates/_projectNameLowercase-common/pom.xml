@@ -22,6 +22,7 @@
     </properties>
     <modules>
         <module>jima</module>
+        <module>jima-test</module>
         <module>commons</module>
     </modules>
 

@@ -32,28 +32,28 @@ export default class Prompts {
                 type: 'input',
                 name: 'serviceName',
                 message: 'Please enter the service name (e.g., Comment, Order):',
-                default: 'Order',
+                default: 'SampleMicroservice',
                 validate: input => /^[A-Z][a-zA-Z]*$/.test(input) || 'Service name must start with an uppercase letter and contain only letters.'
             },
             {
                 type: 'input',
                 name: 'domainClassPath',
-                message: 'Please enter the fully qualified domain class path (e.g., com.example.project.common.Order):',
-                default: 'com.example.project.common.Order',
+                message: 'Please enter the fully qualified domain class path (e.g., com.example.myproject.commondto.commons.sampledomain.SampleDomain):',
+                default: 'com.example.myproject.commondto.commons.sampledomain.SampleDomain',
                 validate: input => /^(?:[a-zA-Z_][a-zA-Z0-9_]*\.)+[A-Z][a-zA-Z0-9_]*$/.test(input) || 'Domain class must be a valid Java class path.'
             },
             {
                 type: 'input',
                 name: 'dtoClassPath',
-                message: 'Please enter the fully qualified DTO class path (e.g., com.example.project.common.OrderDTO):',
-                default: 'com.example.project.common.OrderDTO',
+                message: 'Please enter the fully qualified DTO class path (e.g., com.example.myproject.commondto.commons.sampledomain.SampleDto):',
+                default: 'com.example.myproject.commondto.commons.sampledomain.SampleDto',
                 validate: input => /^(?:[a-zA-Z_][a-zA-Z0-9_]*\.)+[A-Z][a-zA-Z0-9_]*$/.test(input) || 'DTO class must be a valid Java class path.'
             },
             {
                 type: 'input',
                 name: 'criteriaClassPath',
-                message: 'Please enter the fully qualified criteria class path (e.g., com.example.project.common.OrderCriteria):',
-                default: 'com.example.project.common.OrderCriteria',
+                message: 'Please enter the fully qualified criteria class path (e.g., com.example.myproject.commondto.commons.sampledomain.SampleCriteria):',
+                default: 'com.example.myproject.commondto.commons.sampledomain.SampleCriteria',
                 validate: input => /^(?:[a-zA-Z_][a-zA-Z0-9_]*\.)+[A-Z][a-zA-Z0-9_]*$/.test(input) || 'Criteria class must be a valid Java class path.'
             },
             {

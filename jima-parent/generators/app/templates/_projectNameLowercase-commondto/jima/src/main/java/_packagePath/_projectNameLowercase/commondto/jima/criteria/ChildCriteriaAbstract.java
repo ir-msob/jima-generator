@@ -12,6 +12,6 @@ import lombok.ToString;
 @ToString(callSuper = true)
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public abstract class ChildCriteriaAbstract extends BaseChildCriteriaAbstract<<%= idClassName %>> {
+public abstract class ChildCriteriaAbstract extends BaseChildCriteriaAbstract<<%= idClassName %>> implements ChildCriteria{
 
 }

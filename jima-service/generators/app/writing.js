@@ -33,6 +33,9 @@ export default class Writing {
                 if (file.includes('_serviceNameLowercase')) {
                     tempFileName = tempFileName.replace(/_serviceNameLowercase/gi, this.generator.serviceNameLowercase);
                 }
+                if (file.includes('_serviceNameWithHyphen')) {
+                    tempFileName = tempFileName.replace(/_serviceNameWithHyphen/gi, this.generator.serviceNameWithHyphen);
+                }
                 if (file.includes('_serviceName')) {
                     tempFileName = tempFileName.replace(/_serviceName/gi, this.generator.serviceName);
                 }
@@ -54,8 +57,9 @@ export default class Writing {
                 }
 
                 // Remove ".restful." in the file name
-                if (this.generator.isRestful && file.includes( '.restful.')) {
-                    tempFileName = tempFileName.replace(/.restful/gi, '');
+                if (this.generator.isRestful && file.includes( '_restful')) {
+                    console.log(`[INFO] Remove _restful: ${file}`);
+                    tempFileName = tempFileName.replace(/_restful/gi, '');
                 }
 
                 // Check if the folder name is 'kafka' and isKafka is false
@@ -65,8 +69,9 @@ export default class Writing {
                 }
 
                 // Remove ".kafka." in the file name
-                if (this.generator.isKafka && file.includes( '.kafka.')) {
-                    tempFileName = tempFileName.replace(/.kafka/gi, '');
+                if (this.generator.isKafka && file.includes( '_kafka')) {
+                    console.log(`[INFO] Remove _kafka: ${file}`);
+                    tempFileName = tempFileName.replace(/_kafka/gi, '');
                 }
 
                 // Check if the folder name is 'keycloak' and security is not Keycloak
@@ -74,6 +79,8 @@ export default class Writing {
                     console.log(`[INFO] Skipping folder: ${file}`);
                     return; // Skip this iteration
                 }
+
+                console.log(`[INFO] Final destination path: ${tempFileName}`);
 
                 // Final destination path
                 let destPath = path.join(destDir, tempFileName);

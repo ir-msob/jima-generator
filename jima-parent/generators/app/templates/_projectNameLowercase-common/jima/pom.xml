@@ -28,26 +28,14 @@
             <artifactId>crud-starter-restful</artifactId>
         </dependency>
         <dependency>
-            <groupId>ir.msob.jima.crud</groupId>
-            <artifactId>crud-starter-restful-test</artifactId>
-        </dependency>
-        <dependency>
             <groupId>ir.msob.jima.security</groupId>
             <artifactId>security-starter-restful-oauth2</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>ir.msob.jima.security</groupId>
-            <artifactId>security-starter-restful-test</artifactId>
         </dependency>
         <%_ } _%>
         <%_ if (isKafka) { _%>
         <dependency>
             <groupId>ir.msob.jima.crud</groupId>
             <artifactId>crud-starter-kafka</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>ir.msob.jima.crud</groupId>
-            <artifactId>crud-starter-kafka-test</artifactId>
         </dependency>
         <dependency>
             <groupId>ir.msob.jima.security</groupId>

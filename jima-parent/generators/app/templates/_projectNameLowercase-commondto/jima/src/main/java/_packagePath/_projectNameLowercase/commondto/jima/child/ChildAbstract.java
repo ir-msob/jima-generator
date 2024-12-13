@@ -12,6 +12,9 @@ import lombok.ToString;
 @ToString(callSuper = true)
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ChildAbstract extends BaseChildAbstract<String> {
+public class ChildAbstract extends BaseChildAbstract<<%= idClassName %>> implements Child {
 
+    public ChildAbstract(<%= idClassName %> id, <%= idClassName %> parentId) {
+        super(id, parentId);
+    }
 }

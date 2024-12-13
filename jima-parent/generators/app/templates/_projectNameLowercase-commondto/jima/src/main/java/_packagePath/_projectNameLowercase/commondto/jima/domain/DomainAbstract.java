@@ -9,9 +9,12 @@ import lombok.ToString;
 
 @Setter
 @Getter
-@ToString(callSuper = true)
 @NoArgsConstructor
+@ToString(callSuper = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class DomainAbstract extends BaseDomainAbstract<<%= idClassName %>> {
+public class DomainAbstract extends BaseDomainAbstract<<%= idClassName %>> implements Domain{
 
+    public DomainAbstract(<%= idClassName %> id) {
+        super(id);
+    }
 }

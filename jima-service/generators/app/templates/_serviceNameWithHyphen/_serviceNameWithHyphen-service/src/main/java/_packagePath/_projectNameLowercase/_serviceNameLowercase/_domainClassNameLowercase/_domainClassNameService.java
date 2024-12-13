@@ -2,8 +2,8 @@ package <%= packagePath %>.<%= projectNameLowercase %>.<%= serviceNameLowercase 
 
 import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.domain.DomainCrudService;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.security.User;
-import <%= domainClassPath %>;
 import <%= criteriaClassPath %>;
+import <%= domainClassPath %>;
 import <%= dtoClassPath %>;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ir.msob.jima.core.commons.operation.BaseBeforeAfterDomainOperation;
@@ -19,7 +19,7 @@ public class <%= domainClassName %>Service extends DomainCrudService<<%= domainC
 
     private final ModelMapper modelMapper;
 
-    protected OrderService(BeforeAfterComponent beforeAfterComponent, ObjectMapper objectMapper, <%= domainClassName %>Repository repository, ModelMapper modelMapper) {
+    protected <%= domainClassName %>Service(BeforeAfterComponent beforeAfterComponent, ObjectMapper objectMapper, <%= domainClassName %>Repository repository, ModelMapper modelMapper) {
         super(beforeAfterComponent, objectMapper, repository);
         this.modelMapper = modelMapper;
     }
