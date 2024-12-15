@@ -1,6 +1,6 @@
 # Log
 log/
-test/
+sample-test/
 
 # Asciidoctor
 document/.asciidoctor

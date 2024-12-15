@@ -610,3 +610,4 @@ nbdist/
 
 
 # End of https://www.toptal.com/developers/gitignore/api/maven,java,intellij,intellij+all,intellij+iml,webstorm,webstorm+iml,webstorm+all,eclipse,angular,netbeans,visualstudiocode
+/package-lock.json

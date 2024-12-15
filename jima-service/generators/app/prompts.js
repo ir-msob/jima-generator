@@ -14,7 +14,7 @@ export default class Prompts {
                 type: 'input',
                 name: 'commonConfigPath',
                 message: 'Please enter the path for the common configuration file (e.g., /path/to/common-config.json):',
-                default: '/Workspace/JiWorkspace/jima-generator/test/myproject-common/common-config.json',
+                default: '/Workspace/JiWorkspace/jima-generator/sample-test/myproject-common/common-config.json',
                 validate: input => {
                     const trimmedInput = input.trim();
                     const pathRegex = /^(\/[^/ ]*)+\/?[^/ ]+$/; // Basic regex for Unix-like paths
