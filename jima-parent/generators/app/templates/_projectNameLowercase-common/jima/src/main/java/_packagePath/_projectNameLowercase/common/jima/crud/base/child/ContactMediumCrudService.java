@@ -1,19 +1,22 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.child;
 
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.child.contactmedium.ContactMedium;
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.child.contactmedium.ContactMediumCriteria;
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.dto.Dto;
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.security.User;
+import com.example.myproject.commondto.jima.child.contactmedium.ContactMedium;
+import com.example.myproject.commondto.jima.child.contactmedium.ContactMediumContainer;
+import com.example.myproject.commondto.jima.child.contactmedium.ContactMediumCriteria;
+import com.example.myproject.commondto.jima.dto.Dto;
+import com.example.myproject.commondto.jima.security.User;
 import ir.msob.jima.crud.service.child.contactmedium.BaseContactMediumCrudService;
 import org.springframework.validation.annotation.Validated;
 
 @Validated
-public abstract class ContactMediumCrudService<DTO extends Dto>
+public abstract class ContactMediumCrudService<DTO extends Dto & ContactMediumContainer>
         implements BaseContactMediumCrudService<
-            <%= idClassName %>
-            , User
-            , DTO
-            , ContactMedium
-            , ContactMediumCriteria> {
+        <%= idClassName %>
+        , User
+        , ContactMedium
+        , ContactMediumCriteria
+        , ContactMediumContainer
+        , DTO
+        > {
 
 }

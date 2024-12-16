@@ -2,13 +2,13 @@ package <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.sampled
 
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.shared.Microservices;
 import com.example.myproject.commondto.jima.child.characteristic.Characteristic;
-import com.example.myproject.commondto.jima.child.characteristic.CharacteristicContiner;
+import com.example.myproject.commondto.jima.child.characteristic.CharacteristicContainer;
 import com.example.myproject.commondto.jima.child.contactmedium.ContactMedium;
-import com.example.myproject.commondto.jima.child.contactmedium.ContactMediumContiner;
+import com.example.myproject.commondto.jima.child.contactmedium.ContactMediumContainer;
 import com.example.myproject.commondto.jima.child.objectvalidation.ObjectValidation;
-import com.example.myproject.commondto.jima.child.objectvalidation.ObjectValidationContiner;
+import com.example.myproject.commondto.jima.child.objectvalidation.ObjectValidationContainer;
 import com.example.myproject.commondto.jima.child.relatedaction.RelatedAction;
-import com.example.myproject.commondto.jima.child.relatedaction.RelatedActionContiner;
+import com.example.myproject.commondto.jima.child.relatedaction.RelatedActionContainer;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.domain.DomainAbstract;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import ir.msob.jima.core.commons.domain.DomainInfo;
@@ -20,6 +20,9 @@ import lombok.Setter;
 import lombok.ToString;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 @Setter
 @Getter
@@ -38,10 +41,10 @@ public class SampleDomain extends DomainAbstract implements CharacteristicContai
     private String name;
     private String description;
 
-    private SortedSet<@Valid Characteristic> characteristics = new TreeSet<>();
-    private SortedSet<@Valid ContactMedium> contactMediums = new TreeSet<>();
-    private SortedSet<@Valid ObjectValidation> objectValidations = new TreeSet<>();
-    private SortedSet<@Valid RelatedAction> relatedActions = new TreeSet<>();
+    private SortedSet<Characteristic> characteristics = new TreeSet<>();
+    private SortedSet<ContactMedium> contactMediums = new TreeSet<>();
+    private SortedSet<ObjectValidation> objectValidations = new TreeSet<>();
+    private SortedSet<RelatedAction> relatedActions = new TreeSet<>();
 
     @Builder
     public SampleDomain(String id, String name, String description) {

@@ -1,19 +1,22 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.child.relatedobject;
 
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.child.relatedobject.relatedparty.RelatedParty;
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.child.relatedobject.relatedparty.RelatedPartyCriteria;
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.dto.Dto;
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.security.User;
+import com.example.myproject.commondto.jima.child.relatedobject.relatedparty.RelatedParty;
+import com.example.myproject.commondto.jima.child.relatedobject.relatedparty.RelatedPartyContainer;
+import com.example.myproject.commondto.jima.child.relatedobject.relatedparty.RelatedPartyCriteria;
+import com.example.myproject.commondto.jima.dto.Dto;
+import com.example.myproject.commondto.jima.security.User;
 import ir.msob.jima.crud.service.child.relatedobject.relatedparty.BaseRelatedPartyCrudService;
 import org.springframework.validation.annotation.Validated;
 
 @Validated
-public abstract class RelatedPartyCrudService<DTO extends Dto>
+public abstract class RelatedPartyCrudService<DTO extends Dto & RelatedPartyContainer>
         implements BaseRelatedPartyCrudService<
-            <%= idClassName %>
-            , User
-            , DTO
-            , RelatedParty
-            , RelatedPartyCriteria> {
+        <%= idClassName %>
+        , User
+        , RelatedParty
+        , RelatedPartyCriteria
+        , RelatedPartyContainer
+        , DTO
+        > {
 
 }

@@ -1,19 +1,22 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.child.relatedobject;
 
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.child.relatedobject.relateddomain.RelatedDomain;
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.child.relatedobject.relateddomain.RelatedDomainCriteria;
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.dto.Dto;
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.security.User;
+import com.example.myproject.commondto.jima.child.relatedobject.relateddomain.RelatedDomain;
+import com.example.myproject.commondto.jima.child.relatedobject.relateddomain.RelatedDomainContainer;
+import com.example.myproject.commondto.jima.child.relatedobject.relateddomain.RelatedDomainCriteria;
+import com.example.myproject.commondto.jima.dto.Dto;
+import com.example.myproject.commondto.jima.security.User;
 import ir.msob.jima.crud.service.child.relatedobject.relateddomain.BaseRelatedDomainCrudService;
 import org.springframework.validation.annotation.Validated;
 
 @Validated
-public abstract class RelatedDomainCrudService<DTO extends Dto>
+public abstract class RelatedDomainCrudService<DTO extends Dto & RelatedDomainContainer>
         implements BaseRelatedDomainCrudService<
-            <%= idClassName %>
-            , User
-            , DTO
-            , RelatedDomain
-            , RelatedDomainCriteria> {
+        <%= idClassName %>
+        , User
+        , RelatedDomain
+        , RelatedDomainCriteria
+        , RelatedDomainContainer
+        , DTO
+        > {
 
 }

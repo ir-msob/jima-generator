@@ -9,7 +9,7 @@ import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.security.Us
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ir.msob.jima.core.commons.id.BaseIdService;
 import ir.msob.jima.core.ral.mongo.commons.query.QueryBuilder;
-import ir.msob.jima.crud.test.BaseDomainCrudDataProvider;
+import ir.msob.jima.crud.test.domain.BaseDomainCrudDataProvider;
 import lombok.Getter;
 
 import java.util.Collections;
