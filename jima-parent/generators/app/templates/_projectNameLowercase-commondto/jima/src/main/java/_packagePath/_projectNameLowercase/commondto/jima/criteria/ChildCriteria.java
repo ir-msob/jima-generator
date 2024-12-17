@@ -1,7 +1,8 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.criteria;
 
-import ir.msob.jima.core.commons.criteria.BaseChildCriteria;
+import com.example.myproject.commondto.jima.child.Child;
+import ir.msob.jima.core.commons.child.BaseChildCriteria;
 
-public interface ChildCriteria extends BaseChildCriteria<<%= idClassName %>> {
+public interface ChildCriteria<CHILD extends Child> extends BaseChildCriteria<<%= idClassName %>, CHILD> {
 
 }

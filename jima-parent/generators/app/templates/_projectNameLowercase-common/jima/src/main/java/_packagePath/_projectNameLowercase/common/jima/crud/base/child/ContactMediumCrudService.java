@@ -9,8 +9,8 @@ import ir.msob.jima.crud.service.child.contactmedium.BaseContactMediumCrudServic
 import org.springframework.validation.annotation.Validated;
 
 @Validated
-public abstract class ContactMediumCrudService<DTO extends Dto & ContactMediumContainer>
-        implements BaseContactMediumCrudService<
+public interface ContactMediumCrudService<DTO extends Dto & ContactMediumContainer>
+        extends BaseContactMediumCrudService<
         <%= idClassName %>
         , User
         , ContactMedium

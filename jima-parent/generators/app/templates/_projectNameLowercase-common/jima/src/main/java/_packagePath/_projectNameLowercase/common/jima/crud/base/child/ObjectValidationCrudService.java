@@ -9,8 +9,8 @@ import ir.msob.jima.crud.service.child.objectvalidation.BaseObjectValidationCrud
 import org.springframework.validation.annotation.Validated;
 
 @Validated
-public abstract class ObjectValidationCrudService<DTO extends Dto & ObjectValidationContainer>
-        implements BaseObjectValidationCrudService<
+public interface ObjectValidationCrudService<DTO extends Dto & ObjectValidationContainer>
+        extends BaseObjectValidationCrudService<
         <%= idClassName %>
         , User
         , ObjectValidation

@@ -9,8 +9,8 @@ import ir.msob.jima.crud.service.child.relatedobject.relatedprocess.BaseRelatedP
 import org.springframework.validation.annotation.Validated;
 
 @Validated
-public abstract class RelatedProcessCrudService<DTO extends Dto & RelatedProcessContainer>
-        implements BaseRelatedProcessCrudService<
+public interface RelatedProcessCrudService<DTO extends Dto & RelatedProcessContainer>
+        extends BaseRelatedProcessCrudService<
         <%= idClassName %>
         , User
         , RelatedProcess

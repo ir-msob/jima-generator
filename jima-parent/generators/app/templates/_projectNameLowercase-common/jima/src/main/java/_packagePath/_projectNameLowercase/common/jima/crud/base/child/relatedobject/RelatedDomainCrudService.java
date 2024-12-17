@@ -9,8 +9,8 @@ import ir.msob.jima.crud.service.child.relatedobject.relateddomain.BaseRelatedDo
 import org.springframework.validation.annotation.Validated;
 
 @Validated
-public abstract class RelatedDomainCrudService<DTO extends Dto & RelatedDomainContainer>
-        implements BaseRelatedDomainCrudService<
+public interface RelatedDomainCrudService<DTO extends Dto & RelatedDomainContainer>
+        extends BaseRelatedDomainCrudService<
         <%= idClassName %>
         , User
         , RelatedDomain

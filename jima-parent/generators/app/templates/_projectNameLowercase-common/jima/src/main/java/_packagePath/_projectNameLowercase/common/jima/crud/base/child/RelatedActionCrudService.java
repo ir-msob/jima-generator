@@ -9,8 +9,8 @@ import ir.msob.jima.crud.service.child.relatedaction.BaseRelatedActionCrudServic
 import org.springframework.validation.annotation.Validated;
 
 @Validated
-public abstract class RelatedActionCrudService<DTO extends Dto & RelatedActionContainer>
-        implements BaseRelatedActionCrudService<
+public interface RelatedActionCrudService<DTO extends Dto & RelatedActionContainer>
+        extends BaseRelatedActionCrudService<
         <%= idClassName %>
         , User
         , RelatedAction

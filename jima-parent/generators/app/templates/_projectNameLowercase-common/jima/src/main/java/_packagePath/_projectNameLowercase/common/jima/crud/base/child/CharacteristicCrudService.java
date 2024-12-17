@@ -9,8 +9,8 @@ import ir.msob.jima.crud.service.child.characteristic.BaseCharacteristicCrudServ
 import org.springframework.validation.annotation.Validated;
 
 @Validated
-public abstract class CharacteristicCrudService<DTO extends Dto & CharacteristicContainer>
-        implements BaseCharacteristicCrudService<
+public interface CharacteristicCrudService<DTO extends Dto & CharacteristicContainer>
+        extends BaseCharacteristicCrudService<
         <%= idClassName %>
         , User
         , Characteristic
