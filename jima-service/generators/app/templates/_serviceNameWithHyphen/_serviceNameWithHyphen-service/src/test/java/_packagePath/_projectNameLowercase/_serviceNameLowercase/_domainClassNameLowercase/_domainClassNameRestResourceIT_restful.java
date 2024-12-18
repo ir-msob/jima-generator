@@ -1,11 +1,11 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.<%= serviceNameLowercase %>.<%= domainClassNameLowercase %>;
 
-import com.example.myproject.common.jima.test.crud.base.domain.DomainCrudRestResourceTest;
+import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.test.crud.base.domain.DomainCrudRestResourceTest;
 import <%= criteriaClassPath %>;
 import <%= domainClassPath %>;
 import <%= dtoClassPath %>;
-import com.example.myproject.commondto.jima.security.User;
-import com.example.myproject.samplemicroservice.Application;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.security.User;
+import <%= packagePath %>.<%= projectNameLowercase %>.samplemicroservice.Application;
 import ir.msob.jima.core.commons.resource.BaseResource;
 import ir.msob.jima.core.ral.kafka.test.KafkaContainerConfiguration;
 import ir.msob.jima.core.ral.mongo.test.configuration.MongoContainerConfiguration;
@@ -13,6 +13,7 @@ import ir.msob.jima.core.test.CoreTestData;
 import ir.msob.jima.security.ral.keycloak.test.KeycloakContainerConfiguration;
 import lombok.SneakyThrows;
 import lombok.extern.apachecommons.CommonsLog;
+import org.assertj.core.api.Assertions;
 import org.bson.types.ObjectId;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -68,12 +69,12 @@ public class <%= domainClassName %>RestResourceIT extends DomainCrudRestResource
 
     @Override
     public void assertMandatory(<%= dtoClassName %> before, <%= dtoClassName %> after) {
-        // TODO: Assertions.assertThat(after.getDomainMandatoryField()).isEqualTo(before.getDomainMandatoryField());
+        Assertions.assertThat(after.getName()).isEqualTo(before.getName());
     }
 
     @Override
     public void assertAll(<%= dtoClassName %> before, <%= dtoClassName %> after) {
         assertMandatory(before, after);
-        // TODO: Assertions.assertThat(after.getDomainField()).isEqualTo(before.getDomainField());
+        Assertions.assertThat(after.getDescription()).isEqualTo(before.getDescription());
     }
 }

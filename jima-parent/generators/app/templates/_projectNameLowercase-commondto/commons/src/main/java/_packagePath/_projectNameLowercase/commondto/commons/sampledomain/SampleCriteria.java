@@ -1,8 +1,8 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.sampledomain;
 
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.criteria.CriteriaAbstract;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.domain.CriteriaAbstract;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import ir.msob.jima.core.commons.criteria.filter.Filter;
+import ir.msob.jima.core.commons.filter.Filter;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

@@ -1,6 +1,6 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.domain;
 
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.criteria.Criteria;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.domain.Criteria;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.domain.Domain;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.security.User;
 import ir.msob.jima.core.ral.mongo.commons.BaseMongoRepository;

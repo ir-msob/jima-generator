@@ -1,4 +1,4 @@
-package com.example.myproject.samplemicroservice.sampledomain;
+package <%= packagePath %>.<%= projectNameLowercase %>.samplemicroservice.sampledomain;
 
 import dasniko.testcontainers.keycloak.KeycloakContainer;
 import ir.msob.jima.core.beans.properties.JimaProperties;

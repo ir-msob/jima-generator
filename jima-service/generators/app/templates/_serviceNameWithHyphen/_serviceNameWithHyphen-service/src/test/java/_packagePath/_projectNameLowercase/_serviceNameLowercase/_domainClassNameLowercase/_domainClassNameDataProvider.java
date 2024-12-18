@@ -1,19 +1,25 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.<%= serviceNameLowercase %>.<%= domainClassNameLowercase %>;
 
 import com.example.myproject.common.jima.test.crud.base.domain.DomainCrudDataProvider;
-import <%= criteriaClassPath %>;
-import <%= domainClassPath %>;
-import <%= dtoClassPath %>;
+import com.example.myproject.commondto.commons.sampledomain.SampleCriteria;
+import com.example.myproject.commondto.commons.sampledomain.SampleDomain;
+import com.example.myproject.commondto.commons.sampledomain.SampleDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.TextNode;
+import com.github.fge.jackson.jsonpointer.JsonPointer;
 import com.github.fge.jackson.jsonpointer.JsonPointerException;
 import com.github.fge.jsonpatch.JsonPatch;
 import com.github.fge.jsonpatch.JsonPatchOperation;
+import com.github.fge.jsonpatch.ReplaceOperation;
 import ir.msob.jima.core.commons.id.BaseIdService;
 import lombok.SneakyThrows;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static ir.msob.jima.core.test.CoreTestData.DEFAULT_STRING;
+import static ir.msob.jima.core.test.CoreTestData.UPDATED_STRING;
 
 /**
  * This class provides test data for the {@link <%= domainClassName %>} class. It extends the {@link DomainCrudDataProvider} class
@@ -34,7 +40,7 @@ public class <%= domainClassName %>DataProvider extends DomainCrudDataProvider<<
      */
     public static void createNewDto() {
         newDto = prepareMandatoryDto();
-        // TODO: newDto.setDescription(DEFAULT_STRING);
+        newDto.setDescription(DEFAULT_STRING);
     }
 
     /**
@@ -49,7 +55,7 @@ public class <%= domainClassName %>DataProvider extends DomainCrudDataProvider<<
      */
     public static <%= dtoClassName %> prepareMandatoryDto() {
         <%= dtoClassName %> dto = new <%= dtoClassName %>();
-        // TODO: dto.setName(DEFAULT_STRING);
+        dto.setName(DEFAULT_STRING);
         return dto;
     }
 
@@ -60,7 +66,7 @@ public class <%= domainClassName %>DataProvider extends DomainCrudDataProvider<<
     @SneakyThrows
     public JsonPatch getJsonPatch() {
         List<JsonPatchOperation> operations = getMandatoryJsonPatchOperation();
-        // TODO: operations.add(new ReplaceOperation(new JsonPointer(String.format("/%s", SampleDomain.FN.description)), new TextNode(UPDATED_STRING)));
+        operations.add(new ReplaceOperation(new JsonPointer(String.format("/%s", SampleDomain.FN.description)), new TextNode(UPDATED_STRING)));
         return new JsonPatch(operations);
     }
 
@@ -89,7 +95,7 @@ public class <%= domainClassName %>DataProvider extends DomainCrudDataProvider<<
     @Override
     public void getUpdateDto(<%= dtoClassName %> dto) {
         getMandatoryUpdateDto(dto);
-        // TODO: dto.setDescription(UPDATED_STRING);
+        dto.setDescription(UPDATED_STRING);
     }
 
     /**
@@ -107,7 +113,7 @@ public class <%= domainClassName %>DataProvider extends DomainCrudDataProvider<<
      */
     @Override
     public void getMandatoryUpdateDto(<%= dtoClassName %> dto) {
-        // TODO: dto.setName(UPDATED_STRING);
+        dto.setName(UPDATED_STRING);
     }
 
     /**
@@ -118,7 +124,7 @@ public class <%= domainClassName %>DataProvider extends DomainCrudDataProvider<<
      */
     public List<JsonPatchOperation> getMandatoryJsonPatchOperation() throws JsonPointerException {
         List<JsonPatchOperation> operations = new ArrayList<>();
-        // TODO: operations.add(new ReplaceOperation(new JsonPointer(String.format("/%s", SampleDomain.FN.name)), new TextNode(UPDATED_STRING)));
+        operations.add(new ReplaceOperation(new JsonPointer(String.format("/%s", SampleDomain.FN.name)), new TextNode(UPDATED_STRING)));
         return operations;
     }
 }

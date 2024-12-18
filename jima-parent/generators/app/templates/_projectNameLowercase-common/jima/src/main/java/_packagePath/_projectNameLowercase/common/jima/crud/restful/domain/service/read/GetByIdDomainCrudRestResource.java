@@ -2,9 +2,9 @@ package <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.restful.
 
 import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.domain.DomainCrudRepository;
 import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.domain.DomainCrudService;
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.criteria.Criteria;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.domain.Criteria;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.domain.Domain;
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.dto.Dto;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.domain.Dto;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.security.User;
 import ir.msob.jima.core.ral.mongo.commons.query.QueryBuilder;
 import ir.msob.jima.crud.api.restful.service.domain.read.BaseGetByIdDomainCrudRestResource;

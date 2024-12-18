@@ -1,12 +1,12 @@
-package com.example.myproject.common.jima.test.crud.base.domain;
+package <%= packagePath %>.<%= projectNameLowercase %>.common.jima.test.crud.base.domain;
 
-import com.example.myproject.common.jima.crud.base.domain.DomainCrudRepository;
-import com.example.myproject.common.jima.crud.base.domain.DomainCrudService;
-import com.example.myproject.commondto.jima.channel.ChannelTypeReference;
-import com.example.myproject.commondto.jima.criteria.Criteria;
-import com.example.myproject.commondto.jima.domain.Domain;
-import com.example.myproject.commondto.jima.dto.Dto;
-import com.example.myproject.commondto.jima.security.User;
+import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.domain.DomainCrudRepository;
+import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.domain.DomainCrudService;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.channel.ChannelTypeReference;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.domain.Criteria;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.domain.Domain;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.domain.Dto;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.security.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ir.msob.jima.core.beans.properties.JimaProperties;
 import ir.msob.jima.core.ral.mongo.commons.query.QueryBuilder;

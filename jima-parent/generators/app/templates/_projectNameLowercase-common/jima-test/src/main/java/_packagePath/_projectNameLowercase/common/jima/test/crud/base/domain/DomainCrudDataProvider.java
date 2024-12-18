@@ -2,9 +2,9 @@ package <%= packagePath %>.<%= projectNameLowercase %>.common.jima.test.crud.bas
 
 import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.domain.DomainCrudRepository;
 import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.base.domain.DomainCrudService;
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.criteria.Criteria;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.domain.Criteria;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.domain.Domain;
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.dto.Dto;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.domain.Dto;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.security.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ir.msob.jima.core.commons.id.BaseIdService;

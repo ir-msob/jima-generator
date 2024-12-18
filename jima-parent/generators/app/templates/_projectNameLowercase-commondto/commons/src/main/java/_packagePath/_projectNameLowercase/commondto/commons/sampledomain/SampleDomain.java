@@ -1,23 +1,20 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.sampledomain;
 
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.shared.Microservices;
-import com.example.myproject.commondto.jima.child.characteristic.Characteristic;
-import com.example.myproject.commondto.jima.child.characteristic.CharacteristicContainer;
-import com.example.myproject.commondto.jima.child.contactmedium.ContactMedium;
-import com.example.myproject.commondto.jima.child.contactmedium.ContactMediumContainer;
-import com.example.myproject.commondto.jima.child.objectvalidation.ObjectValidation;
-import com.example.myproject.commondto.jima.child.objectvalidation.ObjectValidationContainer;
-import com.example.myproject.commondto.jima.child.relatedaction.RelatedAction;
-import com.example.myproject.commondto.jima.child.relatedaction.RelatedActionContainer;
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.domain.DomainAbstract;
+import com.example.myproject.commondto.commons.shared.Microservices;
+import com.example.myproject.commondto.jima.childdomain.characteristic.Characteristic;
+import com.example.myproject.commondto.jima.childdomain.characteristic.CharacteristicCriteria;
+import com.example.myproject.commondto.jima.childdomain.contactmedium.ContactMedium;
+import com.example.myproject.commondto.jima.childdomain.contactmedium.ContactMediumCriteria;
+import com.example.myproject.commondto.jima.childdomain.objectvalidation.ObjectValidation;
+import com.example.myproject.commondto.jima.childdomain.objectvalidation.ObjectValidationCriteria;
+import com.example.myproject.commondto.jima.childdomain.relatedaction.RelatedAction;
+import com.example.myproject.commondto.jima.childdomain.relatedaction.RelatedActionCriteria;
+import com.example.myproject.commondto.jima.domain.DomainAbstract;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import ir.msob.jima.core.commons.childdomain.ChildDomain;
 import ir.msob.jima.core.commons.domain.DomainInfo;
 import jakarta.validation.constraints.NotBlank;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -31,7 +28,7 @@ import java.util.TreeSet;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Document(collection = SampleDomain.DOMAIN_NAME)
 @DomainInfo(serviceName = Microservices.SAMPLE_MICROSERVICE, version = Microservices.VERSION_V1, domainName = SampleDomain.DOMAIN_NAME_WITH_HYPHEN)
-public class SampleDomain extends DomainAbstract implements CharacteristicContainer, ContactMediumContainer, ObjectValidationContainer, RelatedActionContainer {
+public class SampleDomain extends DomainAbstract {
     @Transient
     public static final String DOMAIN_NAME = "SampleDomain";
     @Transient
@@ -41,9 +38,16 @@ public class SampleDomain extends DomainAbstract implements CharacteristicContai
     private String name;
     private String description;
 
+    @ChildDomain(cdClass = Characteristic.class, ccClass = CharacteristicCriteria.class)
     private SortedSet<Characteristic> characteristics = new TreeSet<>();
+
+    @ChildDomain(cdClass = ContactMedium.class, ccClass = ContactMediumCriteria.class)
     private SortedSet<ContactMedium> contactMediums = new TreeSet<>();
+
+    @ChildDomain(cdClass = ObjectValidation.class, ccClass = ObjectValidationCriteria.class)
     private SortedSet<ObjectValidation> objectValidations = new TreeSet<>();
+
+    @ChildDomain(cdClass = RelatedAction.class, ccClass = RelatedActionCriteria.class)
     private SortedSet<RelatedAction> relatedActions = new TreeSet<>();
 
     @Builder

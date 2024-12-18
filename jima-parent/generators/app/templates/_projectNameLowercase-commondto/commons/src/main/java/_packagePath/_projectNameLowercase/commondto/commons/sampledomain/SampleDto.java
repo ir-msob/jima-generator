@@ -1,6 +1,6 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.sampledomain;
 
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.dto.Dto;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.domain.Dto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
