@@ -93,8 +93,8 @@ public class <%= domainClassName %>DataProvider extends DomainCrudDataProvider<<
      * @param dto the DTO object to update
      */
     @Override
-    public void getUpdateDto(<%= dtoClassName %> dto) {
-        getMandatoryUpdateDto(dto);
+    public void updateDto(<%= dtoClassName %> dto) {
+        updateMandatoryDto(dto);
         dto.setDescription(UPDATED_STRING);
     }
 
@@ -112,7 +112,7 @@ public class <%= domainClassName %>DataProvider extends DomainCrudDataProvider<<
      * @param dto the DTO object to update
      */
     @Override
-    public void getMandatoryUpdateDto(<%= dtoClassName %> dto) {
+    public void updateMandatoryDto(<%= dtoClassName %> dto) {
         dto.setName(UPDATED_STRING);
     }
 
