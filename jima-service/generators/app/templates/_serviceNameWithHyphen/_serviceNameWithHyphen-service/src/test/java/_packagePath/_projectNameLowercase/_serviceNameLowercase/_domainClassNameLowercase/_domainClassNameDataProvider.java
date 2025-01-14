@@ -1,6 +1,6 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.<%= serviceNameLowercase %>.<%= domainClassNameLowercase %>;
 
-import com.example.myproject.common.jima.test.crud.base.domain.DomainCrudDataProvider;
+import com.example.myproject.common.commons.jima.test.crud.base.domain.DomainCrudDataProvider;
 import com.example.myproject.commondto.commons.sampledomain.SampleCriteria;
 import com.example.myproject.commondto.commons.sampledomain.SampleDomain;
 import com.example.myproject.commondto.commons.sampledomain.SampleDto;

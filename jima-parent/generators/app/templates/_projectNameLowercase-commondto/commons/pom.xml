@@ -12,12 +12,11 @@
     <name>commons</name>
     <description>commons</description>
     <dependencies>
+        <!-- Jima -->
         <dependency>
-            <groupId><%= packagePath %>.<%= projectNameLowercase %>.commondto</groupId>
-            <artifactId>commondto-jima</artifactId>
-            <version>${project.parent.version}</version>
+            <groupId>ir.msob.jima.core</groupId>
+            <artifactId>core-starter-commons</artifactId>
         </dependency>
-
         <%_ if (databaseType == 'Mongo') { _%>
         <dependency>
             <groupId>org.springframework.data</groupId>

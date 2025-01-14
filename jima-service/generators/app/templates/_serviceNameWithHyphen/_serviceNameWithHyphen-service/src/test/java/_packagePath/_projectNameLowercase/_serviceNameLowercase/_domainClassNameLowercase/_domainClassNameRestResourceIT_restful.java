@@ -1,10 +1,10 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.<%= serviceNameLowercase %>.<%= domainClassNameLowercase %>;
 
-import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.test.crud.base.domain.DomainCrudRestResourceTest;
+import <%= packagePath %>.<%= projectNameLowercase %>.common.commons.jima.test.crud.base.domain.DomainCrudRestResourceTest;
 import <%= criteriaClassPath %>;
 import <%= domainClassPath %>;
 import <%= dtoClassPath %>;
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.security.User;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.jima.security.User;
 import <%= packagePath %>.<%= projectNameLowercase %>.samplemicroservice.Application;
 import ir.msob.jima.core.commons.resource.BaseResource;
 import ir.msob.jima.core.ral.kafka.test.KafkaContainerConfiguration;

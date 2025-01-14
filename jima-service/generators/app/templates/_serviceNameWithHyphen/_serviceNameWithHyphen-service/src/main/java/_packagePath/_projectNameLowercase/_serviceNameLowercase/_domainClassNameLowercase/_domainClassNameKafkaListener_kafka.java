@@ -1,8 +1,8 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.<%= serviceNameLowercase %>.<%= domainClassNameLowercase %>;
 
-import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.kafka.domain.service.DomainCrudKafkaListener;
-import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.security.UserService;
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.security.User;
+import <%= packagePath %>.<%= projectNameLowercase %>.common.commons.jima.crud.kafka.domain.service.DomainCrudKafkaListener;
+import <%= packagePath %>.<%= projectNameLowercase %>.common.commons.jima.security.UserService;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.jima.security.User;
 import <%= criteriaClassPath %>;
 import <%= domainClassPath %>;
 import <%= dtoClassPath %>;

@@ -1,15 +1,15 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.sampledomain;
 
 import com.example.myproject.commondto.commons.shared.Microservices;
-import com.example.myproject.commondto.jima.childdomain.characteristic.Characteristic;
-import com.example.myproject.commondto.jima.childdomain.characteristic.CharacteristicCriteria;
-import com.example.myproject.commondto.jima.childdomain.contactmedium.ContactMedium;
-import com.example.myproject.commondto.jima.childdomain.contactmedium.ContactMediumCriteria;
-import com.example.myproject.commondto.jima.childdomain.objectvalidation.ObjectValidation;
-import com.example.myproject.commondto.jima.childdomain.objectvalidation.ObjectValidationCriteria;
-import com.example.myproject.commondto.jima.childdomain.relatedaction.RelatedAction;
-import com.example.myproject.commondto.jima.childdomain.relatedaction.RelatedActionCriteria;
-import com.example.myproject.commondto.jima.domain.DomainAbstract;
+import com.example.myproject.commondto.commons.jima.childdomain.characteristic.Characteristic;
+import com.example.myproject.commondto.commons.jima.childdomain.characteristic.CharacteristicCriteria;
+import com.example.myproject.commondto.commons.jima.childdomain.contactmedium.ContactMedium;
+import com.example.myproject.commondto.commons.jima.childdomain.contactmedium.ContactMediumCriteria;
+import com.example.myproject.commondto.commons.jima.childdomain.objectvalidation.ObjectValidation;
+import com.example.myproject.commondto.commons.jima.childdomain.objectvalidation.ObjectValidationCriteria;
+import com.example.myproject.commondto.commons.jima.childdomain.relatedaction.RelatedAction;
+import com.example.myproject.commondto.commons.jima.childdomain.relatedaction.RelatedActionCriteria;
+import com.example.myproject.commondto.commons.jima.domain.DomainAbstract;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import ir.msob.jima.core.commons.childdomain.ChildDomain;
 import ir.msob.jima.core.commons.domain.DomainInfo;

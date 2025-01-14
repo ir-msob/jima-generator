@@ -1,7 +1,7 @@
 package com.example.myproject.samplemicroservice.sampledomain;
 
-import com.example.myproject.common.jima.crud.restful.childdomain.service.CharacteristicCrudRestResource;
-import com.example.myproject.common.jima.security.UserService;
+import com.example.myproject.common.commons.jima.crud.restful.childdomain.service.CharacteristicCrudRestResource;
+import com.example.myproject.common.commons.jima.security.UserService;
 import <%= domainClassPath %>;
 import <%= dtoClassPath %>;
 import ir.msob.jima.core.commons.operation.ConditionalOnOperation;

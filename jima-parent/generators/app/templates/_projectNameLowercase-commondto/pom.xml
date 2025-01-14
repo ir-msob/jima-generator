@@ -19,7 +19,6 @@
         <<%= projectNameLowercase %>-bom.version><%= projectVersion %></<%= projectNameLowercase %>-bom.version>
     </properties>
     <modules>
-        <module>jima</module>
         <module>commons</module>
     </modules>
 

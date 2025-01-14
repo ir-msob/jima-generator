@@ -54,7 +54,7 @@
 
         <dependency>
             <groupId><%= packagePath %>.<%= projectNameLowercase %>.common</groupId>
-            <artifactId>common-jima-test</artifactId>
+            <artifactId>common-test</artifactId>
             <version>${common.version}</version>
             <scope>test</scope>
         </dependency>

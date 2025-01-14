@@ -1,10 +1,10 @@
 package com.example.myproject.samplemicroservice.sampledomain;
 
-import com.example.myproject.common.jima.test.crud.base.childdomain.characteristic.BaseCharacteristicCrudRestResourceTest;
+import com.example.myproject.common.commons.jima.test.crud.base.childdomain.characteristic.BaseCharacteristicCrudRestResourceTest;
 import <%= domainClassPath %>;
 import <%= criteriaClassPath %>;
 import <%= dtoClassPath %>;
-import com.example.myproject.commondto.jima.security.User;
+import com.example.myproject.commondto.commons.jima.security.User;
 import com.example.myproject.samplemicroservice.Application;
 import ir.msob.jima.core.commons.resource.BaseResource;
 import ir.msob.jima.core.ral.kafka.test.KafkaContainerConfiguration;

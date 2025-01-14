@@ -1,10 +1,10 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.<%= serviceNameLowercase %>.<%= domainClassNameLowercase %>;
 
-import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.test.crud.base.domain.DomainCrudKafkaListenerTest;
+import <%= packagePath %>.<%= projectNameLowercase %>.common.commons.jima.test.crud.base.domain.DomainCrudKafkaListenerTest;
 import <%= criteriaClassPath %>;
 import <%= domainClassPath %>;
 import <%= dtoClassPath %>;
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.jima.security.User;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.jima.security.User;
 import <%= packagePath %>.<%= projectNameLowercase %>.samplemicroservice.Application;
 import com.fasterxml.jackson.core.type.TypeReference;
 import ir.msob.jima.core.commons.channel.ChannelMessage;

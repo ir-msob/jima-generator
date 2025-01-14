@@ -1,12 +1,12 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.<%= serviceNameLowercase %>.<%= domainClassNameLowercase %>;
 
-import com.example.myproject.common.jima.crud.base.childdomain.ChildDomainCrudService;
-import com.example.myproject.common.jima.crud.base.domain.DomainCrudService;
-import com.example.myproject.common.jima.service.IdService;
+import com.example.myproject.common.commons.jima.crud.base.childdomain.ChildDomainCrudService;
+import com.example.myproject.common.commons.jima.crud.base.domain.DomainCrudService;
+import com.example.myproject.common.commons.jima.service.IdService;
 import <%= criteriaClassPath %>;
 import <%= domainClassPath %>;
 import <%= dtoClassPath %>;
-import com.example.myproject.commondto.jima.security.User;
+import com.example.myproject.commondto.commons.jima.security.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ir.msob.jima.core.commons.id.BaseIdService;
 import ir.msob.jima.core.commons.operation.BaseBeforeAfterDomainOperation;

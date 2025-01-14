@@ -1,7 +1,7 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.<%= serviceNameLowercase %>.<%= domainClassNameLowercase %>;
 
-import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.crud.restful.domain.service.DomainCrudRestResource;
-import <%= packagePath %>.<%= projectNameLowercase %>.common.jima.security.UserService;
+import <%= packagePath %>.<%= projectNameLowercase %>.common.commons.jima.crud.restful.domain.service.DomainCrudRestResource;
+import <%= packagePath %>.<%= projectNameLowercase %>.common.commons.jima.security.UserService;
 import <%= domainClassPath %>;
 import <%= criteriaClassPath %>;
 import <%= dtoClassPath %>;
