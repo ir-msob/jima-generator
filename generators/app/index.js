@@ -1,6 +1,6 @@
 import Generator from 'yeoman-generator';
-import Prompts from './prompts.js';
-import Writing from './writing.js';
+import Prompts from './prompts/prompts.js';
+import Writing from './writing/writing.js';
 
 export default class extends Generator {
     async initializing() {

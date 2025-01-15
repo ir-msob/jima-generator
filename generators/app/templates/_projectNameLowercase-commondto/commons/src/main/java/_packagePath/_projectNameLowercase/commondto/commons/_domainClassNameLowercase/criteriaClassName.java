@@ -15,7 +15,7 @@ import java.io.Serial;
 @ToString(callSuper = true)
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class SampleCriteria extends CriteriaAbstract {
+public class <%= criteriaClassName %> extends CriteriaAbstract {
     @Serial
     private static final long serialVersionUID = -8938843863555450000L;
     private Filter<String> name;

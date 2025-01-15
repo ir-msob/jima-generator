@@ -12,9 +12,9 @@ import lombok.ToString;
 @ToString(callSuper = true)
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class SampleDto extends SampleDomain implements Dto {
+public class <%= dtoClassName %> extends <%= domainClassName %> implements Dto {
 
-    public SampleDto(String id, String name, String description) {
+    public <%= dtoClassName %>(String id, String name, String description) {
         super(id, name, description);
     }
 

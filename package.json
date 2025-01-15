@@ -1,0 +1,31 @@
+{
+  "name": "generator-jima",
+  "version": "0.1.0",
+  "files": [
+    "generators"
+  ],
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "dependencies": {
+    "yeoman-generator": "^7.4.0"
+  },
+  "type": "module",
+  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://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@github.com/ir-msob/jima-generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ir-msob/jima-generator/issues"
+  },
+  "homepage": "https://github.com/ir-msob/jima-generator#readme",
+  "description": ""
+}

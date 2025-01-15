@@ -1,0 +1,17 @@
+export const newServiceQuestions = [
+    {
+        type: 'input',
+        name: 'serviceName',
+        message: 'Please enter the domain name (e.g., Comment, Order):',
+        default: 'Order',
+        validate: input => /^[A-Z][a-zA-Z]*$/.test(input) || 'Domain name must start with an uppercase letter and contain only letters.'
+    }
+];
+
+/**
+ * Ask questions related to the new service.
+ */
+export async function newServiceInput(generator) {
+    const newServiceAnswers = await generator.prompt(newServiceQuestions);
+    generator.serviceName = newServiceAnswers.serviceName;
+}
