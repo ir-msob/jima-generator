@@ -26,4 +26,5 @@ export async function serviceInput(generator) {
     const serviceAnswers = await generator.prompt(serviceQuestions);
     generator.serviceName = serviceAnswers.serviceName;
     generator.serviceVersion = serviceAnswers.serviceVersion;
+    generator.exsitsDomains = ['Party'];
 }

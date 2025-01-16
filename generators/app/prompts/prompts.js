@@ -26,7 +26,7 @@ export default class Prompts {
         } else if (this.generator.appType === 'Service') {
             await serviceInput(this.generator);
 
-            if (this.generator.service === 'New') {
+            if (this.generator.serviceName === 'New') {
                 await newServiceInput(this.generator);
             }
 

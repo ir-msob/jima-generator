@@ -15,13 +15,10 @@ export default class Writing {
 
         if (this.generator.appType === 'Parent') {
             this._copyFilesRecursively(templateDir, destinationDir);
-
-
         } else if (this.generator.appType === 'Service') {
             this.prepareServiceName();
             this.prepareDomainName(this.generator.serviceName);
             this.prepareClassesPath();
-
             this._copyFilesRecursively(templateDir, destinationDir);
         }
     }
@@ -123,7 +120,7 @@ export default class Writing {
             (this.generator.appType !== 'Parent' && file === '_projectNameLowercase-parent') ||
             (this.generator.appType !== 'Parent' && file === '_projectNameLowercase-commondto') ||
             (this.generator.appType !== 'Parent' && file === '_projectNameLowercase-common') ||
-            (this.generator.exsitsDomains.map(domain => domain.toLowerCase()).includes(file) && !this.generator.domains.map(domain => domain.toLowerCase()).includes(file));
+            (this.generator.exsitsDomains && this.generator.exsitsDomains.map(domain => domain.toLowerCase()).includes(file) && !this.generator.domains.map(domain => domain.toLowerCase()).includes(file));
     }
 
     _resolveConflicts(destPath, tempFileName, destDir) {
@@ -192,6 +189,7 @@ export default class Writing {
         this.generator.domainName = domainName;
         this.generator.domainNameLowercase = this.generator.domainName.toLowerCase();
         this.generator.domainNameWithHyphen = this.generator.domainName.replace(/\s+/g, '-').toLowerCase();
+        this.generator.newDomains = domainName;
     }
 
     /**
