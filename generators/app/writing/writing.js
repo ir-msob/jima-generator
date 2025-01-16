@@ -16,22 +16,7 @@ export default class Writing {
         if (this.generator.appType === 'Parent') {
             this._copyFilesRecursively(templateDir, destinationDir);
 
-            const newDomainsList = this.generator.newDomains.split(',').map(entity => entity.trim());
-            this.generator.log('newDomainsList:', newDomainsList);
 
-            // Iterate over each entity and copy the _serviceNameWithHyphen folder
-            newDomainsList.forEach(domainName => {
-                this.generator.log('domainName:', domainName);
-
-                this.prepareDomainName(domainName);
-                this.prepareClassesPath();
-
-                const entityTemplateDir = path.join(templateDir, '_projectNameLowercase-commondto/commons/src/main/java/_packagePath/_projectNameLowercase/commondto/commons/_newDomain');
-                const entityDestinationDir = path.join(destinationDir, this._replacePlaceholders('_projectNameLowercase-commondto/commons/src/main/java/_packagePath/_projectNameLowercase/commondto/commons/' + this.generator.domainNameLowercase));
-
-
-                this._copyFilesRecursively(entityTemplateDir, entityDestinationDir);
-            });
         } else if (this.generator.appType === 'Service') {
             this.prepareServiceName();
             this.prepareDomainName(this.generator.serviceName);
@@ -51,6 +36,23 @@ export default class Writing {
                 // Skip folders based on conditions
                 if (this._shouldSkipFolder(file)) {
                     console.log(`[INFO] Skipping folder: ${file}`);
+                    return;
+                }
+
+                // Check for the specific folder name and repeat it for each domain
+                if (file === '_newDomain') {
+                    const newDomainsList = this.generator.newDomains.split(',').map(entity => entity.trim());
+                    this.generator.log('newDomainsList:', newDomainsList);
+
+                    newDomainsList.forEach(domainName => {
+                        this.generator.log('domainName:', domainName);
+                        this.prepareDomainName(domainName);
+                        this.prepareClassesPath();
+
+                        const domainDestDir = path.join(destDir, this.generator.domainNameLowercase);
+                        fs.mkdirSync(domainDestDir, { recursive: true });
+                        this._copyFilesRecursively(srcPath, domainDestDir);
+                    });
                     return;
                 }
 
@@ -120,7 +122,8 @@ export default class Writing {
             (this.generator.appType !== 'Service' && file === '_serviceNameWithHyphen') ||
             (this.generator.appType !== 'Parent' && file === '_projectNameLowercase-parent') ||
             (this.generator.appType !== 'Parent' && file === '_projectNameLowercase-commondto') ||
-            (this.generator.appType !== 'Parent' && file === '_projectNameLowercase-common');
+            (this.generator.appType !== 'Parent' && file === '_projectNameLowercase-common') ||
+            (this.generator.exsitsDomains.map(domain => domain.toLowerCase()).includes(file) && !this.generator.domains.map(domain => domain.toLowerCase()).includes(file));
     }
 
     _resolveConflicts(destPath, tempFileName, destDir) {

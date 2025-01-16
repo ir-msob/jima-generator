@@ -21,5 +21,6 @@ export const domainsQuestions = [
 export async function domainsInput(generator) {
     const domainsAnswers = await generator.prompt(domainsQuestions);
     generator.domains = domainsAnswers.domains;
+    generator.exsitsDomains = ['Party'];
     generator.newDomains = domainsAnswers.newDomains;
 }
