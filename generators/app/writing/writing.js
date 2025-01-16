@@ -13,28 +13,31 @@ export default class Writing {
         // Log available templates
         this.generator.log('Available templates:', fs.readdirSync(templateDir));
 
-        if (this.generator.appType === 'Service') {
+        if (this.generator.appType === 'Parent') {
+            this._copyFilesRecursively(templateDir, destinationDir);
+
+            const newDomainsList = this.generator.newDomains.split(',').map(entity => entity.trim());
+            this.generator.log('newDomainsList:', newDomainsList);
+
+            // Iterate over each entity and copy the _serviceNameWithHyphen folder
+            newDomainsList.forEach(domainName => {
+                this.generator.log('domainName:', domainName);
+
+                this.prepareDomainName(domainName);
+                this.prepareClassesPath();
+
+                const entityTemplateDir = path.join(templateDir, '_projectNameLowercase-commondto/commons/src/main/java/_packagePath/_projectNameLowercase/commondto/commons/_newDomain');
+                const entityDestinationDir = path.join(destinationDir, this._replacePlaceholders('_projectNameLowercase-commondto/commons/src/main/java/_packagePath/_projectNameLowercase/commondto/commons/' + this.generator.domainNameLowercase));
+
+
+                this._copyFilesRecursively(entityTemplateDir, entityDestinationDir);
+            });
+        } else if (this.generator.appType === 'Service') {
             this.prepareServiceName();
             this.prepareDomainName(this.generator.serviceName);
             this.prepareClassesPath();
 
             this._copyFilesRecursively(templateDir, destinationDir);
-        } else if (this.generator.appType === 'Parent') {
-            this._copyFilesRecursively(templateDir, destinationDir);
-
-
-            const newEntitiesList = this.generator.newEntities.split(',').map(entity => entity.trim());
-
-            // Iterate over each entity and copy the _serviceNameWithHyphen folder
-            newEntitiesList.forEach(entity => {
-                const entityTemplateDir = path.join(templateDir, '_projectNameLowercase-commondto/commons/src/main/java/_packagePath/_projectNameLowercase/commondto/commons/_domainClassNameLowercase');
-                const entityDestinationDir = path.join(destinationDir, entity.toLowerCase());
-
-                this.prepareDomainName(entity);
-                this.prepareClassesPath();
-
-                this._copyFilesRecursively(entityTemplateDir, entityDestinationDir);
-            });
         }
     }
 
@@ -88,6 +91,8 @@ export default class Writing {
             '_serviceName': this.generator.serviceName,
             '_domainClassNameLowercase': this.generator.domainClassNameLowercase,
             '_domainClassName': this.generator.domainClassName,
+            '_dtoClassName': this.generator.dtoClassName,
+            '_criteriaClassName': this.generator.criteriaClassName,
             '_packagePath': this.generator.packagePath.split('.').join('/')
         };
 
@@ -165,7 +170,7 @@ export default class Writing {
      * Prepare class paths.
      */
     prepareClassesPath() {
-        this.generator.domainClassPath = `${this.generator.packagePath}.commondto.commons.${this.generator.domainNameLowercase}`;
+        this.generator.domainClassPath = `${this.generator.packagePath}.commondto.commons.${this.generator.domainNameLowercase}.${this.generator.domainName}`;
         this.generator.domainClassName = this.generator.domainClassPath.split('.').pop();
         this.generator.domainClassNameLowercase = this.generator.domainClassName.toLowerCase();
         this.generator.domainClassNameWithHyphen = this.generator.domainClassName.replace(/\s+/g, '-').toLowerCase();
@@ -180,8 +185,8 @@ export default class Writing {
     /**
      * Prepare domain name variables.
      */
-    prepareDomainName(entity) {
-        this.generator.domainName = entity;
+    prepareDomainName(domainName) {
+        this.generator.domainName = domainName;
         this.generator.domainNameLowercase = this.generator.domainName.toLowerCase();
         this.generator.domainNameWithHyphen = this.generator.domainName.replace(/\s+/g, '-').toLowerCase();
     }

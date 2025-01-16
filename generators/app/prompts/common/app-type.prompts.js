@@ -7,7 +7,7 @@ export const appTypeQuestions = [
             { name: 'Parent', value: 'Parent' },
             { name: 'Service', value: 'Service' }
         ],
-        default: 'Service',
+        default: 'Parent',
         validate: input => input ? true : 'You must select an app type.'
     }
 ];

@@ -1,6 +1,6 @@
 import {baseInput} from './common/base.prompts.js';
 import {appTypeInput} from './common/app-type.prompts.js';
-import {entitiesInput} from './parent/entities.prompts.js';
+import {domainsInput} from './parent/domains.prompts.js';
 import {serviceInput} from './service/service.prompts.js';
 import {newServiceInput} from './service/new-service.prompts.js';
 
@@ -22,7 +22,7 @@ export default class Prompts {
         await appTypeInput(this.generator);
 
         if (this.generator.appType === 'Parent') {
-            await entitiesInput(this.generator);
+            await domainsInput(this.generator);
         } else if (this.generator.appType === 'Service') {
             await serviceInput(this.generator);
 

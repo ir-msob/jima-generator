@@ -1,5 +1,12 @@
 export const serviceQuestions = [
     {
+        type: 'input',
+        name: 'serviceVersion',
+        message: 'Please enter the service version (e.g., 0.1.0):',
+        default: '0.1.0',
+        validate: input => /^\d+\.\d+\.\d+$/.test(input) || 'Version must be in the format x.y.z (e.g., 0.1.0).'
+    },
+    {
         type: 'list',
         name: 'serviceName',
         message: 'Please select the service:',
@@ -9,13 +16,6 @@ export const serviceQuestions = [
         ],
         default: 'New',
         validate: input => input ? true : 'You must select a service.'
-    },
-    {
-        type: 'input',
-        name: 'serviceVersion',
-        message: 'Please enter the service version (e.g., 0.1.0):',
-        default: '0.1.0',
-        validate: input => /^\d+\.\d+\.\d+$/.test(input) || 'Version must be in the format x.y.z (e.g., 0.1.0).'
     }
 ];
 
