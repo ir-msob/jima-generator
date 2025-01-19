@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 import static ir.msob.jima.core.commons.operation.Operations.*;
 
 @RestController
-@RequestMapping(<%= domainClassName %>RestResource.BASE_URI)
+@RequestMapping(IndividualRestResource.BASE_URI)
 @ConditionalOnOperation(operations = {SAVE, UPDATE_BY_ID, DELETE_BY_ID, EDIT_BY_ID, GET_BY_ID, GET_PAGE})
-@Resource(value = <%= domainClassName %>.DOMAIN_NAME_WITH_HYPHEN, type = ResourceType.RESTFUL)
-public class <%= domainClassName %>CharacteristicRestResource extends CharacteristicCrudRestResource<<%= dtoClassName %>, <%= domainClassName %>Service> {
+@Resource(value = Individual.DOMAIN_NAME_WITH_HYPHEN, type = ResourceType.RESTFUL)
+public class IndividualCharacteristicRestResource extends PartyCharacteristicRestResource<IndividualDto, IndividualService> {
 
-    public <%= domainClassName %>CharacteristicRestResource(<%= domainClassName %>Service childService, UserService userService) {
+    public IndividualCharacteristicRestResource(IndividualService childService, UserService userService) {
         super(childService, userService);
     }
 }

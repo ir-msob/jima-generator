@@ -1,6 +1,7 @@
-package <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.sampledomain;
+package <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.party;
 
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.shared.Microservices;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.party.name.Name;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.party.name.NameCriteria;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.jima.childdomain.characteristic.Characteristic;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.jima.childdomain.characteristic.CharacteristicCriteria;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.jima.childdomain.contactmedium.ContactMedium;
@@ -28,10 +29,6 @@ import java.util.TreeSet;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Party extends DomainAbstract {
 
-    @NotBlank
-    private String name;
-    private String description;
-
     @ChildDomain(cdClass = Characteristic.class, ccClass = CharacteristicCriteria.class)
     private SortedSet<Characteristic> characteristics = new TreeSet<>();
 
@@ -44,14 +41,19 @@ public class Party extends DomainAbstract {
     @ChildDomain(cdClass = RelatedAction.class, ccClass = RelatedActionCriteria.class)
     private SortedSet<RelatedAction> relatedActions = new TreeSet<>();
 
-    @Builder
-    public Party(String id, String name, String description) {
+    @ChildDomain(cdClass = Name.class, ccClass = NameCriteria.class)
+    private SortedSet<Name> names = new TreeSet<>();
+
+    public Party(String id, SortedSet<Characteristic> characteristics, SortedSet<ContactMedium> contactMediums, SortedSet<ObjectValidation> objectValidations, SortedSet<RelatedAction> relatedActions, SortedSet<Name> names) {
         super(id);
-        this.name = name;
-        this.description = description;
+        this.characteristics = characteristics;
+        this.contactMediums = contactMediums;
+        this.objectValidations = objectValidations;
+        this.relatedActions = relatedActions;
+        this.names = names;
     }
 
     public enum FN {
-        name, description
+        characteristics, contactMediums, objectValidations, relatedActions, names
     }
 }

@@ -1,11 +1,11 @@
-package com.example.myproject.samplemicroservice.sampledomain;
+package <%= packagePath %>.<%= projectNameLowercase %>.<%= serviceNameLowercase %>.<%= domainClassNameLowercase %>;
 
-import com.example.myproject.common.commons.jima.test.crud.base.childdomain.characteristic.BaseCharacteristicCrudRestResourceTest;
+import <%= packagePath %>.<%= projectNameLowercase %>.common.commons.jima.test.crud.base.childdomain.characteristic.BaseCharacteristicCrudRestResourceTest;
 import <%= domainClassPath %>;
 import <%= criteriaClassPath %>;
 import <%= dtoClassPath %>;
-import com.example.myproject.commondto.commons.jima.security.User;
-import com.example.myproject.samplemicroservice.Application;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.jima.security.User;
+import <%= packagePath %>.<%= projectNameLowercase %>.<%= serviceNameLowercase %>.Application;
 import ir.msob.jima.core.commons.resource.BaseResource;
 import ir.msob.jima.core.ral.kafka.test.KafkaContainerConfiguration;
 import ir.msob.jima.core.ral.mongo.test.configuration.MongoContainerConfiguration;
@@ -37,7 +37,7 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 @ContextConfiguration
 @Testcontainers
 @CommonsLog
-public class <%= domainClassName %>CharacteristicRestResourceIT extends BaseCharacteristicCrudRestResourceTest<<%= domainClassName %>, SampleDto, SampleCriteria, <%= domainClassName %>Repository, <%= domainClassName %>Service, <%= domainClassName %>DataProvider, <%= domainClassName %>Service, <%= domainClassName %>CharacteristicCrudDataProvider> {
+public class <%= domainClassName %>CharacteristicRestResourceIT extends BaseCharacteristicCrudRestResourceTest<<%= domainClassName %>, <%= dtoClassName %>, <%= criteriaClassName %>, <%= domainClassName %>Repository, <%= domainClassName %>Service, <%= domainClassName %>DataProvider, <%= domainClassName %>Service, <%= domainClassName %>CharacteristicCrudDataProvider> {
 
     @SneakyThrows
     @BeforeAll

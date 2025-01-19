@@ -1,7 +1,7 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.common.commons.jima.crud.restful.childdomain.service;
 
-import com.example.myproject.common.commons.jima.crud.base.childdomain.ChildDomainCrudService;
-import com.example.myproject.common.commons.jima.security.UserService;
+import <%= packagePath %>.<%= projectNameLowercase %>.common.commons.jima.crud.base.childdomain.ChildDomainCrudService;
+import <%= packagePath %>.<%= projectNameLowercase %>.common.commons.jima.security.UserService;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.jima.childdomain.relatedaction.RelatedAction;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.jima.childdomain.relatedaction.RelatedActionCriteria;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.jima.domain.Dto;

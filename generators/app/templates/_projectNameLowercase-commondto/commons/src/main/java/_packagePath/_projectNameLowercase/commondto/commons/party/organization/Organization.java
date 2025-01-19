@@ -1,6 +1,7 @@
-package <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.sampledomain;
+package <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.party;
 
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.shared.Microservices;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.party.name.Name;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.party.name.NameCriteria;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.jima.childdomain.characteristic.Characteristic;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.jima.childdomain.characteristic.CharacteristicCriteria;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.jima.childdomain.contactmedium.ContactMedium;
@@ -27,15 +28,14 @@ import java.util.TreeSet;
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Document(collection = Organization.DOMAIN_NAME)
-@DomainInfo(serviceName = Microservices.party, version = Microservices.VERSION_V1, domainName = Organization.DOMAIN_NAME_WITH_HYPHEN)
+@DomainInfo(serviceName = "party", version = "v1", domainName = Organization.DOMAIN_NAME_WITH_HYPHEN)
 public class Organization extends Party {
     @Transient
     public static final String DOMAIN_NAME = "Organization";
     @Transient
     public static final String DOMAIN_NAME_WITH_HYPHEN = "organization";
 
-    @Builder
-    public Organization(String id, String name, String description) {
-        super(id, name, description);
+    public Organization(String id, SortedSet<Characteristic> characteristics, SortedSet<ContactMedium> contactMediums, SortedSet<ObjectValidation> objectValidations, SortedSet<RelatedAction> relatedActions, SortedSet<Name> names) {
+        super(id, characteristics, contactMediums, objectValidations, relatedActions, names);
     }
 }

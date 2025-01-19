@@ -1,9 +1,9 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.<%= serviceNameLowercase %>.<%= domainClassNameLowercase %>;
 
-import com.example.myproject.common.commons.jima.test.crud.base.domain.DomainCrudDataProvider;
-import com.example.myproject.commondto.commons.sampledomain.SampleCriteria;
-import com.example.myproject.commondto.commons.sampledomain.SampleDomain;
-import com.example.myproject.commondto.commons.sampledomain.SampleDto;
+import <%= packagePath %>.<%= projectNameLowercase %>.common.commons.jima.test.crud.base.domain.DomainCrudDataProvider;
+import <%= domainClassPath %>;
+import <%= criteriaClassPath %>;
+import <%= dtoClassPath %>;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.TextNode;
 import com.github.fge.jackson.jsonpointer.JsonPointer;
@@ -66,7 +66,7 @@ public class <%= domainClassName %>DataProvider extends DomainCrudDataProvider<<
     @SneakyThrows
     public JsonPatch getJsonPatch() {
         List<JsonPatchOperation> operations = getMandatoryJsonPatchOperation();
-        operations.add(new ReplaceOperation(new JsonPointer(String.format("/%s", SampleDomain.FN.description)), new TextNode(UPDATED_STRING)));
+        operations.add(new ReplaceOperation(new JsonPointer(String.format("/%s", <%= domainClassName %>.FN.description)), new TextNode(UPDATED_STRING)));
         return new JsonPatch(operations);
     }
 
@@ -124,7 +124,7 @@ public class <%= domainClassName %>DataProvider extends DomainCrudDataProvider<<
      */
     public List<JsonPatchOperation> getMandatoryJsonPatchOperation() throws JsonPointerException {
         List<JsonPatchOperation> operations = new ArrayList<>();
-        operations.add(new ReplaceOperation(new JsonPointer(String.format("/%s", SampleDomain.FN.name)), new TextNode(UPDATED_STRING)));
+        operations.add(new ReplaceOperation(new JsonPointer(String.format("/%s", <%= domainClassName %>.FN.name)), new TextNode(UPDATED_STRING)));
         return operations;
     }
 }

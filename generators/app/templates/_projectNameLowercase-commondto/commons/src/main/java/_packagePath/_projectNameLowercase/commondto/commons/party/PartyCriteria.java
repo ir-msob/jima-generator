@@ -1,4 +1,4 @@
-package <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.sampledomain;
+package <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.party;
 
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.jima.domain.CriteriaAbstract;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -18,6 +18,4 @@ import java.io.Serial;
 public class PartyCriteria extends CriteriaAbstract {
     @Serial
     private static final long serialVersionUID = -8938843863555450000L;
-    private Filter<String> name;
-    private Filter<String> description;
 }

@@ -5,7 +5,7 @@ import <%= criteriaClassPath %>;
 import <%= domainClassPath %>;
 import <%= dtoClassPath %>;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.jima.security.User;
-import <%= packagePath %>.<%= projectNameLowercase %>.samplemicroservice.Application;
+import <%= packagePath %>.<%= projectNameLowercase %>.<%= serviceNameLowercase %>.Application;
 import com.fasterxml.jackson.core.type.TypeReference;
 import ir.msob.jima.core.commons.channel.ChannelMessage;
 import ir.msob.jima.core.commons.channel.message.*;

@@ -1,4 +1,4 @@
-package <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.sampledomain;
+package <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.<%= domainClassNameLowercase %>;
 
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.jima.domain.CriteriaAbstract;
 import com.fasterxml.jackson.annotation.JsonInclude;

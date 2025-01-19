@@ -1,8 +1,8 @@
-package com.example.myproject.common.commons.jima.test.crud.base.childdomain;
+package <%= packagePath %>.<%= projectNameLowercase %>.common.commons.jima.test.crud.base.childdomain;
 
-import com.example.myproject.commondto.commons.jima.childdomain.characteristic.Characteristic;
-import com.example.myproject.commondto.commons.jima.childdomain.characteristic.CharacteristicCriteria;
-import com.example.myproject.commondto.commons.jima.security.User;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.jima.childdomain.characteristic.Characteristic;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.jima.childdomain.characteristic.CharacteristicCriteria;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.jima.security.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ir.msob.jima.core.beans.properties.JimaProperties;
 import ir.msob.jima.core.commons.domain.BaseCriteria;

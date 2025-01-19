@@ -5,7 +5,7 @@ import <%= criteriaClassPath %>;
 import <%= domainClassPath %>;
 import <%= dtoClassPath %>;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.jima.security.User;
-import <%= packagePath %>.<%= projectNameLowercase %>.samplemicroservice.Application;
+import <%= packagePath %>.<%= projectNameLowercase %>.<%= serviceNameLowercase %>.Application;
 import ir.msob.jima.core.commons.resource.BaseResource;
 import ir.msob.jima.core.ral.kafka.test.KafkaContainerConfiguration;
 import ir.msob.jima.core.ral.mongo.test.configuration.MongoContainerConfiguration;

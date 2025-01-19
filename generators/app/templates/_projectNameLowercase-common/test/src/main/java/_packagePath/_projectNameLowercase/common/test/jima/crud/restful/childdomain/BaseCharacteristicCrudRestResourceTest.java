@@ -1,9 +1,9 @@
-package com.example.myproject.common.commons.jima.test.crud.base.childdomain.characteristic;
+package <%= packagePath %>.<%= projectNameLowercase %>.common.commons.jima.test.crud.base.childdomain.characteristic;
 
-import com.example.myproject.common.commons.jima.test.crud.base.childdomain.ChildCrudRestResourceTest;
-import com.example.myproject.commondto.commons.jima.childdomain.characteristic.Characteristic;
-import com.example.myproject.commondto.commons.jima.childdomain.characteristic.CharacteristicCriteria;
-import com.example.myproject.commondto.commons.jima.security.User;
+import <%= packagePath %>.<%= projectNameLowercase %>.common.commons.jima.test.crud.base.childdomain.ChildCrudRestResourceTest;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.jima.childdomain.characteristic.Characteristic;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.jima.childdomain.characteristic.CharacteristicCriteria;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.jima.security.User;
 import ir.msob.jima.core.commons.domain.BaseCriteria;
 import ir.msob.jima.core.commons.domain.BaseDomain;
 import ir.msob.jima.core.commons.domain.BaseDto;

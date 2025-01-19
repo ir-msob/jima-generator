@@ -1,11 +1,11 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.common.commons.jima.crud.restful.childdomain.service;
 
-import com.example.myproject.common.commons.jima.crud.base.childdomain.ChildDomainCrudService;
-import com.example.myproject.common.commons.jima.security.UserService;
-import com.example.myproject.commondto.commons.jima.childdomain.characteristic.Characteristic;
-import com.example.myproject.commondto.commons.jima.childdomain.characteristic.CharacteristicCriteria;
-import com.example.myproject.commondto.commons.jima.domain.Dto;
-import com.example.myproject.commondto.commons.jima.security.User;
+import <%= packagePath %>.<%= projectNameLowercase %>.common.commons.jima.crud.base.childdomain.ChildDomainCrudService;
+import <%= packagePath %>.<%= projectNameLowercase %>.common.commons.jima.security.UserService;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.jima.childdomain.characteristic.Characteristic;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.jima.childdomain.characteristic.CharacteristicCriteria;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.jima.domain.Dto;
+import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.jima.security.User;
 import ir.msob.jima.core.commons.security.BaseUserService;
 import ir.msob.jima.crud.api.restful.service.childdomain.characteristic.BaseCharacteristicCrudRestResource;
 

@@ -1,6 +1,5 @@
-package <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.sampledomain;
+package <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.<%= domainClassNameLowercase %>;
 
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.shared.Microservices;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.jima.childdomain.characteristic.Characteristic;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.jima.childdomain.characteristic.CharacteristicCriteria;
 import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.jima.childdomain.contactmedium.ContactMedium;
@@ -27,7 +26,7 @@ import java.util.TreeSet;
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Document(collection = <%= domainClassName %>.DOMAIN_NAME)
-@DomainInfo(serviceName = Microservices.<%= domainClassNameWithHyphen %>, version = Microservices.VERSION_V1, domainName = <%= domainClassName %>.DOMAIN_NAME_WITH_HYPHEN)
+@DomainInfo(serviceName = <%= domainClassName %>.DOMAIN_NAME_WITH_HYPHEN, version = "v1", domainName = <%= domainClassName %>.DOMAIN_NAME_WITH_HYPHEN)
 public class <%= domainClassName %> extends DomainAbstract {
     @Transient
     public static final String DOMAIN_NAME = "<%= domainClassName %>";
@@ -50,7 +49,6 @@ public class <%= domainClassName %> extends DomainAbstract {
     @ChildDomain(cdClass = RelatedAction.class, ccClass = RelatedActionCriteria.class)
     private SortedSet<RelatedAction> relatedActions = new TreeSet<>();
 
-    @Builder
     public <%= domainClassName %>(String id, String name, String description) {
         super(id);
         this.name = name;
