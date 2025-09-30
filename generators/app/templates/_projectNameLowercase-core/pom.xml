@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId><%= packagePath %>.<%= projectNameLowercase %>.parent</groupId>
+        <artifactId><%= projectNameLowercase %>-parent</artifactId>
+        <version><%= projectVersion %></version>
+    </parent>
+    <groupId><%= packagePath %>.<%= projectNameLowercase %>.core</groupId>
+    <artifactId><%= projectNameLowercase %>-core</artifactId>
+    <version>${<%= projectNameLowercase %>-core.version}</version>
+    <name><%= projectNameLowercase %>-core</name>
+    <description><%= projectName %> Core</description>
+    <packaging>pom</packaging>
+    <url>http://www.<%= reversePackagePath %></url>
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <name><%= projectName %></name>
+            <email>ask@<%= reversePackagePath %></email>
+            <organization><%= reversePackagePath %></organization>
+            <organizationUrl>http://www.<%= reversePackagePath %></organizationUrl>
+        </developer>
+    </developers>
+    <scm>
+        <connection></connection>
+        <developerConnection></developerConnection>
+        <url></url>
+    </scm>
+    <modules>
+        <module>commons</module>
+        <module>test</module>
+    </modules>
+    <properties>
+        <!-- <%= projectName %> Versions -->
+      <<%= projectNameLowercase %>-parent.version><%= projectVersion %></<%= projectNameLowercase %>-parent.version>
+      <<%= projectNameLowercase %>-core.version><%= projectVersion %></<%= projectNameLowercase %>-core.version>
+
+        <!-- Maven Plugins -->
+        <resolve-parent-version-maven-plugin.version>0.8</resolve-parent-version-maven-plugin.version>
+    </properties>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Jima BOM -->
+            <dependency>
+                <groupId><%= packagePath %>.<%= projectNameLowercase %>.parent</groupId>
+                <artifactId><%= projectNameLowercase %>-bom</artifactId>
+                <version>${<%= projectNameLowercase %>-parent.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+  </dependencyManagement>
+</project>

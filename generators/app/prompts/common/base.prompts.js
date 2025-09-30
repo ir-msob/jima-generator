@@ -3,14 +3,14 @@ export const baseQuestions = [
         type: 'input',
         name: 'projectName',
         message: 'Please enter the project name:',
-        default: 'MyProject',
+        default: 'Manak',
         validate: input => /^[A-Z][a-zA-Z0-9]*$/.test(input) || 'Project name must start with an uppercase letter and contain only alphanumeric characters.'
     },
     {
         type: 'input',
         name: 'packagePath',
-        message: 'Please enter the base package path (e.g., com.example.project):',
-        default: 'com.example',
+        message: 'Please enter the base package path (e.g., com.example):',
+        default: 'ir.msob',
         validate: input => /^[a-z]+\.[a-z]+(\.[a-z]+)*$/.test(input) || 'Package name must be in the format: com.example (lowercase letters only).'
     },
     {
@@ -72,8 +72,8 @@ export const baseQuestions = [
 export async function baseInput(generator) {
     const baseAnswers = await generator.prompt(baseQuestions);
     prepareProjectNameVariables(generator, baseAnswers);
-    generator.packagePath = baseAnswers.packagePath;
     generator.projectVersion = baseAnswers.projectVersion;
+    preparePackagePathVariables(generator, baseAnswers);
     prepareDatabaseTypeVariables(generator, baseAnswers);
     prepareIdClassVariables(generator, baseAnswers);
     prepareSecurityVariables(generator, baseAnswers);
@@ -81,6 +81,16 @@ export async function baseInput(generator) {
     generator.jimaVersion = baseAnswers.jimaVersion;
 }
 
+/**
+ * Prepare package path variables.
+ */
+function preparePackagePathVariables(generator, baseAnswers) {
+    generator.packagePath = baseAnswers.packagePath;
+    generator.reversePackagePath = baseAnswers.packagePath
+        .split('.')
+        .reverse()
+        .join('.');
+}
 
 /**
  * Prepare database type variables.

@@ -4,22 +4,24 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId><%= packagePath %>.<%= projectNameLowercase %>.parent</groupId>
   <artifactId><%= projectNameLowercase %>-parent</artifactId>
-  <version><%= projectVersion %></version>
+  <version>${<%= projectNameLowercase %>-parent.version}</version>
   <packaging>pom</packaging>
   <name><%= projectNameLowercase %>-parent</name>
-  <url></url>
+    <description><%= projectName %> Parent</description>
+
+    <url>http://www.<%= reversePackagePath %></url>
   <licenses>
     <license>
-      <name></name>
-      <url></url>
+      <name>The Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
     </license>
   </licenses>
   <developers>
     <developer>
-      <name></name>
-      <email></email>
-      <organization></organization>
-      <organizationUrl></organizationUrl>
+      <name><%= projectName %></name>
+      <email>ask@<%= reversePackagePath %></email>
+      <organization><%= reversePackagePath %></organization>
+      <organizationUrl>http://www.<%= reversePackagePath %></organizationUrl>
     </developer>
   </developers>
   <scm>
@@ -27,9 +29,14 @@
     <developerConnection></developerConnection>
     <url></url>
   </scm>
+  <modules>
+    <module>bom</module>
+  </modules>
   <properties>
+    <!-- <%= projectName %> -->
+    <<%= projectNameLowercase %>-parent.version><%= projectVersion %></<%= projectNameLowercase %>-parent.version>
     <!-- Jima Framework Versions -->
-    <jima-bom.version><%= jimaVersion %></jima-bom.version>
+    <jima.version><%= jimaVersion %></jima.version>
 
     <!-- Java and Maven Compiler Settings -->
     <java.version>21</java.version>
@@ -46,10 +53,10 @@
     <!-- Other Libraries -->
     <modelmapper.version>3.2.1</modelmapper.version>
 
+    <!-- Maven Plugins -->
+    <resolve-parent-version-maven-plugin.version>0.8</resolve-parent-version-maven-plugin.version>
   </properties>
-  <modules>
-    <module>bom</module>
-  </modules>
+
   <dependencies>
     <dependency>
       <groupId>org.modelmapper</groupId>
@@ -82,6 +89,20 @@
           </execution>
         </executions>
       </plugin>
+
+        <!-- Resolve Parent Version Plugin -->
+        <plugin>
+            <groupId>com.hbakkum.maven.plugins</groupId>
+            <artifactId>resolve-parent-version-maven-plugin</artifactId>
+            <version>${resolve-parent-version-maven-plugin.version}</version>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>resolve-parent-version</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
     </plugins>
   </build>
 </project>

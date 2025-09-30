@@ -5,7 +5,7 @@
   <parent>
     <groupId><%= packagePath %>.<%= projectNameLowercase %>.parent</groupId>
     <artifactId><%= projectNameLowercase %>-parent</artifactId>
-    <version><%= projectVersion %></version>
+    <version>${<%= projectNameLowercase %>-parent.version}</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
   <artifactId><%= projectNameLowercase %>-bom</artifactId>
@@ -13,37 +13,16 @@
   <name><%= projectNameLowercase %>-bom</name>
   <description>This is the Bill of Materials (BOM) for the <%= projectName %>. It manages the dependencies used across the
     different modules of the project.</description>
-  <url></url>
-  <licenses>
-    <license>
-      <name></name>
-      <url></url>
-    </license>
-  </licenses>
-  <developers>
-    <developer>
-      <name></name>
-      <email></email>
-      <organization></organization>
-      <organizationUrl></organizationUrl>
-    </developer>
-  </developers>
-  <scm>
-    <connection></connection>
-    <developerConnection></developerConnection>
-    <url></url>
-  </scm>
   <dependencyManagement>
     <dependencies>
       <!-- Jima BOM -->
       <dependency>
         <groupId>ir.msob.jima.bom</groupId>
         <artifactId>jima-bom</artifactId>
-        <version>${jima-bom.version}</version>
+        <version>${jima.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-
     </dependencies>
   </dependencyManagement>
 </project>

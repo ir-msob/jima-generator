@@ -194,6 +194,7 @@ export default class Writing {
             projectVersion: this.generator.projectVersion,
             jimaVersion: this.generator.jimaVersion,
             packagePath: this.generator.packagePath,
+            reversePackagePath: this.generator.reversePackagePath,
             idClassPath: this.generator.idClassPath,
             idClassName: this.generator.idClassName,
             databaseType: this.generator.databaseType,
