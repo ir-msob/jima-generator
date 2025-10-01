@@ -1,3 +1,6 @@
+/**
+ * Questions specific to Service projects.
+ */
 export const serviceQuestions = [
     {
         type: 'input',
@@ -20,11 +23,11 @@ export const serviceQuestions = [
 ];
 
 /**
- * Ask questions related to the service.
+ * Prompt for service-specific answers and set them on the generator.
  */
 export async function serviceInput(generator) {
     const serviceAnswers = await generator.prompt(serviceQuestions);
     generator.serviceName = serviceAnswers.serviceName;
     generator.serviceVersion = serviceAnswers.serviceVersion;
-    generator.exsitsDomains = ['Party'];
+    generator.existsDomains = ['Party'];
 }

@@ -1,3 +1,6 @@
+/**
+ * Questions for selecting application type (Parent or Service).
+ */
 export const appTypeQuestions = [
     {
         type: 'list',
@@ -13,7 +16,7 @@ export const appTypeQuestions = [
 ];
 
 /**
- * Ask questions related to the app type.
+ * Prompt and set the application type on the generator.
  */
 export async function appTypeInput(generator) {
     const appTypeAnswers = await generator.prompt(appTypeQuestions);

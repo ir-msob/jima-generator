@@ -5,12 +5,12 @@ import { serviceInput } from './service/service.prompts.js';
 import { newServiceInput } from './service/new-service.prompts.js';
 
 /**
- * Class representing a set of prompts for the JIMA service generator.
+ * Coordinates all prompt flows for the JIMA generator.
  */
 export default class Prompts {
     /**
-     * Create a Prompts instance.
-     * @param {Object} generator - The generator object.
+     * Create a Prompts coordinator.
+     * @param {Object} generator - Yeoman generator context.
      */
     constructor(generator) {
         this.generator = generator;
@@ -18,8 +18,7 @@ export default class Prompts {
     }
 
     /**
-     * Ask a series of questions based on the generator's app type.
-     * @async
+     * Orchestrate prompts based on selected application type.
      */
     async askQuestions() {
         this.generator.log('Welcome to the JIMA service generator!');
@@ -42,7 +41,7 @@ export default class Prompts {
             // Ask new service-related questions if service name is 'New'
             if (this.generator.serviceName === 'New') {
                 await newServiceInput(this.generator);
-            }else {
+            } else {
                 this.generator.domains.push(this.generator.serviceName);
             }
         }

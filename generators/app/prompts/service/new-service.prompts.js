@@ -1,3 +1,6 @@
+/**
+ * Question for defining a new service name when "New" is selected.
+ */
 export const newServiceQuestions = [
     {
         type: 'input',
@@ -9,7 +12,7 @@ export const newServiceQuestions = [
 ];
 
 /**
- * Ask questions related to the new service.
+ * Prompt for new service name and set it on the generator.
  */
 export async function newServiceInput(generator) {
     const newServiceAnswers = await generator.prompt(newServiceQuestions);

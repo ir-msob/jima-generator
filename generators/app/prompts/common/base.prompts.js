@@ -1,3 +1,6 @@
+/**
+ * Base questions shared by all project types.
+ */
 export const baseQuestions = [
     {
         type: 'input',
@@ -67,7 +70,7 @@ export const baseQuestions = [
 ];
 
 /**
- * Ask base questions.
+ * Prompt for base questions and prepare derived variables on the generator context.
  */
 export async function baseInput(generator) {
     const baseAnswers = await generator.prompt(baseQuestions);

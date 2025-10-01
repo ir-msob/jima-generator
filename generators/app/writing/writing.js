@@ -86,13 +86,17 @@ export default class Writing {
      */
     _processNewDomainFolder(file, srcPath, destDir) {
         if (file === '_newDomain') {
-            if(this.generator.appType === 'Service' && this.generator.exsitsDomains.includes(this.generator.serviceName)){
+            if(this.generator.appType === 'Service' && this.generator.existsDomains && this.generator.existsDomains.includes(this.generator.serviceName)){
                 return true;
             }
-            const newDomainsList = this.generator.newDomains.split(',').map(entity => entity.trim());
-            this.generator.log('Processing new domains:', newDomainsList);
+            const newDomainsList = (this.generator.newDomains || '')
+                .split(',')
+                .map(entity => entity.trim())
+                .filter(entity => entity.length > 0);
+            const effectiveDomains = newDomainsList.length > 0 ? newDomainsList : (this.generator.domains || []);
+            this.generator.log('Processing new domains:', effectiveDomains);
 
-            newDomainsList.forEach(domainName => {
+            effectiveDomains.forEach(domainName => {
                 this.generator.log('Processing domain:', domainName);
                 this.prepareDomainName(domainName);
                 this.prepareClassesPath();
@@ -155,9 +159,9 @@ export default class Writing {
             this.generator.security !== 'Keycloak' && file.toLowerCase() === 'keycloak',
             this.generator.appType !== 'Service' && file === '_serviceNameWithHyphen',
             this.generator.appType !== 'Parent' && file === '_projectNameLowercase-parent',
-            this.generator.appType !== 'Parent' && file === '_projectNameLowercase-commondto',
-            this.generator.appType !== 'Parent' && file === '_projectNameLowercase-common',
-            this.generator.exsitsDomains && this.generator.exsitsDomains.map(domain => domain.toLowerCase()).includes(file) && !this.generator.domains.map(domain => domain.toLowerCase()).includes(file)
+            this.generator.appType !== 'Parent' && file === '_projectNameLowercase-core',
+            this.generator.appType !== 'Parent' && file === '_projectNameLowercase-domain',
+            this.generator.existsDomains && this.generator.existsDomains.map(domain => domain.toLowerCase()).includes(file) && !this.generator.domains.map(domain => domain.toLowerCase()).includes(file)
         ];
 
         return conditions.some(condition => condition);
@@ -172,13 +176,16 @@ export default class Writing {
      */
     _resolveConflicts(destPath, tempFileName, destDir) {
         let conflictCounter = 1;
+        const originalDestPath = destPath;
         while (fs.existsSync(destPath)) {
             const nameWithoutExt = path.basename(tempFileName, path.extname(tempFileName));
             const ext = path.extname(tempFileName);
             destPath = path.join(destDir, `${nameWithoutExt}_${conflictCounter}${ext}`);
             conflictCounter++;
         }
-        this.generator.log(`Resolved conflict for ${tempFileName}, new path: ${destPath}`);
+        if (destPath !== originalDestPath) {
+            this.generator.log(`Resolved conflict for ${tempFileName}, new path: ${destPath}`);
+        }
         return destPath;
     }
 
