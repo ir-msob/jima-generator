@@ -1,4 +1,4 @@
-package <%= packagePath %>.<%= projectNameLowercase %>.core.test.jima.crud.base.childdomain;
+package <%= packagePath %>.<%= projectNameLowercase %>.core.test.jima.crud.restful.childdomain;
 
 import <%= packagePath %>.<%= projectNameLowercase %>.core.model.jima.childdomain.characteristic.Characteristic;
 import <%= packagePath %>.<%= projectNameLowercase %>.core.model.jima.childdomain.characteristic.CharacteristicCriteria;

@@ -1,4 +1,4 @@
-package <%= packagePath %>.<%= projectNameLowercase %>.core.test.jima.crud.base.domain;
+package <%= packagePath %>.<%= projectNameLowercase %>.core.test.jima.crud.kafka.domain;
 
 import <%= packagePath %>.<%= projectNameLowercase %>.core.service.jima.crud.base.domain.DomainCrudRepository;
 import <%= packagePath %>.<%= projectNameLowercase %>.core.service.jima.crud.base.domain.DomainCrudService;
