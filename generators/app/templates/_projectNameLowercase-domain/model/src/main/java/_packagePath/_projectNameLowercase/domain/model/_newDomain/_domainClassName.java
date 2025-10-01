@@ -17,6 +17,7 @@ import lombok.*;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.io.Serial;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -28,6 +29,9 @@ import java.util.TreeSet;
 @Document(collection = <%= domainClassName %>.DOMAIN_NAME)
 @DomainInfo(serviceName = <%= domainClassName %>.DOMAIN_NAME_WITH_HYPHEN, version = "v1", domainName = <%= domainClassName %>.DOMAIN_NAME_WITH_HYPHEN)
 public class <%= domainClassName %> extends DomainAbstract {
+    @Serial
+    private static final long serialVersionUID = <%= domainSerialVersionUID %>;
+    
     @Transient
     public static final String DOMAIN_NAME = "<%= domainClassName %>";
     @Transient

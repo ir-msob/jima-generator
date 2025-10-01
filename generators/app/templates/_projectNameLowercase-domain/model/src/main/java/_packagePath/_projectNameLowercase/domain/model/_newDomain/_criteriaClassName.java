@@ -17,7 +17,8 @@ import java.io.Serial;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class <%= criteriaClassName %> extends CriteriaAbstract {
     @Serial
-    private static final long serialVersionUID = -8938843863555450000L;
+    private static final long serialVersionUID = <%= criteriaSerialVersionUID %>;
+
     private Filter<String> name;
     private Filter<String> description;
 }

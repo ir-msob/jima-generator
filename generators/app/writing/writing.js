@@ -220,7 +220,10 @@ export default class Writing {
             dtoClassPath: this.generator.dtoClassPath,
             dtoClassName: this.generator.dtoClassName,
             criteriaClassPath: this.generator.criteriaClassPath,
-            criteriaClassName: this.generator.criteriaClassName
+            criteriaClassName: this.generator.criteriaClassName,
+            domainSerialVersionUID:this.generator.domainSerialVersionUID,
+            dtoSerialVersionUID:this.generator.dtoSerialVersionUID,
+            criteriaSerialVersionUID:this.generator.criteriaSerialVersionUID
         };
     }
 
@@ -232,13 +235,21 @@ export default class Writing {
         this.generator.domainClassPath = `${this.generator.packagePath}.${this.generator.projectNameLowercase}.commondto.commons.${this.generator.domainNameLowercase}.${this.generator.domainName}`;
         this.generator.domainClassName = this.generator.domainClassPath.split('.').pop();
         this.generator.domainClassNameLowercase = this.generator.domainClassName.toLowerCase();
-        this.generator.domainClassNameWithHyphen = this.generator.domainClassName.replace(/\s+/g, '-').toLowerCase();
+        this.generator.domainClassNameWithHyphen = this.generator.domainClassName
+            .replace(/\s+/g, '-')
+            .replace(/([a-z])([A-Z])/g, '$1-$2')
+            .toLowerCase();
 
         this.generator.dtoClassPath = `${this.generator.domainClassPath}Dto`;
         this.generator.dtoClassName = this.generator.dtoClassPath.split('.').pop();
 
         this.generator.criteriaClassPath = `${this.generator.domainClassPath}Criteria`;
         this.generator.criteriaClassName = this.generator.criteriaClassPath.split('.').pop();
+        
+        // Generate unique serialVersionUID for each class
+        this.generator.domainSerialVersionUID = this.generateSerialVersionUID(this.generator.domainClassName);
+        this.generator.dtoSerialVersionUID = this.generateSerialVersionUID(this.generator.dtoClassName);
+        this.generator.criteriaSerialVersionUID = this.generateSerialVersionUID(this.generator.criteriaClassName);
     }
 
     /**
@@ -251,6 +262,28 @@ export default class Writing {
         this.generator.domainNameLowercase = domainName.toLowerCase();
         this.generator.domainNameWithHyphen = domainName.replace(/\s+/g, '-').toLowerCase();
         this.generator.newDomains = domainName;
+    }
+
+    /**
+     * Generate a unique serialVersionUID based on class name.
+     * @param {string} className - The class name to generate UID for.
+     * @returns {string} - The generated serialVersionUID.
+     */
+    generateSerialVersionUID(className) {
+        // Create a simple hash from the class name
+        let hash = 0;
+        for (let i = 0; i < className.length; i++) {
+            const char = className.charCodeAt(i);
+            hash = ((hash << 5) - hash) + char;
+            hash = hash & hash; // Convert to 32-bit integer
+        }
+        
+        // Convert to positive number and format as negative long
+        const positiveHash = Math.abs(hash);
+        const baseUID = 8938843863555450000; // Base UID
+        const uniqueUID = baseUID + positiveHash;
+        
+        return `-${uniqueUID}L`;
     }
 
     /**
