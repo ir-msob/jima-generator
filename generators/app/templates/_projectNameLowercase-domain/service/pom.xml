@@ -17,6 +17,11 @@
             <artifactId>domain-model</artifactId>
             <version>${<%= projectNameLowercase %>-domain.version}</version>
         </dependency>
+        <dependency>
+            <groupId><%= packagePath %>.<%= projectNameLowercase %>.core</groupId>
+            <artifactId>core-service</artifactId>
+            <version>${<%= projectNameLowercase %>-core.version}</version>
+        </dependency>
     </dependencies>
 
 </project>

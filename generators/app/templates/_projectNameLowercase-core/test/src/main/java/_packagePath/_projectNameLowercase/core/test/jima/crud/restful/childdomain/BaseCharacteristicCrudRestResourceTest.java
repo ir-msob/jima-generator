@@ -15,17 +15,17 @@ import ir.msob.jima.crud.service.domain.BaseDomainCrudService;
 import ir.msob.jima.crud.test.domain.BaseDomainCrudDataProvider;
 
 public abstract class BaseCharacteristicCrudRestResourceTest<
-        D extends BaseDomain<String>,
-        DTO extends BaseDto<String>,
-        C extends BaseCriteria<String>,
-        R extends BaseDomainCrudRepository<String, User, D, C, QueryBuilder>,
-        S extends BaseDomainCrudService<String, User, D, DTO, C, QueryBuilder, R>,
-        DP extends BaseDomainCrudDataProvider<String, User, D, DTO, C, QueryBuilder, R, S>,
+        D extends BaseDomain<<%= idClassName %>>,
+        DTO extends BaseDto<<%= idClassName %>>,
+        C extends BaseCriteria<<%= idClassName %>>,
+        R extends BaseDomainCrudRepository<<%= idClassName %>, User, D, C, QueryBuilder>,
+        S extends BaseDomainCrudService<<%= idClassName %>, User, D, DTO, C, QueryBuilder, R>,
+        DP extends BaseDomainCrudDataProvider<<%= idClassName %>, User, D, DTO, C, QueryBuilder, R, S>,
 
-        CS extends BaseChildDomainCrudService<String, User, DTO>,
+        CS extends BaseChildDomainCrudService<<%= idClassName %>, User, DTO>,
         CDP extends BaseCharacteristicCrudDataProvider<DTO, CS>>
         extends ChildCrudRestResourceTest<D, DTO, C, R, S, DP, CS, CDP>
-        implements ir.msob.jima.crud.api.restful.test.childdomain.characteristic.BaseCharacteristicCrudRestResourceTest<String, User, Characteristic, CharacteristicCriteria, D, DTO, C, QueryBuilder, R, S, DP, CS, CDP> {
+        implements ir.msob.jima.crud.api.restful.test.childdomain.characteristic.BaseCharacteristicCrudRestResourceTest<<%= idClassName %>, User, Characteristic, CharacteristicCriteria, D, DTO, C, QueryBuilder, R, S, DP, CS, CDP> {
 
 
     @Override
@@ -46,4 +46,13 @@ public abstract class BaseCharacteristicCrudRestResourceTest<
         };
     }
 
+    @Override
+    public TypeReference<Collection<<%= idClassName %>>> getIdsReferenceType() {
+        return new TypeReference<Collection<<%= idClassName %>>>() {
+            @Override
+            public Type getType() {
+                return super.getType();
+            }
+        };
+    }
 }

@@ -11,10 +11,9 @@
     <name><%= serviceNameLowercase %></name>
     <description><%= serviceName  %> Service</description>
     <properties>
-        <common.version><%= projectVersion %></common.version>
-        <commondto.version><%= projectVersion %></commondto.version>
-        <!-- <%= projectName %> BOM Versions -->
-        <<%= projectNameLowercase %>-bom.version><%= projectVersion %></<%= projectNameLowercase %>-bom.version>
+        <!-- <%= projectName %> Version -->
+        <<%= projectNameLowercase %>-parent.version><%= projectVersion %></<%= projectNameLowercase %>-parent.version>
+        <<%= projectNameLowercase %>-domain.version><%= projectVersion %></<%= projectNameLowercase %>-domain.version>
     </properties>
 
     <dependencyManagement>
@@ -23,7 +22,7 @@
             <dependency>
                 <groupId><%= packagePath %>.<%= projectNameLowercase %>.parent</groupId>
                 <artifactId><%= projectNameLowercase %>-bom</artifactId>
-                <version>${<%= projectNameLowercase %>-bom.version}</version>
+                <version>${<%= projectNameLowercase %>-parent.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -32,14 +31,9 @@
 
     <dependencies>
         <dependency>
-            <groupId><%= packagePath %>.<%= projectNameLowercase %>.common</groupId>
-            <artifactId>common-commons</artifactId>
-            <version>${common.version}</version>
-        </dependency>
-        <dependency>
-            <groupId><%= packagePath %>.<%= projectNameLowercase %>.commondto</groupId>
-            <artifactId>commondto-commons</artifactId>
-            <version>${commondto.version}</version>
+            <groupId><%= packagePath %>.<%= projectNameLowercase %>.domain</groupId>
+            <artifactId>domain-service</artifactId>
+            <version>${<%= projectNameLowercase %>-domain.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -53,9 +47,9 @@
         <%_ } _%>
 
         <dependency>
-            <groupId><%= packagePath %>.<%= projectNameLowercase %>.common</groupId>
-            <artifactId>common-test</artifactId>
-            <version>${common.version}</version>
+            <groupId><%= packagePath %>.<%= projectNameLowercase %>.domain</groupId>
+            <artifactId>domain-test</artifactId>
+            <version>${<%= projectNameLowercase %>-domain.version}</version>
             <scope>test</scope>
         </dependency>
         <%_ if (security == 'Keycloak') { _%>

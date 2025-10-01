@@ -95,4 +95,14 @@ public abstract class DomainCrudKafkaListenerTest<
     public User getSampleUser() {
         return getDataProvider().getSampleUser();
     }
+
+    @Override
+    public TypeReference<Collection<<%= idClassName %>>> getIdsReferenceType() {
+        return new TypeReference<Collection<<%= idClassName %>>>() {
+            @Override
+            public Type getType() {
+                return super.getType();
+            }
+        };
+    }
 }

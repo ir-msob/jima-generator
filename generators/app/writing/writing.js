@@ -158,7 +158,7 @@ export default class Writing {
             !this.generator.isRestful && file.toLowerCase() === 'restful',
             !this.generator.isKafka && file.toLowerCase() === 'kafka',
             this.generator.security !== 'Keycloak' && file.toLowerCase() === 'keycloak',
-            this.generator.appType !== 'Service' && file === '_serviceNameWithHyphen',
+            this.generator.appType !== 'Service' && file === '_serviceNameWithHyphen-service',
             this.generator.appType !== 'Parent' && file === '_projectNameLowercase-parent',
             this.generator.appType !== 'Parent' && file === '_projectNameLowercase-core',
             this.generator.appType !== 'Parent' && file === '_projectNameLowercase-domain',

@@ -12,7 +12,12 @@
     <name>test</name>
     <description>test</description>
     <dependencies>
-
+        <!-- <%= projectName %> -->
+        <dependency>
+            <groupId><%= packagePath %>.<%= projectNameLowercase %>.core</groupId>
+            <artifactId>core-test</artifactId>
+            <version>${<%= packagePath %>-core.version}</version>
+        </dependency>
     </dependencies>
 
 </project>

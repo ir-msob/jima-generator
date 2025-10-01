@@ -62,4 +62,14 @@ public abstract class DomainCrudRestResourceTest<
     public User getSampleUser() {
         return this.getDataProvider().getSampleUser();
     }
+
+    @Override
+    public TypeReference<Collection<<%= idClassName %>>> getIdsReferenceType() {
+        return new TypeReference<Collection<<%= idClassName %>>>() {
+            @Override
+            public Type getType() {
+                return super.getType();
+            }
+        };
+    }
 }
