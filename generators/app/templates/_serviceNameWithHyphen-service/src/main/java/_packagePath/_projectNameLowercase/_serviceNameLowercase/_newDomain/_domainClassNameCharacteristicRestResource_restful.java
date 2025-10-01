@@ -1,12 +1,12 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.<%= serviceNameLowercase %>.<%= domainClassNameLowercase %>;
 
-import <%= packagePath %>.<%= projectNameLowercase %>.common.commons.jima.crud.restful.childdomain.service.CharacteristicCrudRestResource;
-import <%= packagePath %>.<%= projectNameLowercase %>.common.commons.jima.security.UserService;
-import <%= domainClassPath %>;
-import <%= dtoClassPath %>;
 import ir.msob.jima.core.commons.operation.ConditionalOnOperation;
 import ir.msob.jima.core.commons.resource.Resource;
 import ir.msob.jima.core.commons.shared.ResourceType;
+import <%= packagePath %>.<%= projectNameLowercase %>.core.service.jima.crud.restful.childdomain.service.CharacteristicCrudRestResource;
+import <%= packagePath %>.<%= projectNameLowercase %>.core.service.jima.security.UserService;
+import <%= domainClassPath %>;
+import <%= dtoClassPath %>;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

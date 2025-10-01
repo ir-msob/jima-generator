@@ -1,20 +1,16 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.<%= serviceNameLowercase %>.<%= domainClassNameLowercase %>;
 
-import <%= packagePath %>.<%= projectNameLowercase %>.common.commons.jima.crud.kafka.domain.service.DomainCrudKafkaListener;
-import <%= packagePath %>.<%= projectNameLowercase %>.common.commons.jima.security.UserService;
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.jima.security.User;
-import <%= criteriaClassPath %>;
-import <%= domainClassPath %>;
-import <%= dtoClassPath %>;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ir.msob.jima.core.commons.channel.ChannelMessage;
-import ir.msob.jima.core.commons.channel.message.*;
 import ir.msob.jima.core.commons.client.BaseAsyncClient;
 import ir.msob.jima.core.commons.operation.ConditionalOnOperation;
 import ir.msob.jima.core.commons.resource.Resource;
 import ir.msob.jima.core.commons.shared.ResourceType;
 import ir.msob.jima.crud.api.kafka.client.ChannelUtil;
+import <%= packagePath %>.<%= projectNameLowercase %>.core.service.jima.crud.kafka.domain.service.DomainCrudKafkaListener;
+import <%= packagePath %>.<%= projectNameLowercase %>.core.service.jima.security.UserService;
+import <%= domainClassPath %>;
+import <%= criteriaClassPath %>;
+import <%= dtoClassPath %>;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.stereotype.Component;
 

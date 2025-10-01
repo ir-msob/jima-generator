@@ -1,10 +1,10 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.<%= serviceNameLowercase %>.<%= domainClassNameLowercase %>;
 
-import <%= packagePath %>.<%= projectNameLowercase %>.common.commons.jima.crud.base.domain.DomainCrudRepository;
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.jima.security.User;
+import ir.msob.jima.core.ral.mongo.commons.query.QueryBuilder;
+import <%= packagePath %>.<%= projectNameLowercase %>.core.model.jima.security.User;
+import <%= packagePath %>.<%= projectNameLowercase %>.core.service.jima.crud.base.domain.DomainCrudRepository;
 import <%= domainClassPath %>;
 import <%= criteriaClassPath %>;
-import ir.msob.jima.core.ral.mongo.commons.query.QueryBuilder;
 <%_ if (databaseType == 'Mongo') { _%>
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 <%_ } _%>

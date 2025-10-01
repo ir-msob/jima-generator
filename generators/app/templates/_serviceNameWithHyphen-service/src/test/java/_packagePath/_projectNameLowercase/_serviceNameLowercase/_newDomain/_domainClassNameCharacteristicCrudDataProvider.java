@@ -1,6 +1,6 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.<%= serviceNameLowercase %>.<%= domainClassNameLowercase %>;
 
-import <%= packagePath %>.<%= projectNameLowercase %>.common.commons.jima.test.crud.base.childdomain.characteristic.BaseCharacteristicCrudDataProvider;
+import <%= packagePath %>.<%= projectNameLowercase %>.core.test.jima.crud.base.childdomain.characteristic.BaseCharacteristicCrudDataProvider;
 import <%= dtoClassPath %>;
 import org.springframework.stereotype.Component;
 

@@ -1,16 +1,18 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.<%= serviceNameLowercase %>.<%= domainClassNameLowercase %>;
 
-import <%= packagePath %>.<%= projectNameLowercase %>.common.commons.jima.test.crud.base.domain.DomainCrudRestResourceTest;
-import <%= criteriaClassPath %>;
-import <%= domainClassPath %>;
-import <%= dtoClassPath %>;
-import <%= packagePath %>.<%= projectNameLowercase %>.commondto.commons.jima.security.User;
-import <%= packagePath %>.<%= projectNameLowercase %>.<%= serviceNameLowercase %>.Application;
+import com.fasterxml.jackson.core.type.TypeReference;
 import ir.msob.jima.core.commons.resource.BaseResource;
+import ir.msob.jima.core.commons.shared.PageResponse;
 import ir.msob.jima.core.ral.kafka.test.KafkaContainerConfiguration;
 import ir.msob.jima.core.ral.mongo.test.configuration.MongoContainerConfiguration;
 import ir.msob.jima.core.test.CoreTestData;
 import ir.msob.jima.security.ral.keycloak.test.KeycloakContainerConfiguration;
+import <%= packagePath %>.<%= projectNameLowercase %>.core.model.jima.security.User;
+import <%= packagePath %>.<%= projectNameLowercase %>.core.test.jima.crud.base.domain.DomainCrudRestResourceTest;
+import <%= packagePath %>.<%= projectNameLowercase %>.dms.Application;
+import <%= domainClassPath %>;
+import <%= criteriaClassPath %>;
+import <%= dtoClassPath %>;
 import lombok.SneakyThrows;
 import lombok.extern.apachecommons.CommonsLog;
 import org.assertj.core.api.Assertions;
@@ -21,6 +23,8 @@ import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWeb
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.testcontainers.junit.jupiter.Testcontainers;
+
+import java.lang.reflect.Type;
 
 @AutoConfigureWebTestClient
 @SpringBootTest(classes = {Application.class

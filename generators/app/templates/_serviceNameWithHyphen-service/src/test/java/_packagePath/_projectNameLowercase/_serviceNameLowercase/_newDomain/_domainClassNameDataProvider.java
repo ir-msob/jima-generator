@@ -1,9 +1,5 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.<%= serviceNameLowercase %>.<%= domainClassNameLowercase %>;
 
-import <%= packagePath %>.<%= projectNameLowercase %>.common.commons.jima.test.crud.base.domain.DomainCrudDataProvider;
-import <%= domainClassPath %>;
-import <%= criteriaClassPath %>;
-import <%= dtoClassPath %>;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.TextNode;
 import com.github.fge.jackson.jsonpointer.JsonPointer;
@@ -12,6 +8,10 @@ import com.github.fge.jsonpatch.JsonPatch;
 import com.github.fge.jsonpatch.JsonPatchOperation;
 import com.github.fge.jsonpatch.ReplaceOperation;
 import ir.msob.jima.core.commons.id.BaseIdService;
+import <%= packagePath %>.<%= projectNameLowercase %>.core.test.jima.crud.base.domain.DomainCrudDataProvider;
+import <%= domainClassPath %>;
+import <%= criteriaClassPath %>;
+import <%= dtoClassPath %>;
 import lombok.SneakyThrows;
 import org.springframework.stereotype.Component;
 
