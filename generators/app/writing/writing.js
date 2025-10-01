@@ -66,6 +66,7 @@ export default class Writing {
                         fs.mkdirSync(destPath, {recursive: true});
                         this._copyFilesRecursively(srcPath, destPath);
                     } else {
+                        // Always copy/replace the file, even if it exists
                         this.generator.fs.copyTpl(srcPath, destPath, this._getTemplateVariables());
                     }
                 } else {
@@ -168,23 +169,20 @@ export default class Writing {
     }
 
     /**
-     * Resolve file name conflicts by appending a counter to the file name.
+     * Resolve file name conflicts by replacing existing files instead of appending numbers.
      * @param {string} destPath - The destination path.
      * @param {string} tempFileName - The temporary file name.
      * @param {string} destDir - The destination directory.
      * @returns {string} - The resolved destination path.
      */
     _resolveConflicts(destPath, tempFileName, destDir) {
-        let conflictCounter = 1;
-        const originalDestPath = destPath;
-        while (fs.existsSync(destPath)) {
-            const nameWithoutExt = path.basename(tempFileName, path.extname(tempFileName));
-            const ext = path.extname(tempFileName);
-            destPath = path.join(destDir, `${nameWithoutExt}_${conflictCounter}${ext}`);
-            conflictCounter++;
-        }
-        if (destPath !== originalDestPath) {
-            this.generator.log(`Resolved conflict for ${tempFileName}, new path: ${destPath}`);
+        if (fs.existsSync(destPath)) {
+            const stat = fs.statSync(destPath);
+            if (stat.isFile()) {
+                this.generator.log(`File exists, will be replaced: ${tempFileName}`);
+            } else if (stat.isDirectory()) {
+                this.generator.log(`Directory exists, will be reused: ${tempFileName}`);
+            }
         }
         return destPath;
     }

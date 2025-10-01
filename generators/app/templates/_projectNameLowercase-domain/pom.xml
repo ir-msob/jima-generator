@@ -44,7 +44,8 @@
         <resolve-parent-version-maven-plugin.version>0.8</resolve-parent-version-maven-plugin.version>
     </properties>
     <modules>
-        <module>commons</module>
+        <module>model</module>
+        <module>service</module>
         <module>test</module>
     </modules>
 

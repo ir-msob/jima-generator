@@ -8,11 +8,15 @@
         <version>${<%= projectNameLowercase %>-domain.version}</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <artifactId>domain-test</artifactId>
-    <name>test</name>
-    <description>test</description>
+    <artifactId>domain-service</artifactId>
+    <name>domain</name>
+    <description>domain</description>
     <dependencies>
-
+        <dependency>
+            <groupId><%= packagePath %>.<%= projectNameLowercase %>.domain</groupId>
+            <artifactId>domain-model</artifactId>
+            <version>${<%= projectNameLowercase %>-domain.version}</version>
+        </dependency>
     </dependencies>
 
 </project>

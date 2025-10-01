@@ -12,17 +12,59 @@
     <name>test</name>
     <description>test</description>
     <dependencies>
-        <!-- Jima -->
+        <!-- <%= projectName %> -->
+        <dependency>
+            <groupId><%= packagePath %>.<%= projectNameLowercase %>.core</groupId>
+            <artifactId>core-model</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId><%= packagePath %>.<%= projectNameLowercase %>.core</groupId>
+            <artifactId>core-service</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- Jima Test -->
         <dependency>
             <groupId>ir.msob.jima.core</groupId>
             <artifactId>core-starter-test</artifactId>
         </dependency>
-
-        <!-- <%= projectName %> -->
+        <%_ if (isRestful) { _%>
         <dependency>
-            <groupId><%= packagePath %>.<%= projectNameLowercase %>.core</groupId>
-            <artifactId>core-commons</artifactId>
-            <version>${project.version}</version>
+            <groupId>ir.msob.jima.crud</groupId>
+            <artifactId>crud-starter-restful-test</artifactId>
+        </dependency>
+        <%_ } _%>
+        <%_ if (isKafka) { _%>
+        <dependency>
+            <groupId>ir.msob.jima.crud</groupId>
+            <artifactId>crud-starter-kafka-test</artifactId>
+        </dependency>
+        <%_ } _%>
+        <%_ if (databaseType == 'Mongo') { _%>
+        <dependency>
+            <groupId>ir.msob.jima.crud</groupId>
+            <artifactId>crud-starter-mongo-test</artifactId>
+        </dependency>
+        <%_ } _%>
+        <%_ if (security == 'Keycloak') { _%>
+        <dependency>
+            <groupId>ir.msob.jima.security</groupId>
+            <artifactId>security-starter-keycloak-test</artifactId>
+        </dependency>
+        <%_ } _%>
+
+        <!-- Test -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-test</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

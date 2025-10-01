@@ -35,7 +35,8 @@
         <url></url>
     </scm>
     <modules>
-        <module>commons</module>
+        <module>model</module>
+        <module>service</module>
         <module>test</module>
     </modules>
     <properties>
