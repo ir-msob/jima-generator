@@ -27,10 +27,15 @@ export default class Writing {
         } else if (this.generator.appType === 'Service') {
             this.generator.log('Copying files for Service application type.');
             this.prepareServiceName();
-            this.prepareDomainName(this.generator.serviceName);
+            this._copyFilesRecursively(templateDir, destinationDir);
+        } else if (this.generator.appType === 'Domain') {
+            this.generator.log('Copying files for Domain application type.');
+            this.prepareServiceName();
+            this.prepareDomainName();
             this.prepareClassesPath();
             this._copyFilesRecursively(templateDir, destinationDir);
         }
+
     }
 
     /**
@@ -51,12 +56,7 @@ export default class Writing {
                     return;
                 }
 
-                if (this._processNewDomainFolder(file, srcPath, destDir)) {
-                    return;
-                }
-
                 let destPath = path.join(destDir, tempFileName);
-                destPath = this._resolveConflicts(destPath, tempFileName, destDir);
 
                 if (fs.existsSync(srcPath)) {
                     const stat = fs.statSync(srcPath);
@@ -67,7 +67,24 @@ export default class Writing {
                         this._copyFilesRecursively(srcPath, destPath);
                     } else {
                         // Always copy/replace the file, even if it exists
-                        this.generator.fs.copyTpl(srcPath, destPath, this._getTemplateVariables());
+                        // Ensure parent directory exists
+                        const parentDir = path.dirname(destPath);
+                        if (!fs.existsSync(parentDir)) {
+                            fs.mkdirSync(parentDir, {recursive: true});
+                        }
+                        
+                        // Read template content and replace placeholders
+                        let content = fs.readFileSync(srcPath, 'utf8');
+                        const templateVars = this._getTemplateVariables();
+                        
+                        // Replace template variables in content
+                        for (const [key, value] of Object.entries(templateVars)) {
+                            const regex = new RegExp(`<%= ${key} %>`, 'g');
+                            content = content.replace(regex, value);
+                        }
+                        
+                        // Write the processed content to destination
+                        fs.writeFileSync(destPath, content, 'utf8');
                     }
                 } else {
                     this.generator.log(`Source path does not exist: ${srcPath}`);
@@ -78,38 +95,6 @@ export default class Writing {
         }
     }
 
-    /**
-     * Process the '_newDomain' folder and copy files for each domain.
-     * @param {string} file - The file name.
-     * @param {string} srcPath - The source path.
-     * @param {string} destDir - The destination directory.
-     * @returns {boolean} - Returns true if the folder is processed, otherwise false.
-     */
-    _processNewDomainFolder(file, srcPath, destDir) {
-        if (file === '_newDomain') {
-            if(this.generator.appType === 'Service' && this.generator.existsDomains && this.generator.existsDomains.includes(this.generator.serviceName)){
-                return true;
-            }
-            const newDomainsList = (this.generator.newDomains || '')
-                .split(',')
-                .map(entity => entity.trim())
-                .filter(entity => entity.length > 0);
-            const effectiveDomains = newDomainsList.length > 0 ? newDomainsList : (this.generator.domains || []);
-            this.generator.log('Processing new domains:', effectiveDomains);
-
-            effectiveDomains.forEach(domainName => {
-                this.generator.log('Processing domain:', domainName);
-                this.prepareDomainName(domainName);
-                this.prepareClassesPath();
-
-                const domainDestDir = path.join(destDir, this.generator.domainNameLowercase);
-                fs.mkdirSync(domainDestDir, {recursive: true});
-                this._copyFilesRecursively(srcPath, domainDestDir);
-            });
-            return true;
-        }
-        return false;
-    }
 
     /**
      * Replace placeholders in the file name with actual values.
@@ -131,8 +116,15 @@ export default class Writing {
         };
 
         let tempFileName = file;
-        for (const [placeholder, value] of Object.entries(replacements)) {
-            tempFileName = tempFileName.replace(new RegExp(placeholder, 'gi'), value);
+        
+        // Sort replacements by length (longest first) to avoid partial replacements
+        const sortedReplacements = Object.entries(replacements).sort((a, b) => b[0].length - a[0].length);
+        
+        for (const [placeholder, value] of sortedReplacements) {
+            // Escape special regex characters and replace only complete placeholders
+            const escapedPlaceholder = placeholder.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const regex = new RegExp(escapedPlaceholder, 'gi');
+            tempFileName = tempFileName.replace(regex, value);
         }
 
         // Remove any text inside square brackets (e.g. [Domain], [Test], etc.)
@@ -166,30 +158,10 @@ export default class Writing {
             this.generator.appType !== 'Parent' && file === '_projectNameLowercase-core',
             this.generator.appType !== 'Parent' && file === '_projectNameLowercase-domain',
             this.generator.appType !== 'Domain' && file === '_serviceNameWithHyphen-service[Domain]',
-            this.generator.appType !== 'Domain' && file === '_projectNameLowercase-domain[Domain]',
-            this.generator.existsDomains && this.generator.existsDomains.map(domain => domain.toLowerCase()).includes(file) && !this.generator.domains.map(domain => domain.toLowerCase()).includes(file)
+            this.generator.appType !== 'Domain' && file === '_projectNameLowercase-domain[Domain]'
         ];
 
         return conditions.some(condition => condition);
-    }
-
-    /**
-     * Resolve file name conflicts by replacing existing files instead of appending numbers.
-     * @param {string} destPath - The destination path.
-     * @param {string} tempFileName - The temporary file name.
-     * @param {string} destDir - The destination directory.
-     * @returns {string} - The resolved destination path.
-     */
-    _resolveConflicts(destPath, tempFileName, destDir) {
-        if (fs.existsSync(destPath)) {
-            const stat = fs.statSync(destPath);
-            if (stat.isFile()) {
-                this.generator.log(`File exists, will be replaced: ${tempFileName}`);
-            } else if (stat.isDirectory()) {
-                this.generator.log(`Directory exists, will be reused: ${tempFileName}`);
-            }
-        }
-        return destPath;
     }
 
     /**
@@ -226,9 +198,9 @@ export default class Writing {
             dtoClassName: this.generator.dtoClassName,
             criteriaClassPath: this.generator.criteriaClassPath,
             criteriaClassName: this.generator.criteriaClassName,
-            domainSerialVersionUID:this.generator.domainSerialVersionUID,
-            dtoSerialVersionUID:this.generator.dtoSerialVersionUID,
-            criteriaSerialVersionUID:this.generator.criteriaSerialVersionUID
+            domainSerialVersionUID: this.generator.domainSerialVersionUID,
+            dtoSerialVersionUID: this.generator.dtoSerialVersionUID,
+            criteriaSerialVersionUID: this.generator.criteriaSerialVersionUID
         };
     }
 
@@ -250,7 +222,7 @@ export default class Writing {
 
         this.generator.criteriaClassPath = `${this.generator.domainClassPath}Criteria`;
         this.generator.criteriaClassName = this.generator.criteriaClassPath.split('.').pop();
-        
+
         // Generate unique serialVersionUID for each class
         this.generator.domainSerialVersionUID = this.generateSerialVersionUID(this.generator.domainClassName);
         this.generator.dtoSerialVersionUID = this.generateSerialVersionUID(this.generator.dtoClassName);
@@ -259,14 +231,11 @@ export default class Writing {
 
     /**
      * Prepare the domain name and related properties.
-     * @param {string} domainName - The domain name.
      */
-    prepareDomainName(domainName) {
-        this.generator.log('Preparing domain name:', domainName);
-        this.generator.domainName = domainName;
-        this.generator.domainNameLowercase = domainName.toLowerCase();
-        this.generator.domainNameWithHyphen = domainName.replace(/\s+/g, '-').toLowerCase();
-        this.generator.newDomains = domainName;
+    prepareDomainName() {
+        this.generator.log('Preparing domain name:', this.generator.domainName);
+        this.generator.domainNameLowercase = this.generator.domainName.toLowerCase();
+        this.generator.domainNameWithHyphen = this.generator.domainName.replace(/\s+/g, '-').toLowerCase();
     }
 
     /**
@@ -282,12 +251,12 @@ export default class Writing {
             hash = ((hash << 5) - hash) + char;
             hash = hash & hash; // Convert to 32-bit integer
         }
-        
+
         // Convert to positive number and format as negative long
         const positiveHash = Math.abs(hash);
         const baseUID = 8938843863555450000; // Base UID
         const uniqueUID = baseUID + positiveHash;
-        
+
         return `-${uniqueUID}L`;
     }
 
