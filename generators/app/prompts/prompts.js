@@ -1,8 +1,7 @@
 import { baseInput } from './common/base.prompts.js';
 import { appTypeInput } from './common/app-type.prompts.js';
-import { domainsInput } from './parent/domains.prompts.js';
+import { domainsInput } from './domain/domains.prompts.js';
 import { serviceInput } from './service/service.prompts.js';
-import { newServiceInput } from './service/new-service.prompts.js';
 
 /**
  * Coordinates all prompt flows for the JIMA generator.
@@ -30,20 +29,13 @@ export default class Prompts {
         await appTypeInput(this.generator);
 
         // Conditional questions based on app type
-        if (this.generator.appType === 'Parent') {
+        if (this.generator.appType === 'Domain') {
             // Ask domain-related questions if app type is 'Parent'
             await domainsInput(this.generator);
 
         } else if (this.generator.appType === 'Service') {
             // Ask service-related questions if app type is 'Service'
             await serviceInput(this.generator);
-
-            // Ask new service-related questions if service name is 'New'
-            if (this.generator.serviceName === 'New') {
-                await newServiceInput(this.generator);
-            } else {
-                this.generator.domains.push(this.generator.serviceName);
-            }
         }
     }
 }

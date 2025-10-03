@@ -8,9 +8,10 @@ export const appTypeQuestions = [
         message: 'Please select the app type:',
         choices: [
             { name: 'Parent', value: 'Parent' },
-            { name: 'Service', value: 'Service' }
+            { name: 'Service', value: 'Service' },
+            { name: 'Domain', value: 'Domain' }
         ],
-        default: 'Parent',
+        default: 'Domain',
         validate: input => input ? true : 'You must select an app type.'
     }
 ];

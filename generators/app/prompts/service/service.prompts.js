@@ -10,15 +10,11 @@ export const serviceQuestions = [
         validate: input => /^\d+\.\d+\.\d+$/.test(input) || 'Version must be in the format x.y.z (e.g., 0.1.0).'
     },
     {
-        type: 'list',
+        type: 'input',
         name: 'serviceName',
-        message: 'Please select the service:',
-        choices: [
-            { name: 'New', value: 'New' },
-            { name: 'Party', value: 'Party' }
-        ],
-        default: 'New',
-        validate: input => input ? true : 'You must select a service.'
+        message: 'Please enter the service name (e.g., Comment, Order):',
+        default: 'Order',
+        validate: input => /^[A-Z][a-zA-Z]*$/.test(input) || 'Service name must start with an uppercase letter and contain only letters.'
     }
 ];
 
@@ -29,5 +25,4 @@ export async function serviceInput(generator) {
     const serviceAnswers = await generator.prompt(serviceQuestions);
     generator.serviceName = serviceAnswers.serviceName;
     generator.serviceVersion = serviceAnswers.serviceVersion;
-    generator.existsDomains = ['Party'];
 }

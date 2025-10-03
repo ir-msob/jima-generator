@@ -135,6 +135,9 @@ export default class Writing {
             tempFileName = tempFileName.replace(new RegExp(placeholder, 'gi'), value);
         }
 
+        // Remove any text inside square brackets (e.g. [Domain], [Test], etc.)
+        // tempFileName = tempFileName.replace(/\[.*?\]/g, '');
+
         if (this.generator.isRestful && file.includes('_restful')) {
             this.generator.log(`[INFO] Remove _restful: ${file}`);
             tempFileName = tempFileName.replace(/_restful/gi, '');
@@ -162,6 +165,8 @@ export default class Writing {
             this.generator.appType !== 'Parent' && file === '_projectNameLowercase-parent',
             this.generator.appType !== 'Parent' && file === '_projectNameLowercase-core',
             this.generator.appType !== 'Parent' && file === '_projectNameLowercase-domain',
+            // this.generator.appType !== 'Domain' && file === '_serviceNameWithHyphen-service[Domain]',
+            // this.generator.appType !== 'Domain' && file === '_projectNameLowercase-domain[Domain]',
             this.generator.existsDomains && this.generator.existsDomains.map(domain => domain.toLowerCase()).includes(file) && !this.generator.domains.map(domain => domain.toLowerCase()).includes(file)
         ];
 

@@ -11,13 +11,13 @@ import ir.msob.jima.security.ral.keycloak.test.KeycloakContainerConfiguration;
 <%_ if (databaseType == 'Mongo') { _%>
 import ir.msob.jima.core.ral.mongo.test.configuration.MongoContainerConfiguration;
 <%_ } _%>
+import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.DynamicPropertyRegistrar;
 import org.testcontainers.containers.KafkaContainer;
 import org.testcontainers.containers.MongoDBContainer;
 
-@Configuration
+@TestConfiguration
 public class ContainerConfiguration {
     @Bean
     public DynamicPropertyRegistrar dynamicPropertyRegistrar(JimaProperties jimaProperties
