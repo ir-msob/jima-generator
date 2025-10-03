@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId><%= packagePath %>.<%= projectNameLowercase %>.parent</groupId>
   <artifactId><%= projectNameLowercase %>-parent</artifactId>
   <version>${<%= projectNameLowercase %>-parent.version}</version>
   <packaging>pom</packaging>
   <name><%= projectNameLowercase %>-parent</name>
-    <description><%= projectName %> Parent</description>
-
-    <url>http://www.<%= reversePackagePath %></url>
+  <description><%= projectName %> Parent</description>
+  <url>http://www.<%= reversePackagePath %></url>
   <licenses>
     <license>
       <name>The Apache License, Version 2.0</name>
@@ -37,7 +36,6 @@
     <<%= projectNameLowercase %>-parent.version><%= projectVersion %></<%= projectNameLowercase %>-parent.version>
     <!-- Jima Framework Versions -->
     <jima.version><%= jimaVersion %></jima.version>
-
     <!-- Java and Maven Compiler Settings -->
     <java.version>21</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
@@ -45,18 +43,14 @@
     <maven.compiler.release>${java.version}</maven.compiler.release>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
     <!-- Lombok for Java -->
     <projectlombok.version>1.18.34</projectlombok.version>
     <lombok-maven-plugin.version>1.18.20.0</lombok-maven-plugin.version>
-
     <!-- Other Libraries -->
     <modelmapper.version>3.2.1</modelmapper.version>
-
     <!-- Maven Plugins -->
     <resolve-parent-version-maven-plugin.version>0.8</resolve-parent-version-maven-plugin.version>
   </properties>
-
   <dependencies>
     <dependency>
       <groupId>org.modelmapper</groupId>
@@ -89,20 +83,19 @@
           </execution>
         </executions>
       </plugin>
-
-        <!-- Resolve Parent Version Plugin -->
-        <plugin>
-            <groupId>com.hbakkum.maven.plugins</groupId>
-            <artifactId>resolve-parent-version-maven-plugin</artifactId>
-            <version>${resolve-parent-version-maven-plugin.version}</version>
-            <executions>
-                <execution>
-                    <goals>
-                        <goal>resolve-parent-version</goal>
-                    </goals>
-                </execution>
-            </executions>
-        </plugin>
+      <!-- Resolve Parent Version Plugin -->
+      <plugin>
+        <groupId>com.hbakkum.maven.plugins</groupId>
+        <artifactId>resolve-parent-version-maven-plugin</artifactId>
+        <version>${resolve-parent-version-maven-plugin.version}</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>resolve-parent-version</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 </project>

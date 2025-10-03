@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId><%= packagePath %>.<%= projectNameLowercase %>.domain</groupId>
-        <artifactId><%= projectNameLowercase %>-domain</artifactId>
-        <version>${<%= projectNameLowercase %>-domain.version}</version>
-        <relativePath>../pom.xml</relativePath>
-    </parent>
-    <artifactId>domain-test</artifactId>
-    <name>test</name>
-    <description>test</description>
-    <dependencies>
-        <!-- <%= projectName %> -->
-        <dependency>
-            <groupId><%= packagePath %>.<%= projectNameLowercase %>.core</groupId>
-            <artifactId>core-test</artifactId>
-            <version>${<%= projectNameLowercase %>-core.version}</version>
-        </dependency>
-    </dependencies>
-
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId><%= packagePath %>.<%= projectNameLowercase %>.domain</groupId>
+    <artifactId><%= projectNameLowercase %>-domain</artifactId>
+    <version>${<%= projectNameLowercase %>-domain.version}</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+  <artifactId>domain-test</artifactId>
+  <name>test</name>
+  <description>test</description>
+  <dependencies>
+    <!-- <%= projectName %> -->
+    <dependency>
+      <groupId><%= packagePath %>.<%= projectNameLowercase %>.core</groupId>
+      <artifactId>core-test</artifactId>
+      <version>${<%= projectNameLowercase %>-core.version}</version>
+    </dependency>
+  </dependencies>
 </project>
