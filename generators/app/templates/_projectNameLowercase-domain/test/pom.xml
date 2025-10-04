@@ -19,5 +19,10 @@
       <artifactId>core-test</artifactId>
       <version>${<%= projectNameLowercase %>-core.version}</version>
     </dependency>
+      <dependency>
+          <groupId><%= packagePath %>.<%= projectNameLowercase %>.domain</groupId>
+          <artifactId>domain-model</artifactId>
+          <version>${<%= projectNameLowercase %>-domain.version}</version>
+      </dependency>
   </dependencies>
 </project>
