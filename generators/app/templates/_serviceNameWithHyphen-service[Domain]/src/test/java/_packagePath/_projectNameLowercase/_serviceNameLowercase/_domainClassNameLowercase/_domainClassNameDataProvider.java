@@ -8,6 +8,7 @@ import com.github.fge.jsonpatch.JsonPatch;
 import com.github.fge.jsonpatch.JsonPatchOperation;
 import com.github.fge.jsonpatch.ReplaceOperation;
 import ir.msob.jima.core.commons.id.BaseIdService;
+import org.assertj.core.api.Assertions;
 import <%= packagePath %>.<%= projectNameLowercase %>.core.test.jima.crud.base.domain.DomainCrudDataProvider;
 import <%= domainClassPath %>;
 import <%= criteriaClassPath %>;
@@ -126,5 +127,44 @@ public class <%= domainClassName %>DataProvider extends DomainCrudDataProvider<<
         List<JsonPatchOperation> operations = new ArrayList<>();
         operations.add(new ReplaceOperation(new JsonPointer(String.format("/%s", <%= domainClassName %>.FN.name)), new TextNode(UPDATED_STRING)));
         return operations;
+    }
+
+    @Override
+    public void assertMandatoryGet(<%= dtoClassName %> before, <%= dtoClassName %> after) {
+        super.assertMandatoryGet(before, after);
+        Assertions.assertThat(after.getName()).isEqualTo(before.getName());
+    }
+
+    @Override
+    public void assertGet(<%= dtoClassName %> before, <%= dtoClassName %> after) {
+        super.assertGet(before, after);
+        assertMandatoryGet(before, after);
+
+        Assertions.assertThat(after.getDescription()).isEqualTo(before.getDescription());
+    }
+
+    @Override
+    public void assertMandatoryUpdate(<%= dtoClassName %> dto, <%= dtoClassName %> updatedDto) {
+        super.assertMandatoryUpdate(dto, updatedDto);
+        Assertions.assertThat(dto.getName()).isEqualTo(DEFAULT_STRING);
+        Assertions.assertThat(updatedDto.getName()).isEqualTo(UPDATED_STRING);
+    }
+
+    @Override
+    public void assertUpdate(<%= dtoClassName %> dto, <%= dtoClassName %> updatedDto) {
+        super.assertUpdate(dto, updatedDto);
+        assertMandatoryUpdate(dto, updatedDto);
+    }
+
+    @Override
+    public void assertMandatorySave(<%= dtoClassName %> dto, <%= dtoClassName %> savedDto) {
+        super.assertMandatorySave(dto, savedDto);
+        assertMandatoryGet(dto, savedDto);
+    }
+
+    @Override
+    public void assertSave(<%= dtoClassName %> dto, <%= dtoClassName %> savedDto) {
+        super.assertSave(dto, savedDto);
+        assertGet(dto, savedDto);
     }
 }

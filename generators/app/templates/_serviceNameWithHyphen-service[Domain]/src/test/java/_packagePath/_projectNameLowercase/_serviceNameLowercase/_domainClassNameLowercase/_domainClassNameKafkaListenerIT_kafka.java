@@ -12,7 +12,6 @@ import <%= criteriaClassPath %>;
 import <%= dtoClassPath %>;
 import lombok.SneakyThrows;
 import lombok.extern.apachecommons.CommonsLog;
-import org.assertj.core.api.Assertions;
 import org.bson.types.ObjectId;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -45,17 +44,6 @@ public class <%= domainClassName %>KafkaListenerIT extends DomainCrudKafkaListen
     @Override
     public Class<? extends BaseResource<<%= idClassName %>, User>> getResourceClass() {
         return <%= domainClassName %>KafkaListener.class;
-    }
-
-    @Override
-    public void assertMandatory(<%= dtoClassName %> before, <%= dtoClassName %> after) {
-        Assertions.assertThat(after.getName()).isEqualTo(before.getName());
-    }
-
-    @Override
-    public void assertAll(<%= dtoClassName %> before, <%= dtoClassName %> after) {
-        assertMandatory(before, after);
-        Assertions.assertThat(after.getDescription()).isEqualTo(before.getDescription());
     }
 
     @Override

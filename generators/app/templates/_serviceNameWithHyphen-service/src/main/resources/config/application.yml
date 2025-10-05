@@ -13,8 +13,8 @@ spring:
     <%_ } else { _%>
     web-application-type: NONE
     <%_ } _%>
-  data:
     <%_ if (databaseType == 'Mongo') { _%>
+  data:
     mongodb:
       uri: mongodb://localhost:27017/test
     <%_ } _%>
@@ -52,3 +52,7 @@ spring:
             client-authentication-method: client_secret_basic
             scope:
               - openid
+jima:
+  feature:
+    database-type: <%= databaseTypeLowercase %>
+    database-enabled:  <%_ if (databaseType == 'None') { _%>false<%_ } else { _%>true<%_ } _%>
