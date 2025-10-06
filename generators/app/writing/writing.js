@@ -1,5 +1,7 @@
+// Writing.js
 import fs from 'fs';
 import path from 'path';
+import ejs from 'ejs';
 
 /**
  * Class representing the file writing operations.
@@ -35,11 +37,11 @@ export default class Writing {
             this.prepareClassesPath();
             this._copyFilesRecursively(templateDir, destinationDir);
         }
-
     }
 
     /**
      * Recursively copy files from source directory to destination directory.
+     * Uses EJS to render file contents so <% %> and <%= %> constructs work.
      * @param {string} srcDir - The source directory.
      * @param {string} destDir - The destination directory.
      */
@@ -63,26 +65,33 @@ export default class Writing {
                     this.generator.log(`Processing: ${srcPath} -> ${destPath}`);
 
                     if (stat.isDirectory()) {
-                        fs.mkdirSync(destPath, {recursive: true});
+                        fs.mkdirSync(destPath, { recursive: true });
                         this._copyFilesRecursively(srcPath, destPath);
                     } else {
-                        // Always copy/replace the file, even if it exists
                         // Ensure parent directory exists
                         const parentDir = path.dirname(destPath);
                         if (!fs.existsSync(parentDir)) {
-                            fs.mkdirSync(parentDir, {recursive: true});
+                            fs.mkdirSync(parentDir, { recursive: true });
                         }
-                        
-                        // Read template content and replace placeholders
+
+                        // Read template content
                         let content = fs.readFileSync(srcPath, 'utf8');
                         const templateVars = this._getTemplateVariables();
-                        
-                        // Replace template variables in content
-                        for (const [key, value] of Object.entries(templateVars)) {
-                            const regex = new RegExp(`<%= ${key} %>`, 'g');
-                            content = content.replace(regex, value);
+
+                        // Render content with EJS.
+                        // Provide filename option so includes/relative paths inside templates work.
+                        try {
+                            content = ejs.render(content, templateVars, { filename: srcPath });
+                        } catch (ejsErr) {
+                            // Log detailed error but still attempt a fallback: simple replacements for <%= var %>
+                            this.generator.log(`[WARN] EJS render failed for ${srcPath}: ${ejsErr.message}`);
+                            // fallback: replace simple <%= var %> occurrences (keeps generator usable if EJS fails)
+                            for (const [key, value] of Object.entries(templateVars)) {
+                                const regex = new RegExp(`<%=\\s*${this._escapeRegExp(key)}\\s*%>`, 'g');
+                                content = content.replace(regex, value);
+                            }
                         }
-                        
+
                         // Write the processed content to destination
                         fs.writeFileSync(destPath, content, 'utf8');
                     }
@@ -91,10 +100,9 @@ export default class Writing {
                 }
             });
         } catch (error) {
-            this.generator.log(`Error while copying files: ${error.message}`);
+            this.generator.log(`Error while copying files: ${error.stack || error.message}`);
         }
     }
-
 
     /**
      * Replace placeholders in the file name with actual values.
@@ -112,16 +120,16 @@ export default class Writing {
             '_domainClassName': this.generator.domainClassName,
             '_dtoClassName': this.generator.dtoClassName,
             '_criteriaClassName': this.generator.criteriaClassName,
-            '_packagePath': this.generator.packagePath.split('.').join('/')
+            '_packagePath': (this.generator.packagePath || '').split('.').join('/')
         };
 
         let tempFileName = file;
-        
+
         // Sort replacements by length (longest first) to avoid partial replacements
         const sortedReplacements = Object.entries(replacements).sort((a, b) => b[0].length - a[0].length);
-        
+
         for (const [placeholder, value] of sortedReplacements) {
-            // Escape special regex characters and replace only complete placeholders
+            if (!value && value !== '') continue; // skip undefined
             const escapedPlaceholder = placeholder.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
             const regex = new RegExp(escapedPlaceholder, 'gi');
             tempFileName = tempFileName.replace(regex, value);
@@ -198,6 +206,8 @@ export default class Writing {
             dtoClassName: this.generator.dtoClassName,
             criteriaClassPath: this.generator.criteriaClassPath,
             criteriaClassName: this.generator.criteriaClassName,
+            typeReferenceClassPath: this.generator.typeReferenceClassPath,
+            typeReferenceClassName: this.generator.typeReferenceClassName,
             domainSerialVersionUID: this.generator.domainSerialVersionUID,
             dtoSerialVersionUID: this.generator.dtoSerialVersionUID,
             criteriaSerialVersionUID: this.generator.criteriaSerialVersionUID
@@ -209,7 +219,7 @@ export default class Writing {
      */
     prepareClassesPath() {
         this.generator.log('Preparing class paths for domain:', this.generator.domainName);
-        this.generator.domainClassPath = `${this.generator.packagePath}.${this.generator.projectNameLowercase}.commondto.commons.${this.generator.domainNameLowercase}.${this.generator.domainName}`;
+        this.generator.domainClassPath = `${this.generator.packagePath}.${this.generator.projectNameLowercase}.domain.model.${this.generator.serviceNameLowercase}.${this.generator.domainNameLowercase}.${this.generator.domainName}`;
         this.generator.domainClassName = this.generator.domainClassPath.split('.').pop();
         this.generator.domainClassNameLowercase = this.generator.domainClassName.toLowerCase();
         this.generator.domainClassNameWithHyphen = this.generator.domainClassName
@@ -222,6 +232,9 @@ export default class Writing {
 
         this.generator.criteriaClassPath = `${this.generator.domainClassPath}Criteria`;
         this.generator.criteriaClassName = this.generator.criteriaClassPath.split('.').pop();
+
+        this.generator.typeReferenceClassPath = `${this.generator.domainClassPath}TypeReference`;
+        this.generator.typeReferenceClassName = this.generator.criteriaClassPath.split('.').pop();
 
         // Generate unique serialVersionUID for each class
         this.generator.domainSerialVersionUID = this.generateSerialVersionUID(this.generator.domainClassName);
@@ -267,5 +280,12 @@ export default class Writing {
         this.generator.log('Preparing service name:', this.generator.serviceName);
         this.generator.serviceNameLowercase = this.generator.serviceName.toLowerCase();
         this.generator.serviceNameWithHyphen = this.generator.serviceName.replace(/\s+/g, '-').toLowerCase();
+    }
+
+    /**
+     * Utility: escape string for use in RegExp.
+     */
+    _escapeRegExp(string) {
+        return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     }
 }

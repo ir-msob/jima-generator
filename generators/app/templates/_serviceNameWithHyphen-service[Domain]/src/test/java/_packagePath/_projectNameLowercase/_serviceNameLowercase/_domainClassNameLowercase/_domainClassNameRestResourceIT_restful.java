@@ -1,15 +1,15 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.<%= serviceNameLowercase %>.<%= domainClassNameLowercase %>;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import ir.msob.jima.core.commons.resource.BaseResource;
-import ir.msob.jima.core.commons.shared.PageResponse;
 import ir.msob.jima.core.test.CoreTestData;
 import <%= packagePath %>.<%= projectNameLowercase %>.core.model.jima.security.User;
-import <%= packagePath %>.<%= projectNameLowercase %>.core.test.jima.crud.base.domain.DomainCrudRestResourceTest;
-import <%= packagePath %>.<%= projectNameLowercase %>.dms.Application;
+import <%= packagePath %>.<%= projectNameLowercase %>.core.test.jima.crud.restful.domain.DomainCrudRestResourceTest;
 import <%= domainClassPath %>;
 import <%= criteriaClassPath %>;
 import <%= dtoClassPath %>;
+import <%= typeReferenceClassPath %>;
+import <%= packagePath %>.<%= projectNameLowercase %>.<%= serviceNameLowercase %>.Application;
+import <%= packagePath %>.<%= projectNameLowercase %>.<%= serviceNameLowercase %>.ContainerConfiguration;
 import lombok.SneakyThrows;
 import lombok.extern.apachecommons.CommonsLog;
 import org.bson.types.ObjectId;
@@ -19,14 +19,13 @@ import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWeb
 import org.springframework.boot.test.context.SpringBootTest;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
-import java.lang.reflect.Type;
-
 @AutoConfigureWebTestClient
 @SpringBootTest(classes = {Application.class, ContainerConfiguration.class}, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ContextConfiguration
 @Testcontainers
 @CommonsLog
-public class <%= domainClassName %>RestResourceIT extends DomainCrudRestResourceTest<<%= domainClassName %>, <%= dtoClassName %>, <%= criteriaClassName %>, <%= domainClassName %>Repository, <%= domainClassName %>Service, <%= domainClassName %>DataProvider> {
+public class <%= domainClassName %>RestResourceIT
+        extends DomainCrudRestResourceTest<<%= domainClassName %>, <%= dtoClassName %>, <%= criteriaClassName %>, <%= domainClassName %>Repository, <%= domainClassName %>Service, <%= domainClassName %>DataProvider>
+        implements <%= domainClassName %>TypeReference {
 
     @SneakyThrows
     @BeforeAll

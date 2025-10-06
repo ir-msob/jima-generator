@@ -71,4 +71,28 @@ public abstract class DomainCrudKafkaListener<
         return service;
     }
 
+    @Override
+    public TypeReference<ChannelMessage<User, ModelType>> getChannelMessageModelTypeReferenceType() {
+        return super.getChannelMessageModelTypeReferenceType();
+    }
+
+    @Override
+    public TypeReference<ChannelMessage<User, IdMessage<String>>> getChannelMessageIdReferenceType() {
+        return super.getChannelMessageIdReferenceType();
+    }
+
+    @Override
+    public TypeReference<ChannelMessage<User, IdsMessage<String>>> getChannelMessageIdsReferenceType() {
+        return super.getChannelMessageIdsReferenceType();
+    }
+
+    @Override
+    public TypeReference<ChannelMessage<User, IdJsonPatchMessage<String>>> getChannelMessageIdJsonPatchReferenceType() {
+        return super.getChannelMessageIdJsonPatchReferenceType();
+    }
+
+    @Override
+    public TypeReference<ChannelMessage<User, LongMessage>> getChannelMessageLongReferenceType() {
+        return super.getChannelMessageLongReferenceType();
+    }
 }

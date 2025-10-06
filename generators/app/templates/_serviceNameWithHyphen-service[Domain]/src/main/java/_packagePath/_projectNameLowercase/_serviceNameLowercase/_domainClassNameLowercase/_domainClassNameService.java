@@ -48,11 +48,13 @@ public class <%= domainClassName %>Service extends DomainCrudService<<%= domainC
         return Collections.emptyList();
     }
 
+    @Transactional
     @Override
     public Mono<<%= dtoClassName %>> getDto(String id, User user) {
         return super.getOne(id, user);
     }
 
+    @Transactional
     @Override
     public Mono<<%= dtoClassName %>> updateDto(<%= idClassName %> id, @Valid <%= dtoClassName %> dto, User user) {
         return super.update(id, dto, user);

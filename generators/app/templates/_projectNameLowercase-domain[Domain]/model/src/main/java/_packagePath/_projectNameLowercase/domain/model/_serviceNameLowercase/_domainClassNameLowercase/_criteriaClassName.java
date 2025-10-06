@@ -1,4 +1,4 @@
-package <%= packagePath %>.<%= projectNameLowercase %>.domain.model.<%= domainClassNameLowercase %>;
+package <%= packagePath %>.<%= projectNameLowercase %>.domain.model.<%= serviceNameLowercase %>.<%= domainClassNameLowercase %>;
 
 import <%= packagePath %>.<%= projectNameLowercase %>.core.model.jima.domain.CriteriaAbstract;
 import com.fasterxml.jackson.annotation.JsonInclude;
