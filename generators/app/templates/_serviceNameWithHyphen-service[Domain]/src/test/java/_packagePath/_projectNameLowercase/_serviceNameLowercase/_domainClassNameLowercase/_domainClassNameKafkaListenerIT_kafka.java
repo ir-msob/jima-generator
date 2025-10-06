@@ -23,7 +23,7 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 @CommonsLog
 public class <%= domainClassName %>KafkaListenerIT
         extends DomainCrudKafkaListenerTest<<%= domainClassName %>, <%= dtoClassName %>, <%= criteriaClassName %>, <%= domainClassName %>Repository, <%= domainClassName %>Service, <%= domainClassName %>DataProvider>
-        implements RepositoryTypeReference {
+        implements <%= domainClassName %>TypeReference {
 
     @SneakyThrows
     @BeforeAll

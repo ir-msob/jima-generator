@@ -55,4 +55,4 @@ spring:
 jima:
   feature:
     database-type: <%= databaseTypeLowercase %>
-    database-enabled: <%_ if (databaseType == 'None') { _%>false<%_ } else { _%>true<%_ } _%>
+    database-enabled: <%_ if (databaseType == 'None') { _%> false<%_ } else { _%> true<%_ } _%>

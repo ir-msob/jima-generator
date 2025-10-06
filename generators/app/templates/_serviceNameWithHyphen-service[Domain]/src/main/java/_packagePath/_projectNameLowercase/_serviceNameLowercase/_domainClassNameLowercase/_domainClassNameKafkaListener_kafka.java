@@ -22,7 +22,7 @@ import static ir.msob.jima.core.commons.operation.Operations.*;
 @Resource(value = <%= domainClassName %>.DOMAIN_NAME_WITH_HYPHEN, type = ResourceType.KAFKA)
 public class <%= domainClassName %>KafkaListener
         extends DomainCrudKafkaListener<<%= domainClassName %>, <%= dtoClassName %>, <%= criteriaClassName %>, <%= domainClassName %>Repository, <%= domainClassName %>Service>
-        implements RepositoryTypeReference {
+        implements <%= domainClassName %>TypeReference {
     public static final String BASE_URI = ChannelUtil.getBaseChannel(<%= dtoClassName %>.class);
 
     protected <%= domainClassName %>KafkaListener(UserService userService, <%= domainClassName %>Service service, ObjectMapper objectMapper, ConsumerFactory<String, String> consumerFactory, BaseAsyncClient asyncClient) {

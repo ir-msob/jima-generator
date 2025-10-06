@@ -57,6 +57,12 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
     </dependency>
+
+    <dependency>
+        <groupId>ir.msob.jima.crud</groupId>
+        <artifactId>crud-starter-mongo-test</artifactId>
+        <scope>test</scope>
+    </dependency>
     <%_ } _%>
     <dependency>
       <groupId><%= packagePath %>.<%= projectNameLowercase %>.domain</groupId>

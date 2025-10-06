@@ -9,7 +9,7 @@ import <%= criteriaClassPath %>;
 import <%= dtoClassPath %>;
 import <%= typeReferenceClassPath %>;
 import <%= packagePath %>.<%= projectNameLowercase %>.<%= serviceNameLowercase %>.Application;
-import <%= packagePath %>.<%= projectNameLowercase %>.<%= serviceNameLowercase %>.ContainerConfiguration;;
+import <%= packagePath %>.<%= projectNameLowercase %>.<%= serviceNameLowercase %>.ContainerConfiguration;
 import lombok.SneakyThrows;
 import lombok.extern.apachecommons.CommonsLog;
 import org.bson.types.ObjectId;
@@ -25,7 +25,7 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 @CommonsLog
 public class <%= domainClassName %>CharacteristicRestResourceIT
         extends BaseCharacteristicCrudRestResourceTest<<%= domainClassName %>, <%= dtoClassName %>, <%= criteriaClassName %>, <%= domainClassName %>Repository, <%= domainClassName %>Service, <%= domainClassName %>DataProvider, <%= domainClassName %>Service, <%= domainClassName %>CharacteristicCrudDataProvider>
-        implements RepositoryTypeReference {
+        implements <%= domainClassName %>TypeReference {
 
     @SneakyThrows
     @BeforeAll

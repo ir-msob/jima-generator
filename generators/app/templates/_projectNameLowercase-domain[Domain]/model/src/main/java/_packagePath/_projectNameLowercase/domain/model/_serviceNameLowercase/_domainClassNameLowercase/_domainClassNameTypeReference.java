@@ -10,7 +10,7 @@ import <%= packagePath %>.<%= projectNameLowercase %>.core.model.jima.security.U
 
 import java.lang.reflect.Type;
 
-public interface RepositoryTypeReference
+public interface <%= domainClassName %>TypeReference
         extends DtoTypeReference<<%= dtoClassName %>, <%= criteriaClassName %>>
         , ChannelTypeReference<<%= dtoClassName %>, <%= criteriaClassName %>> {
 
