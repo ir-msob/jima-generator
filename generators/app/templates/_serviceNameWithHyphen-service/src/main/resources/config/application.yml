@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: <%= domainClassNameWithHyphen %>
+    name: <%= serviceName %>
   profiles:
     active: dev
   main:
@@ -16,14 +16,14 @@ spring:
     <%_ if (databaseType == 'Mongo') { _%>
   data:
     mongodb:
-      uri: mongodb://localhost:27017/test
+      uri: mongodb://localhost:27017/<%= serviceName %>
     <%_ } _%>
   <%_ if (isKafka) { _%>
   kafka:
     bootstrap-servers: localhost:9092
     # Consumer configurations (optional)
     consumer:
-      group-id: my-group
+      group-id: <%= serviceNameWithHyphen %>
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       bootstrap-servers: localhost:9092
@@ -38,7 +38,7 @@ spring:
     oauth2:
       resource-server:
         jwt:
-          issuer-uri: http://localhost:9090/realms/test-realm
+          issuer-uri: http://localhost:9090/realms/<%= projectNameLowercase %>-realm
       client:
         provider:
           service-client:
@@ -55,4 +55,4 @@ spring:
 jima:
   feature:
     database-type: <%= databaseTypeLowercase %>
-    database-enabled: <%_ if (databaseType == 'None') { _%> false<%_ } else { _%> true<%_ } _%>
+    database-enabled: <%_ if (databaseType == 'None') { _%>false<%_ } else { _%>true<%_ } _%>
