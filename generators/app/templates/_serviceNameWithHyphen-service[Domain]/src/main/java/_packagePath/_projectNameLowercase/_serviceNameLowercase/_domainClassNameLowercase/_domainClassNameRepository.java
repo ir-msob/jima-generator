@@ -1,7 +1,6 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.<%= serviceNameLowercase %>.<%= domainClassNameLowercase %>;
 
 import ir.msob.jima.core.ral.mongo.commons.query.QueryBuilder;
-import <%= packagePath %>.<%= projectNameLowercase %>.core.model.jima.security.User;
 import <%= packagePath %>.<%= projectNameLowercase %>.core.service.jima.crud.base.domain.DomainCrudRepository;
 import <%= domainClassPath %>;
 import <%= criteriaClassPath %>;
@@ -19,8 +18,8 @@ public class <%= domainClassName %>Repository extends DomainCrudRepository<<%= d
     <%_ } _%>
 
     @Override
-    public QueryBuilder criteria(QueryBuilder query, <%= criteriaClassName %> criteria, User user) {
-        return super.criteria(query, criteria, user);
+    public QueryBuilder criteria(QueryBuilder query, <%= criteriaClassName %> criteria) {
+        return super.criteria(query, criteria);
     }
 }
 
