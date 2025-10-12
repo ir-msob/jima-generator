@@ -3,7 +3,6 @@ package <%= packagePath %>.<%= projectNameLowercase %>.core.test.jima.crud.kafka
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ir.msob.jima.core.beans.properties.JimaProperties;
-import ir.msob.jima.core.ral.mongo.commons.query.QueryBuilder;
 import ir.msob.jima.crud.api.kafka.client.ChannelUtil;
 import ir.msob.jima.crud.api.kafka.test.domain.BaseDomainCrudKafkaListenerTest;
 import <%= packagePath %>.<%= projectNameLowercase %>.core.model.jima.channel.ChannelTypeReference;
@@ -32,7 +31,7 @@ public abstract class DomainCrudKafkaListenerTest<
         R extends DomainCrudRepository<D, C>,
         S extends DomainCrudService<D, DTO, C, R>,
         DP extends DomainCrudDataProvider<D, DTO, C, R, S>>
-        implements BaseDomainCrudKafkaListenerTest<String, User, D, DTO, C, QueryBuilder, R, S, DP>
+        implements BaseDomainCrudKafkaListenerTest<String, User, D, DTO, C, R, S, DP>
         , ChannelTypeReference<DTO, C> {
 
     private final Duration sleepDuration = Duration.of(1, ChronoUnit.SECONDS);

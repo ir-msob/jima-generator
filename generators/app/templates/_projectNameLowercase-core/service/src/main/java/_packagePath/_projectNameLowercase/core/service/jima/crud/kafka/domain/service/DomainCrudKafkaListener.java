@@ -11,7 +11,6 @@ import <%= packagePath %>.<%= projectNameLowercase %>.core.model.jima.security.U
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ir.msob.jima.core.commons.client.BaseAsyncClient;
 import ir.msob.jima.core.commons.security.BaseUserService;
-import ir.msob.jima.core.ral.mongo.commons.query.QueryBuilder;
 import ir.msob.jima.crud.api.kafka.service.domain.BaseDomainCrudKafkaListener;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.ConsumerFactory;
@@ -22,7 +21,7 @@ public abstract class DomainCrudKafkaListener<
         C extends Criteria,
         R extends DomainCrudRepository<D, C>,
         S extends DomainCrudService<D, DTO, C, R>
-        > implements BaseDomainCrudKafkaListener<<%= idClassName %>, User, D, DTO, C, QueryBuilder, R, S>
+        > implements BaseDomainCrudKafkaListener<<%= idClassName %>, User, D, DTO, C, R, S>
         , ChannelTypeReference<DTO, C> {
 
     private final UserService userService;

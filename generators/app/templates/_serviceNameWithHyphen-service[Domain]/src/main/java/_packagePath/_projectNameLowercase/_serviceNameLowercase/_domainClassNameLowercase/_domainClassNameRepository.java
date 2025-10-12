@@ -1,6 +1,5 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.<%= serviceNameLowercase %>.<%= domainClassNameLowercase %>;
 
-import ir.msob.jima.core.ral.mongo.commons.query.QueryBuilder;
 import <%= packagePath %>.<%= projectNameLowercase %>.core.service.jima.crud.base.domain.DomainCrudRepository;
 import <%= domainClassPath %>;
 import <%= criteriaClassPath %>;

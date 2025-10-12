@@ -166,7 +166,11 @@ export default class Writing {
             this.generator.appType !== 'Parent' && file === '_projectNameLowercase-core',
             this.generator.appType !== 'Parent' && file === '_projectNameLowercase-domain',
             this.generator.appType !== 'Domain' && file === '_serviceNameWithHyphen-service[Domain]',
-            this.generator.appType !== 'Domain' && file === '_projectNameLowercase-domain[Domain]'
+            this.generator.appType !== 'Domain' && file === '_projectNameLowercase-domain[Domain]',
+            this.generator.appType !== 'Domain' && this.generator.serviceName === 'Process' && file === '_serviceNameWithHyphen-service[Domain]', //FIXME
+            this.generator.appType !== 'Domain' && this.generator.serviceName === 'Process' && file === '_projectNameLowercase-domain[Domain]',   //FIXME
+            this.generator.appType !== 'Domain' && this.generator.serviceName !== 'Process' && file === '_serviceNameWithHyphen-service[Process]',
+            this.generator.appType !== 'Domain' && this.generator.serviceName !== 'Process' && file === '_projectNameLowercase-domain[Process]'
         ];
 
         return conditions.some(condition => condition);

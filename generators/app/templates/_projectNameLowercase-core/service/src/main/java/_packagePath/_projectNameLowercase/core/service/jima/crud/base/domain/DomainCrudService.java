@@ -5,7 +5,6 @@ import <%= packagePath %>.<%= projectNameLowercase %>.core.model.jima.domain.Dom
 import <%= packagePath %>.<%= projectNameLowercase %>.core.model.jima.domain.Dto;
 import <%= packagePath %>.<%= projectNameLowercase %>.core.model.jima.security.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ir.msob.jima.core.ral.mongo.commons.query.QueryBuilder;
 import ir.msob.jima.crud.service.domain.BaseDomainCrudService;
 import ir.msob.jima.crud.service.domain.BeforeAfterComponent;
 import org.springframework.validation.annotation.Validated;
@@ -16,7 +15,7 @@ public abstract class DomainCrudService<
         DTO extends Dto,
         C extends Criteria,
         R extends DomainCrudRepository<D, C>>
-        implements BaseDomainCrudService<<%= idClassName %>, User, D, DTO, C, QueryBuilder, R> {
+        implements BaseDomainCrudService<<%= idClassName %>, User, D, DTO, C, R> {
 
     private final BeforeAfterComponent beforeAfterComponent;
     private final ObjectMapper objectMapper;

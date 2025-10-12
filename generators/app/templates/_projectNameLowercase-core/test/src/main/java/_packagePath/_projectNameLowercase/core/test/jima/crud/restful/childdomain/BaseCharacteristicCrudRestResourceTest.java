@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import ir.msob.jima.core.commons.domain.BaseCriteria;
 import ir.msob.jima.core.commons.domain.BaseDomain;
 import ir.msob.jima.core.commons.domain.BaseDto;
-import ir.msob.jima.core.ral.mongo.commons.query.QueryBuilder;
 import ir.msob.jima.core.test.Assertable;
 import ir.msob.jima.crud.commons.domain.BaseDomainCrudRepository;
 import ir.msob.jima.crud.service.childdomain.BaseChildDomainCrudService;
@@ -22,14 +21,14 @@ public abstract class BaseCharacteristicCrudRestResourceTest<
         D extends BaseDomain<<%= idClassName %>>,
         DTO extends BaseDto<<%= idClassName %>>,
         C extends BaseCriteria<<%= idClassName %>>,
-        R extends BaseDomainCrudRepository<<%= idClassName %>, User, D, C, QueryBuilder>,
-        S extends BaseDomainCrudService<<%= idClassName %>, User, D, DTO, C, QueryBuilder, R>,
-        DP extends BaseDomainCrudDataProvider<<%= idClassName %>, User, D, DTO, C, QueryBuilder, R, S>,
+        R extends BaseDomainCrudRepository<<%= idClassName %>, D>,
+        S extends BaseDomainCrudService<<%= idClassName %>, User, D, DTO, C, R>,
+        DP extends BaseDomainCrudDataProvider<<%= idClassName %>, User, D, DTO, C, R, S>,
 
         CS extends BaseChildDomainCrudService<<%= idClassName %>, User, DTO>,
         CDP extends BaseCharacteristicCrudDataProvider<DTO, CS>>
         extends ChildCrudRestResourceTest<D, DTO, C, R, S, DP, CS, CDP>
-        implements ir.msob.jima.crud.api.restful.test.childdomain.characteristic.BaseCharacteristicCrudRestResourceTest<<%= idClassName %>, User, Characteristic, CharacteristicCriteria, D, DTO, C, QueryBuilder, R, S, DP, CS, CDP> {
+        implements ir.msob.jima.crud.api.restful.test.childdomain.characteristic.BaseCharacteristicCrudRestResourceTest<<%= idClassName %>, User, Characteristic, CharacteristicCriteria, D, DTO, C, R, S, DP, CS, CDP> {
 
 
     @Override

@@ -1,14 +1,13 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.core.service.jima.crud.base.domain;
 
-import <%= packagePath %>.<%= projectNameLowercase %>.core.model.jima.domain.Criteria;
 import <%= packagePath %>.<%= projectNameLowercase %>.core.model.jima.domain.Domain;
 import <%= packagePath %>.<%= projectNameLowercase %>.core.model.jima.security.User;
 import ir.msob.jima.core.ral.mongo.commons.BaseMongoRepository;
 import ir.msob.jima.crud.ral.mongo.commons.BaseDomainCrudMongoRepository;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 
-public abstract class DomainCrudRepository<D extends Domain, C extends Criteria>
-        implements BaseDomainCrud<%= databaseType %>Repository<<%= idClassName %>, User, D, C>
+public abstract class DomainCrudRepository<D extends Domain>
+        implements BaseDomainCrud<%= databaseType %>Repository<<%= idClassName %>, User, D>
         , Base<%= databaseType %>Repository<<%= idClassName %>, User, D> {
 
     <%_ if (databaseType == 'Mongo') { _%>

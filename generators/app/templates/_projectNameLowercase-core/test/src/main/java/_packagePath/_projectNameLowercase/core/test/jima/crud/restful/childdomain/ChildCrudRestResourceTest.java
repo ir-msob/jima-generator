@@ -8,7 +8,6 @@ import ir.msob.jima.core.beans.properties.JimaProperties;
 import ir.msob.jima.core.commons.domain.BaseCriteria;
 import ir.msob.jima.core.commons.domain.BaseDomain;
 import ir.msob.jima.core.commons.domain.BaseDto;
-import ir.msob.jima.core.ral.mongo.commons.query.QueryBuilder;
 import ir.msob.jima.crud.api.restful.test.childdomain.BaseParentChildCrudRestResourceTest;
 import ir.msob.jima.crud.commons.domain.BaseDomainCrudRepository;
 import ir.msob.jima.crud.service.childdomain.BaseChildDomainCrudService;
@@ -20,16 +19,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 public abstract class ChildCrudRestResourceTest<
-        D extends BaseDomain<String>,
-        DTO extends BaseDto<String>,
-        C extends BaseCriteria<String>,
-        R extends BaseDomainCrudRepository<String, User, D, C, QueryBuilder>,
-        S extends BaseDomainCrudService<String, User, D, DTO, C, QueryBuilder, R>,
-        DP extends BaseDomainCrudDataProvider<String, User, D, DTO, C, QueryBuilder, R, S>,
+        D extends BaseDomain<<%= idClassName %>>,
+        DTO extends BaseDto<<%= idClassName %>>,
+        C extends BaseCriteria<<%= idClassName %>>,
+        R extends BaseDomainCrudRepository<<%= idClassName %>, D>,
+        S extends BaseDomainCrudService<<%= idClassName %>, User, D, DTO, C, R>,
+        DP extends BaseDomainCrudDataProvider<<%= idClassName %>, User, D, DTO, C, R, S>,
 
-        CS extends BaseChildDomainCrudService<String, User, DTO>,
-        CDP extends BaseChildCrudDataProvider<String, User, Characteristic, DTO, CS>>
-        implements BaseParentChildCrudRestResourceTest<String, User, Characteristic, CharacteristicCriteria, D, DTO, C, QueryBuilder, R, S, DP, CS, CDP> {
+        CS extends BaseChildDomainCrudService<<%= idClassName %>, User, DTO>,
+        CDP extends BaseChildCrudDataProvider<<%= idClassName %>, User, Characteristic, DTO, CS>>
+        implements BaseParentChildCrudRestResourceTest<<%= idClassName %>, User, Characteristic, CharacteristicCriteria, D, DTO, C, R, S, DP, CS, CDP> {
 
     @Autowired
     private WebTestClient webTestClient;

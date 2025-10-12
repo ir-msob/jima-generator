@@ -6,7 +6,6 @@ import <%= packagePath %>.<%= projectNameLowercase %>.core.model.jima.domain.Cri
 import <%= packagePath %>.<%= projectNameLowercase %>.core.model.jima.domain.Domain;
 import <%= packagePath %>.<%= projectNameLowercase %>.core.model.jima.domain.Dto;
 import <%= packagePath %>.<%= projectNameLowercase %>.core.model.jima.security.User;
-import ir.msob.jima.core.ral.mongo.commons.query.QueryBuilder;
 import ir.msob.jima.crud.api.restful.service.domain.write.BaseEditByIdDomainCrudRestResource;
 
 public interface EditByIdDomainCrudRestResource<
@@ -15,6 +14,6 @@ public interface EditByIdDomainCrudRestResource<
         C extends Criteria,
         R extends DomainCrudRepository<D, C>,
         S extends DomainCrudService<D, DTO, C, R>
-        > extends BaseEditByIdDomainCrudRestResource<<%= idClassName %>, User, D, DTO, C, QueryBuilder, R, S> {
+        > extends BaseEditByIdDomainCrudRestResource<<%= idClassName %>, User, D, DTO, C, R, S> {
 
 }

@@ -7,7 +7,6 @@ import <%= packagePath %>.<%= projectNameLowercase %>.core.model.jima.domain.Cri
 import <%= packagePath %>.<%= projectNameLowercase %>.core.model.jima.domain.Domain;
 import <%= packagePath %>.<%= projectNameLowercase %>.core.model.jima.domain.Dto;
 import <%= packagePath %>.<%= projectNameLowercase %>.core.model.jima.security.User;
-import ir.msob.jima.core.ral.mongo.commons.query.QueryBuilder;
 import ir.msob.jima.crud.api.kafka.service.domain.read.BaseCountDomainCrudKafkaListener;
 
 public interface CountDomainCrudKafkaListener<
@@ -16,7 +15,7 @@ public interface CountDomainCrudKafkaListener<
         C extends Criteria,
         R extends DomainCrudRepository<D, C>,
         S extends DomainCrudService<D, DTO, C, R>
-        > extends BaseCountDomainCrudKafkaListener<<%= idClassName %>, User, D, DTO, C, QueryBuilder, R, S>
+        > extends BaseCountDomainCrudKafkaListener<<%= idClassName %>, User, D, DTO, C, R, S>
         , ChannelTypeReference<DTO, C> {
 
 }
