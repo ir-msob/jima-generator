@@ -1,5 +1,6 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.<%= serviceNameLowercase %>.<%= domainClassNameLowercase %>;
 
+import ir.msob.jima.core.ral.mongo.commons.query.MongoQueryBuilder;
 import <%= packagePath %>.<%= projectNameLowercase %>.core.service.jima.crud.base.domain.DomainCrudRepository;
 import <%= domainClassPath %>;
 import <%= criteriaClassPath %>;
@@ -9,16 +10,11 @@ import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class <%= domainClassName %>Repository extends DomainCrudRepository<<%= domainClassName %>, <%= criteriaClassName %>> {
+public class <%= domainClassName %>Repository extends DomainCrudRepository<<%= domainClassName %>> {
     <%_ if (databaseType == 'Mongo') { _%>
-    protected <%= domainClassName %>Repository(ReactiveMongoTemplate reactiveMongoTemplate) {
-        super(reactiveMongoTemplate);
+    protected <%= domainClassName %>Repository(MongoQueryBuilder queryBuilder, ReactiveMongoTemplate reactiveMongoTemplate) {
+        super(queryBuilder, reactiveMongoTemplate);
     }
     <%_ } _%>
-
-    @Override
-    public QueryBuilder criteria(QueryBuilder query, <%= criteriaClassName %> criteria) {
-        return super.criteria(query, criteria);
-    }
 }
 

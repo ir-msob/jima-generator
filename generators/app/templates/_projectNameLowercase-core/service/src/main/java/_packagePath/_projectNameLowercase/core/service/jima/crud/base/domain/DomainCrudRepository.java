@@ -1,5 +1,7 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.core.service.jima.crud.base.domain;
 
+import ir.msob.jima.core.commons.repository.BaseQueryBuilder;
+import ir.msob.jima.core.ral.mongo.commons.query.MongoQueryBuilder;
 import <%= packagePath %>.<%= projectNameLowercase %>.core.model.jima.domain.Domain;
 import <%= packagePath %>.<%= projectNameLowercase %>.core.model.jima.security.User;
 import ir.msob.jima.core.ral.mongo.commons.BaseMongoRepository;
@@ -11,9 +13,11 @@ public abstract class DomainCrudRepository<D extends Domain>
         , Base<%= databaseType %>Repository<<%= idClassName %>, User, D> {
 
     <%_ if (databaseType == 'Mongo') { _%>
+    private final MongoQueryBuilder queryBuilder;
     private final ReactiveMongoTemplate reactiveMongoTemplate;
 
-    protected DomainCrudRepository(ReactiveMongoTemplate reactiveMongoTemplate) {
+    protected DomainCrudRepository(MongoQueryBuilder queryBuilder, ReactiveMongoTemplate reactiveMongoTemplate) {
+        this.queryBuilder = queryBuilder;
         this.reactiveMongoTemplate = reactiveMongoTemplate;
     }
 
@@ -22,4 +26,9 @@ public abstract class DomainCrudRepository<D extends Domain>
         return reactiveMongoTemplate;
     }
     <%_ } _%>
+
+    @Override
+    public BaseQueryBuilder getQueryBuilder() {
+        return queryBuilder;
+    }
 }
