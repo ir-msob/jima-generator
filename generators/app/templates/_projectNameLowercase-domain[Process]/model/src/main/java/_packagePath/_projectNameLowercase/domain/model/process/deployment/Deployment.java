@@ -11,10 +11,7 @@ import <%= packagePath %>.<%= projectNameLowercase %>.core.model.jima.childdomai
 import <%= packagePath %>.<%= projectNameLowercase %>.core.model.jima.childdomain.relatedaction.RelatedAction;
 import <%= packagePath %>.<%= projectNameLowercase %>.core.model.jima.childdomain.relatedaction.RelatedActionCriteria;
 import <%= packagePath %>.<%= projectNameLowercase %>.core.model.jima.domain.Domain;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -38,13 +35,15 @@ public class Deployment extends BaseDeployment implements Domain {
     @Transient
     public static final String DOMAIN_NAME_WITH_HYPHEN = "deployment";
 
-
+    @Singular
     @ChildDomain(cdClass = Characteristic.class, ccClass = CharacteristicCriteria.class)
     private SortedSet<Characteristic> characteristics = new TreeSet<>();
 
+    @Singular
     @ChildDomain(cdClass = ObjectValidation.class, ccClass = ObjectValidationCriteria.class)
     private SortedSet<ObjectValidation> objectValidations = new TreeSet<>();
 
+    @Singular
     @ChildDomain(cdClass = RelatedAction.class, ccClass = RelatedActionCriteria.class)
     private SortedSet<RelatedAction> relatedActions = new TreeSet<>();
 
