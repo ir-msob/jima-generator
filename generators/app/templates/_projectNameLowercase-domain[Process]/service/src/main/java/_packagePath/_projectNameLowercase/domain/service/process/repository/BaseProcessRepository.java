@@ -8,7 +8,7 @@ import org.activiti.engine.RuntimeService;
 
 public abstract class BaseProcessRepository extends BaseActivitiProcessRepository<Process, ProcessCriteria> {
 
-    public BaseProcessRepository(RuntimeService runtimeService, ProcessInstanceQueryBuilder queryBuilder) {
+    protected BaseProcessRepository(RuntimeService runtimeService, ProcessInstanceQueryBuilder queryBuilder) {
         super(runtimeService, queryBuilder);
     }
 }

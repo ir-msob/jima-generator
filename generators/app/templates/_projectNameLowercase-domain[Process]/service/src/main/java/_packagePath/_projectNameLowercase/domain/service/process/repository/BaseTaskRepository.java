@@ -8,7 +8,7 @@ import org.activiti.engine.TaskService;
 
 public abstract class BaseTaskRepository extends BaseActivitiTaskRepository<Task, TaskCriteria> {
 
-    public BaseTaskRepository(TaskService taskService, TaskQueryBuilder queryBuilder) {
+    protected BaseTaskRepository(TaskService taskService, TaskQueryBuilder queryBuilder) {
         super(taskService, queryBuilder);
     }
 }
