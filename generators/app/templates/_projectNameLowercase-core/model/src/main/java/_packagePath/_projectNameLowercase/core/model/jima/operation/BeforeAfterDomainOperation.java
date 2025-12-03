@@ -1,11 +1,11 @@
 package <%= packagePath %>.<%= projectNameLowercase %>.core.model.jima.operation;
 
-import <%= packagePath %>.<%= projectNameLowercase %>.core.model.jima.security.User;
-import ir.msob.jima.core.commons.domain.BaseCriteria;
-import ir.msob.jima.core.commons.domain.BaseDto;
 import ir.msob.jima.core.commons.operation.BaseBeforeAfterDomainOperation;
+import <%= packagePath %>.<%= projectNameLowercase %>.core.model.jima.domain.Criteria;
+import <%= packagePath %>.<%= projectNameLowercase %>.core.model.jima.domain.Dto;
+import <%= packagePath %>.<%= projectNameLowercase %>.core.model.jima.security.User;
 
-public interface BeforeAfterDomainOperation<DTO extends BaseDto<<%= idClassName %>>, C extends BaseCriteria<<%= idClassName %>>>
+public interface BeforeAfterDomainOperation<DTO extends Dto>, C extends Criteria>>
         extends BaseBeforeAfterDomainOperation<<%= idClassName %>, User, DTO, C> {
 
 }
